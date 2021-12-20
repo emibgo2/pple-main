@@ -1,0 +1,61 @@
+server:
+  port: 10001
+  servlet:
+    session:
+      cookie:
+        name: SID
+
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          kakao:
+            client-name: KAKAO
+            client-id: --
+            scope:
+              - profile_nickname
+              - profile_image
+              - account_email
+            authorization-grant-type: authorization_code
+            redirect-uri: "{baseUrl}/{action}/oauth2/code/{registrationId}"
+            client-authentication-method: POST
+        provider:
+          kakao:
+            authorization_uri: https://kauth.kakao.com/oauth/authorize
+            token_uri: https://kauth.kakao.com/oauth/token
+            user-info-uri: https://kapi.kakao.com/v2/user/me
+            user_name_attribute: id
+
+springdoc:
+  api-docs:
+    enabled: false
+  paths-to-match: /api/**
+  swagger-ui:
+    doc-expansion: none
+
+management:
+  metrics:
+    tags:
+      type: app
+      role: ${ROLE:pple_main}
+      instance_id: ${INSTANCE_ID:unknown}
+  trace:
+    http:
+      enabled: true
+
+pple:
+  auth:
+    tokenCookieName: jwt
+    tokenSecret: --
+    tokenExpirationMillis: 864000000
+  oauth2:
+    # 1. OAuth2 Provider 인증
+    # 2. 사용자에 대한 인증 토큰을 생성
+    # 3. Front Client 에서 redirectUri 로 redirect
+    # 쿠키는 모바일 클라이언트에서 잘 작동하지 않기 때문에 사용하지 않음
+    authorizedRedirectUris:
+      - http://localhost:8080/oauth2/redirect
+      - myandroidapp://oauth2/redirect
+      - myiosapp://oauth2/redirect
+
