@@ -18,7 +18,5 @@ class WebMvcConfig : WebMvcConfigurer {
 
     companion object {
         private const val MAX_AGE_SECS: Long = 3600
-        private val CLASSPATH_RESOURCE_LOCATIONS = arrayOf("classpath:/static", "classpath:/static/generated/static")
-        private val INTERNAL_RESOURCE_VIEW_RESOLVER_VIEW_NAMES = arrayOf("*.htm", "*.html")
     }
 }
