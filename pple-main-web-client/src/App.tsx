@@ -1,10 +1,12 @@
 import React from 'react';
-import styled, {createGlobalStyle} from 'styled-components';
+import { createGlobalStyle } from 'styled-components';
 import reset from 'styled-reset';
+import styled from 'styled-components';
 import NavigationBar from './components/navigation/NavigationBar';
 import GlobalNavigationBar from './components/navigation/GlobalNavigationBar';
-import {Route, Routes} from 'react-router-dom';
+import {Routes,Route} from 'react-router-dom';
 import HomePage from './pages/HomePage';
+import LoginPage from './pages/LoginPage';
 
 const GlobalStyles = createGlobalStyle`
   ${reset};
@@ -21,21 +23,22 @@ const ContentBlock = styled.div`
 `;
 
 const App: React.FC = () => {
-    return (
-        <>
-            <GlobalStyles/>
-            <AppBlock>
-                <NavigationBar/>
-                <ContentBlock>
-                    <GlobalNavigationBar/>
-                    <Routes>
-                        <Route path="/" element={<HomePage/>}/>
-                    </Routes>
+  return (
+    <>
+      <GlobalStyles />
+      <AppBlock>
+        <NavigationBar />
+        <ContentBlock>
+          <GlobalNavigationBar />
+          <Routes>
+            <Route path="/" element={<HomePage/>}/>
+            <Route path="/login" element={<LoginPage/>}/>
+          </Routes>
 
-                </ContentBlock>
-            </AppBlock>
-        </>
-    );
+        </ContentBlock>
+      </AppBlock>
+    </>
+  );
 };
 
 export default App;

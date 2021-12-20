@@ -9,14 +9,15 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 
 const GlobalNavigationBarBlock = styled.div`
-  width: initial;
-  height: fit-content;
+  width: 100%;
+  height: min-content;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 26px;
+  padding: 15px 26px;
   background: ${palette.gray[0]};
   box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.16);
+  box-sizing:border-box;
 `;
 
 const ColumnBlock = styled.div`

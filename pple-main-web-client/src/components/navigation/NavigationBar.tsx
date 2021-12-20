@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 import palette from '../../lib/styles/palette';
-import homeImg from '../../lib/images/fluent_home-24-filled.png';
-import noticeImg from '../../lib/images/codicon_bell-dot.png'
-import chattingImg from '../../lib/images/bx_bxs-chat.png'
-import mypageImg from '../../lib/images/bi_person.png'
+import homeImg from '../../lib/images/navigation/fluent_home-24-filled.png';
+import noticeImg from '../../lib/images/navigation/codicon_bell-dot.png'
+import chattingImg from '../../lib/images/navigation/bx_bxs-chat.png'
+import mypageImg from '../../lib/images/navigation/bi_person.png'
 
 const NavigationBLOCK = styled.div`
     width:140px;
@@ -32,6 +32,10 @@ const StyledButton = styled.div`
       margin-right: 5px;
   }
   
+  & span {
+      min-width:80px;
+  }
+
   &:hover{
       background-color: ${palette.red[0]};
   }
