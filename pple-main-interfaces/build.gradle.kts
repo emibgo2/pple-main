@@ -1,8 +1,36 @@
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
+
+plugins {
+    id("com.google.cloud.tools.jib")
+}
+
 dependencies {
     implementation(project(":pple-main-domain"))
     api("org.springframework.boot:spring-boot-starter-oauth2-client")
 
     implementation("io.jsonwebtoken:jjwt:0.9.1")
+}
+
+jib {
+    from {
+        image = "adoptopenjdk/openjdk11:jdk-11.0.10_9-debian"
+    }
+    to {
+        image = "pple-main"
+        tags = if ("prod" == System.getenv("ENV")) {
+            setOf(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMddHHmmss")))
+        } else {
+            setOf("latest")
+        }
+    }
+    container {
+        ports = listOf("10001")
+        creationTime = "USE_CURRENT_TIMESTAMP"
+    }
+    extraDirectories {
+        setPaths("/pple/logs/app")
+    }
 }
 
 

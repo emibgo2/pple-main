@@ -6,6 +6,8 @@ plugins {
     id("io.spring.dependency-management")
     kotlin("jvm")
     kotlin("plugin.spring")
+
+    id("com.google.cloud.tools.jib") version "3.1.4" apply false
 }
 
 configurations {
