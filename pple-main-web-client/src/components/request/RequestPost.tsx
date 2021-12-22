@@ -8,6 +8,12 @@ import RecipientInformationBox from '../common/RecipientInformationBox';
 import SmsOutlinedIcon from '@mui/icons-material/SmsOutlined';
 import FileUploadOutlinedIcon from '@mui/icons-material/FileUploadOutlined';
 import RemoveRedEyeOutlinedIcon from '@mui/icons-material/RemoveRedEyeOutlined';
+import Comment from '../common/Comment';
+import SendIcon from '@mui/icons-material/Send';
+import SentimentSatisfiedOutlinedIcon from '@mui/icons-material/SentimentSatisfiedOutlined';
+import { InputBase } from '@mui/material';
+import { IconButton } from '@mui/material';
+import { Paper } from '@mui/material';
 
 const RequestPostBlock = styled.div``;
 
@@ -37,20 +43,20 @@ const RequestPostContentTitle = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  
-  & span{
-    font-size:large;
+
+  & span {
+    font-size: large;
     font-weight: bolder;
   }
-  margin-top:15px;
-  padding : 0px 50px;
+  margin-top: 15px;
+  padding: 0px 50px;
 `;
 
 const RequestPostContent = styled.div`
-  padding:0px 50px;
-  margin-top:30px;
-  & .post_content_text{
-    margin-bottom:25px;
+  padding: 0px 50px;
+  margin-top: 30px;
+  & .post_content_text {
+    margin-bottom: 25px;
   }
 `;
 
@@ -59,15 +65,27 @@ const RequestPostContentFooter = styled.div`
   align-items: center;
   justify-content: space-between;
   color: gray;
-  margin-top:25px;
-  & .post_content_footer_col{
-    display:flex;
-    align-items:center;
+  margin-top: 25px;
+  & .post_content_footer_col {
+    display: flex;
+    align-items: center;
   }
-  & .post_content_footer_state{
-    display:flex;
-    align-items:center;    
+  & .post_content_footer_state {
+    display: flex;
+    align-items: center;
   }
+`;
+
+const CommentBlock = styled.div`
+  padding: 0px 50px;
+`;
+
+const InputCommentBlock = styled.div`
+  padding:0px 50px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  box-sizing : border-box;
 `;
 
 const RequestPost = () => {
@@ -127,7 +145,49 @@ const RequestPost = () => {
           </div>
         </RequestPostContentFooter>
       </RequestPostContent>
-      <hr/>
+
+      <hr />
+
+      <CommentBlock>
+        <Comment
+          isOpponent={true}
+          name="조은경"
+          bloodType="B+"
+          comment="지인분께 한번 연락드려볼게요 에이호프님"
+          time="12분전"
+        />
+        <Comment
+          isOpponent={false}
+          name="에이호프"
+          bloodType="B+"
+          comment="감사합니다"
+          time="12분전"
+        />
+      </CommentBlock>
+
+      <InputCommentBlock>
+        <Paper
+          component="form"
+          sx={{
+            p: '2px 4px',
+            display: 'flex',
+            alignItems: 'center',
+            width: '100%',
+          }}
+        >
+          <IconButton type="submit" sx={{ p: '10px' }} aria-label="search">
+            <SentimentSatisfiedOutlinedIcon />
+          </IconButton>
+          <InputBase
+            sx={{ ml: 1, flex: 1 }}
+            placeholder="댓글을 남겨주세요"
+            inputProps={{ 'aria-label': 'search google maps' }}
+          />
+          <IconButton type="submit" sx={{ p: '10px' }} aria-label="search">
+            <SendIcon />
+          </IconButton>
+        </Paper>
+      </InputCommentBlock>
     </RequestPostBlock>
   );
 };

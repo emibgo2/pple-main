@@ -5,19 +5,26 @@ import BloodTypeBlock from './BloodTypeBlock';
 
 const OpponentCommentBlock = styled.div`
   width: 100%;
-  align-content: flex-start;
+  display:flex;
+  align-items:center;
+  justify-content:flex-start;
 `;
 
 const UserCommentBlock = styled.div`
   width: 100%;
-  align-content: flex-start;
+  display:flex;
+  align-items:center;
+  justify-content:flex-end;
 `;
 
 const CommentBubble = styled.div`
     background-color:whitesmoke;
+    & .user-info{
+        display:flex;
+    }
 `;
 
-interface Props {
+type Props = {
   isOpponent: boolean;
   name: string;
   bloodType: string;
@@ -25,13 +32,13 @@ interface Props {
   time: string;
 }
 
-const Comment: React.FC<Props> = ({
+const Comment = ({
   isOpponent,
   name,
   bloodType,
   comment,
   time,
-}) => {
+}:Props) => {
   return (
     <>
       {isOpponent ? (
