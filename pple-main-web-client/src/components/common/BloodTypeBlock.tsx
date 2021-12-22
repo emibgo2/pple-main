@@ -6,6 +6,7 @@ const BloodTypeBox = styled.div`
   border: 1px solid black;
   border-radius: 10px;
   padding: 1px 5px;
+  text-align:center;
 `;
 
 interface Props{ 
