@@ -7,6 +7,7 @@ import applogo from '../../lib/images/Ellipse 2.png';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
+import BloodTypeBlock from '../common/BloodTypeBlock';
 
 const GlobalNavigationBarBlock = styled.div`
   width: 100%;
@@ -30,12 +31,6 @@ const ColumnBlock = styled.div`
   }
 `;
 
-const BloodTypeBlock = styled.div`
-  margin: 0px 10px;
-  border: 1px solid black;
-  border-radius: 10px;
-  padding: 1px 5px;
-`;
 
 const GlobalNavigationBar = () => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -56,7 +51,7 @@ const GlobalNavigationBar = () => {
       <ColumnBlock>
         <img src={Subract} alt="임시 프로필" />
         <span>에이호프님</span>
-        <BloodTypeBlock>AB+</BloodTypeBlock>
+        <BloodTypeBlock text="AB+"/>
         <IconButton
           id="basic-button"
           aria-controls="basic-menu"

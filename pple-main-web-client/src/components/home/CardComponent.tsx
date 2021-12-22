@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import palette from '../../lib/styles/palette';
-import BloodAvatar from '../common/BloodAvatar';
+import BloodMark from '../common/BloodMark';
 import Button from '@mui/material/Button'
 
 const CardComponentBlock = styled.div`
@@ -106,7 +106,7 @@ const CardComponent = () => {
         <RegistrationDate>2021년 12월 13일 오전 7:30</RegistrationDate>
         <CardHeaderContentBox>
           <CardHeaderImageBox>
-            <BloodAvatar type="b+" />
+            <BloodMark type="b+" />
           </CardHeaderImageBox>
           <CardHeaderTextBox>
             <CardHeaderText>

@@ -2,11 +2,9 @@ package link.pple.main.configuration.security
 
 import link.pple.main.configuration.TokenAuthenticationFilter
 import link.pple.main.configuration.oauth.OAuth2UserService
-import link.pple.main.configuration.oauth.handler.CustomLogoutSuccessHandler
 import link.pple.main.configuration.oauth.handler.OAuth2AuthenticationFailureHandler
 import link.pple.main.configuration.oauth.handler.OAuth2AuthenticationSuccessHandler
 import link.pple.main.domain.account.AccountService
-import org.springframework.beans.factory.annotation.Value
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
@@ -28,12 +26,8 @@ class SecurityConfig(
     private val tokenProvider: TokenProvider,
     private val accountService: AccountService,
     private val oAuth2AuthenticationSuccessHandler: OAuth2AuthenticationSuccessHandler,
-    private val oAuth2AuthenticationFailureHandler: OAuth2AuthenticationFailureHandler,
-    private val customLogoutSuccessHandler: CustomLogoutSuccessHandler
+    private val oAuth2AuthenticationFailureHandler: OAuth2AuthenticationFailureHandler
 ) : WebSecurityConfigurerAdapter() {
-
-    @Value("\${server.servlet.session.cookie.name}")
-    private lateinit var servletSessionName: String
 
     override fun configure(http: HttpSecurity) {
         http.csrf().disable()
