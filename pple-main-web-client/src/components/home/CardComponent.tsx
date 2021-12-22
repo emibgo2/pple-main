@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import palette from '../../lib/styles/palette';
 import BloodMark from '../common/BloodMark';
 import Button from '@mui/material/Button'
+import Divider from '../common/Divider';
 
 const CardComponentBlock = styled.div`
   width: 25.75rem;
@@ -60,11 +61,6 @@ const CardHeaderText = styled.div`
     font-weight: bold;
     opacity: 0.5;
   }
-`;
-
-const Divider = styled.div`
-  border-right: 1px solid gray;
-  opacity: 0.4;
 `;
 
 const CardContentBox = styled.div`
