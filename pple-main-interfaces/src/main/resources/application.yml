@@ -4,6 +4,10 @@ server:
     session:
       cookie:
         name: SID
+  error:
+    whitelabel:
+      enabled: false
+    path: /error
 
 spring:
   security:
