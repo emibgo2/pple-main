@@ -8,14 +8,16 @@ const StyledButton = styled.button`
   background: #767676;
   border-radius: 20px;
   padding: 6px 9px;
+  color:white;
 `;
 
 type Props = {
     text : string,
+    isDisabled? : boolean
 }
 
-const RadiusButton:React.FC<Props> = ({text}) => {
-  return <StyledButton>{text}</StyledButton>;
+const RadiusButton:React.FC<Props> = ({text,isDisabled}) => {
+  return <StyledButton disabled={isDisabled}>{text}</StyledButton>;
 };
 
 export default RadiusButton;
