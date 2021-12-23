@@ -1,0 +1,44 @@
+{
+  "family": "pple-main-task",
+  "taskRoleArn": "arn:aws:iam::106380540986:role/ecsTaskExecutionRole",
+  "executionRoleArn": "arn:aws:iam::106380540986:role/ecsTaskExecutionRole",
+  "networkMode": "awsvpc",
+  "requiresCompatibilities": [
+    "FARGATE"
+  ],
+  "cpu": null,
+  "memory": null,
+  "containerDefinitions": [
+    {
+      "name": "pple-main-container",
+      "image": "106380540986.dkr.ecr.ap-northeast-2.amazonaws.com/pple-main:latest",
+      "cpu": 256,
+      "memory": null,
+      "memoryReservation": 450,
+      "portMappings": [
+        {
+          "containerPort": 10001,
+          "hostPort": 10001,
+          "protocol": "tcp"
+        }
+      ],
+      "essential": true,
+      "ulimits": null,
+      "environment": [
+        {
+          "name": "SPRING_PROFILES_ACTIVE",
+          "value": "production"
+        }
+      ],
+      "secrets": null,
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "/ecs/pple-main-task",
+          "awslogs-region": "ap-northeast-2",
+          "awslogs-stream-prefix": "ecs"
+        }
+      }
+    }
+  ]
+}
