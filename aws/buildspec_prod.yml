@@ -27,5 +27,6 @@ phases:
       - docker push $DOCKER_REPOSITORY\:latest
       - docker push $DOCKER_REPOSITORY:$BUILD_NUMBER
       - printf '[{"name":"pple-main-task","imageUri":"%s"}]' $DOCKER_REPOSITORY:$BUILD_NUMBER > imagedefinitions.json
-  artifacts:
-    files: imagedefinitions.json
+
+artifacts:
+  files: imagedefinitions.json
