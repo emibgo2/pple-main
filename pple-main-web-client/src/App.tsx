@@ -8,6 +8,7 @@ import {Routes,Route} from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
+import RequestPostPage from './pages/RequestPostPage';
 
 const GlobalStyles = createGlobalStyle`
   ${reset};
@@ -35,6 +36,7 @@ const App: React.FC = () => {
             <Route path="/" element={<HomePage/>}/>
             <Route path="/login" element={<LoginPage/>}/>
             <Route path="/register" element={<RegisterPage/>}/>
+            <Route path="/post" element={<RequestPostPage/>}/>
           </Routes>
 
         </ContentBlock>

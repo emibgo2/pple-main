@@ -1,10 +1,12 @@
 import React from 'react';
+import RequestTemplate from '../components/request/RequestTemplate';
+import RequestPost from '../components/request/RequestPost';
 
 const RequestPostPage = () => {
     return (
-        <div>
-            요청글
-        </div>
+        <RequestTemplate>
+            <RequestPost/>
+        </RequestTemplate>
     );
 };
 
