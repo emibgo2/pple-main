@@ -9,6 +9,7 @@ import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import RequestPostPage from './pages/RequestPostPage';
+import RequestRegisterPage from './pages/RequestRegisterPage';
 
 const GlobalStyles = createGlobalStyle`
   ${reset};
@@ -37,6 +38,7 @@ const App: React.FC = () => {
             <Route path="/login" element={<LoginPage/>}/>
             <Route path="/register" element={<RegisterPage/>}/>
             <Route path="/post" element={<RequestPostPage/>}/>
+            <Route path="/post/register" element={<RequestRegisterPage/>}/>
           </Routes>
 
         </ContentBlock>
