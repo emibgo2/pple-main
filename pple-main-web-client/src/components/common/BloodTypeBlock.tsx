@@ -10,10 +10,10 @@ const BloodTypeBox = styled.div`
 `;
 
 interface Props{ 
-    text : string,
+    text: string;
 }
 
-const BloodTypeBlock:React.FC<Props> = ({text}) => {
+const BloodTypeBlock: React.FC<Props> = ({text}) => {
     return (
         <BloodTypeBox>
             {text}

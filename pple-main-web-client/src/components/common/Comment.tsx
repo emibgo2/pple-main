@@ -32,13 +32,13 @@ type Props = {
   time: string;
 }
 
-const Comment = ({
+const Comment: React.FC<Props> = ({
   isOpponent,
   name,
   bloodType,
   comment,
   time,
-}:Props) => {
+}) => {
   return (
     <>
       {isOpponent ? (

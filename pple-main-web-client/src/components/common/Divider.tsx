@@ -5,7 +5,7 @@ const Divide = styled.div`
   border-right: 1px solid gray;
   opacity: 0.4;
 `;
-const Divider = () => {
+const Divider: React.FC = () => {
     return (
         <Divide/>
     );

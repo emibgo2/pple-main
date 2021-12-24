@@ -10,10 +10,10 @@ const AuthTemplateBlock = styled.div`
 `;
 
 interface Props {
-  children: JSX.Element[] | JSX.Element
+  children: JSX.Element[] | JSX.Element;
 }
 
-const AuthTemplate:React.FC<Props>= ({children}) => {
+const AuthTemplate: React.FC<Props>= ({children}) => {
   return (
     <>
     <AuthTemplateBlock>
