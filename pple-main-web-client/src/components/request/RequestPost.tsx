@@ -88,7 +88,7 @@ const InputCommentBlock = styled.div`
   box-sizing : border-box;
 `;
 
-const RequestPost = () => {
+const RequestPost: React.FC = () => {
   return (
     <RequestPostBlock>
       <RequestPostHeader>

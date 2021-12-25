@@ -10,7 +10,7 @@ const HomepageBlock = styled.div`
 
 `;
 
-const HomePage = () => {
+const HomePage: React.FC = () => {
     return (
         <HomepageBlock>
             <HomePageHeader/>

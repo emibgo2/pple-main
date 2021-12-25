@@ -8,6 +8,10 @@ import Om from '../../lib/images/bloodType/O-.svg';
 import ABp from '../../lib/images/bloodType/AB+.svg';
 import ABm from '../../lib/images/bloodType/AB-.svg';
 
+interface Props{
+ type: string;
+}
+
 const returnBloodImg = (type: string) => {
   switch (type) {
     case 'a+':
@@ -31,7 +35,7 @@ const returnBloodImg = (type: string) => {
   }
 };
 
-const BloodAvatar = ({ type }: any) => {
+const BloodAvatar: React.FC<Props> = ({ type }) => {
   return <>{returnBloodImg(type)}</>;
 };
 

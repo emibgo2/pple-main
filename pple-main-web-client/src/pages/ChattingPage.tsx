@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ChattingPage = () => {
+const ChattingPage: React.FC = () => {
     return (
         <div>
             채팅 화면

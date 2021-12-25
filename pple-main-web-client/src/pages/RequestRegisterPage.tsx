@@ -1,10 +1,12 @@
 import React from 'react';
+import RequestRegister from '../components/request/RequestRegister';
+import RequestTemplate from '../components/request/RequestTemplate';
 
-const RequestRegisterPage = () => {
+const RequestRegisterPage: React.FC = () => {
     return (
-        <div>
-            요청하기
-        </div>
+        <RequestTemplate>
+            <RequestRegister/>
+        </RequestTemplate>
     );
 };
 

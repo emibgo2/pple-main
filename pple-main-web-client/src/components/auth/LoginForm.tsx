@@ -36,7 +36,7 @@ const LoginFooter = styled.div`
     margin-top:100px;
 `;
 
-const LoginForm = () => {
+const LoginForm: React.FC = () => {
 
   return (
     <div>

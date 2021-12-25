@@ -51,7 +51,7 @@ const navigationList = [
     {img : mypageImg, text : "마이페이지", key : "mypage" },
 ];
 
-const NavigationBar:React.FC = () => {
+const NavigationBar: React.FC = () => {
     return (
         <NavigationBLOCK>
         {navigationList.map(list=>(
