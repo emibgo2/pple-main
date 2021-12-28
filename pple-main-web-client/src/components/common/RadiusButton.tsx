@@ -1,12 +1,26 @@
 import React from 'react';
-import styled from 'styled-components';
-
-const StyledButton = styled.button`
-  background: #767676;
-  border-radius: 20px;
-  padding: 6px 9px;
-  color:white;
-`;
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import {styled} from '@mui/material';
+import { Button } from '@mui/material';
+const StyledButton = styled(Button)({
+  padding: '7px 16px',
+  borderRadius: '20px',
+  display: 'flex',
+  justifyContent: 'center',
+  alignContent: 'center',
+  borderColor: 'red',
+  color: 'gray',
+  '&:hover': {
+    backgroundColor: 'red',
+    borderColor: 'red',
+    boxShadow: 'none',
+    color:'white',
+  },
+  '& div': {
+    justifyContent: 'center',
+    alignContent: 'center',
+  },
+});
 
 type Props = {
     text: string;
@@ -14,7 +28,14 @@ type Props = {
 }
 
 const RadiusButton: React.FC<Props> = ({text,isDisabled}) => {
-  return <StyledButton disabled={isDisabled}>{text}</StyledButton>;
+  return (
+    <StyledButton color='error' variant='outlined' disabled={isDisabled}>
+      <div>
+      {text}
+      <ArrowDropDownIcon />
+      </div>
+    </StyledButton>
+  );
 };
 
 export default RadiusButton;

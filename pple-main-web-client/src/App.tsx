@@ -16,7 +16,6 @@ const GlobalStyles = createGlobalStyle`
 `;
 
 const AppBlock = styled.div`
-  display: flex;
 `;
 
 const ContentBlock = styled.div`
