@@ -1,12 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Grid } from '@mui/material';
+import { Button, Grid } from '@mui/material';
 import CardComponent from './CardComponent';
-import {Pagination} from '@mui/material';
-
+import RadiusButton from '../common/RadiusButton';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 const CardContainerBlock = styled.div`
   width: 100%;
-  padding: 30px 0px;
   display:flex;
   flex-direction:column;
     justify-content: center;
@@ -16,23 +15,40 @@ const CardContainerBlock = styled.div`
 }
 `;
 
+const ButtonGroup = styled.div`
+  width:100%;
+  display:flex;
+  justify-content: space-between;
+  align-items:center;
+  & div{
+    display:flex;
+    align-items: center;
+}
+`;
+
 const CardTemplate = () => {
   return (
     <CardContainerBlock>
-      <Grid
-        container
-        spacing={{ xs: 1, md: 3 }}
-        columns={{ xs: 4, md: 8, lg:12 }}
-      >
-        {Array.from(Array(6)).map((_, index) => (
-          <Grid item xs={2} sm={4} md={4} key={index}>
-            <CardComponent />
-          </Grid>
-        ))}
-      </Grid>
-      <div className='pagination'>
-        <Pagination count={10}/>
-      </div>
+      <ButtonGroup>
+        <div>
+          <RadiusButton text="혈액형"></RadiusButton>
+          <RadiusButton text="헌헐 종류"></RadiusButton>
+          <RadiusButton text="필요 횟수"></RadiusButton>
+        </div>
+        <div>
+          <Button>
+            <span>전체보기</span>
+            <ChevronRightIcon />
+          </Button>
+        </div>
+      </ButtonGroup>
+      <CardComponent bloodType="AB+" sort="혈소판성분체혈" story="aaaaaaaaa" />
+      <CardComponent bloodType="AB+" sort="혈소판성분체혈" story="aaaaaaaaa" />
+      <CardComponent bloodType="AB+" sort="혈소판성분체혈" story="aaaaaaaaa" />
+      <CardComponent bloodType="AB+" sort="혈소판성분체혈" story="aaaaaaaaa" />
+      <CardComponent bloodType="AB+" sort="혈소판성분체혈" story="aaaaaaaaa" />
+      <CardComponent bloodType="AB+" sort="혈소판성분체혈" story="aaaaaaaaa" />
+      <CardComponent bloodType="AB+" sort="혈소판성분체혈" story="aaaaaaaaa" />
     </CardContainerBlock>
   );
 };
