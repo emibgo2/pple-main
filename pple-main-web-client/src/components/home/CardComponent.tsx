@@ -5,7 +5,7 @@ import bar from '../../lib/images/bar.png';
 import ChattingButton from '../common/ChattingButton';
 
 const CardComponentBlock = styled.div`
-  width: fit-content;
+  width: 100%;
   border-radius: 14px;
   border:1px solid black;
   & .header {
