@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Subract from '../../lib/images/Subtract.png';
 import BloodTypeBlock from '../common/BloodTypeBlock';
-import RadiusButton from '../common/RadiusButtonWithDownDrop';
+import RadiusButton from '../common/buttons/RadiusButtonWithDownDrop';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import RecipientInformationBox from '../common/RecipientInformationBox';
 import SmsOutlinedIcon from '@mui/icons-material/SmsOutlined';

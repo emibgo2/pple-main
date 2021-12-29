@@ -2,12 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 import heartImg from '../../lib/images/heart.png';
 import bar from '../../lib/images/bar.png';
-import ChattingButton from '../common/RadiusButton';
+import RadiusButton from '../common/buttons/RadiusButton';
 
 const CardComponentBlock = styled.div`
   width: 100%;
   border-radius: 14px;
-  border:1px solid black;
+  border: 1px solid black;
   & .header {
     background-color: whitesmoke;
   }
@@ -60,7 +60,9 @@ const CardComponent: React.FC<CardProps> = ({ bloodType, sort, story }) => {
   return (
     <CardComponentBlock>
       <div className="header">
-        <TimeBox><div>2021년 12월 13일 등록</div></TimeBox>
+        <TimeBox>
+          <div>2021년 12월 13일 등록</div>
+        </TimeBox>
         <CardComponentHeader>
           <CardComponentHeaderColumn>
             <div className="blood-icon">
@@ -81,7 +83,7 @@ const CardComponent: React.FC<CardProps> = ({ bloodType, sort, story }) => {
             </div>
           </CardComponentHeaderColumn>
           <CardComponentHeaderColumn>
-            <ChattingButton text="채팅하기" />
+            <RadiusButton text="채팅하기" />
           </CardComponentHeaderColumn>
         </CardComponentHeader>
       </div>

@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import RadiusButton from './RadiusButtonWithDownDrop';
+import RadiusButton from './buttons/RadiusButtonWithDownDrop';
 import Divider from './Divider';
 
 const RecipientInformationBlock = styled.div`

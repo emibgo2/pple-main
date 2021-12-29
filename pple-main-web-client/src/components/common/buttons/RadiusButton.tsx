@@ -21,14 +21,12 @@ interface Props{
   text: string,
 }
 
-const ChattingButton:React.FC<Props> = ({text}) => {
-    return (
-        <div>
-            <StyledButton>
-                {text}
-            </StyledButton>
-        </div>
-    );
+const RadiusButton: React.FC<Props> = ({ text }) => {
+  return (
+    <div>
+      <StyledButton variant="contained">{text}</StyledButton>
+    </div>
+  );
 };
 
-export default ChattingButton;
+export default RadiusButton;
