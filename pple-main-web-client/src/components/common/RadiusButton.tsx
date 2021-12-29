@@ -1,41 +1,34 @@
 import React from 'react';
-import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
-import {styled} from '@mui/material';
+import { styled } from '@mui/material'; 
 import { Button } from '@mui/material';
+
 const StyledButton = styled(Button)({
   padding: '7px 16px',
   borderRadius: '20px',
   display: 'flex',
   justifyContent: 'center',
   alignContent: 'center',
-  borderColor: 'red',
-  color: 'gray',
+  backgroundColor: '#FF6969',
+  color: 'white',
   '&:hover': {
-    backgroundColor: 'red',
-    borderColor: 'red',
+    backgroundColor: '#FF6980',
+    borderColor: '#FF6980',
     boxShadow: 'none',
-    color:'white',
-  },
-  '& div': {
-    justifyContent: 'center',
-    alignContent: 'center',
   },
 });
 
-type Props = {
-    text: string;
-    isDisabled?: boolean;
+interface Props{
+  text: string,
 }
 
-const RadiusButton: React.FC<Props> = ({text,isDisabled}) => {
-  return (
-    <StyledButton color='error' variant='outlined' disabled={isDisabled}>
-      <div>
-      {text}
-      <ArrowDropDownIcon />
-      </div>
-    </StyledButton>
-  );
+const ChattingButton:React.FC<Props> = ({text}) => {
+    return (
+        <div>
+            <StyledButton>
+                {text}
+            </StyledButton>
+        </div>
+    );
 };
 
-export default RadiusButton;
+export default ChattingButton;
