@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import heartImg from '../../lib/images/heart.png';
 import bar from '../../lib/images/bar.png';
-import ChattingButton from '../common/ChattingButton';
+import ChattingButton from '../common/RadiusButton';
 
 const CardComponentBlock = styled.div`
   width: 100%;
@@ -81,7 +81,7 @@ const CardComponent: React.FC<CardProps> = ({ bloodType, sort, story }) => {
             </div>
           </CardComponentHeaderColumn>
           <CardComponentHeaderColumn>
-            <ChattingButton />
+            <ChattingButton text="채팅하기" />
           </CardComponentHeaderColumn>
         </CardComponentHeader>
       </div>
