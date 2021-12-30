@@ -9,7 +9,6 @@ const TitleBox = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  padding-left: 2rem;
 `;
 // onChange, value 추가
 interface Props {
