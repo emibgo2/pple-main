@@ -9,6 +9,7 @@ import RadiusButton from '../common/buttons/RadiusButtonWithDownDrop';
 import BloodTypeToggleButton from '../common/BloodTypeToggleButton';
 import { Button } from '@mui/material';
 
+// 웹 버전 요청 게시글 등록 컴포넌트
 const RequestRegisterHeader = styled.div`
   display: flex;
   align-items: center;
