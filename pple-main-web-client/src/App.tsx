@@ -20,7 +20,6 @@ const AppBlock = styled.div`
 
 const ContentBlock = styled.div`
   width: 28rem;
-  box-sizing:border-box;
 `;
 
 const App: React.FC = () => {
