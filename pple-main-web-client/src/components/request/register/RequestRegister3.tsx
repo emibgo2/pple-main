@@ -5,8 +5,8 @@ import { IconButton } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import InsertPhotoOutlinedIcon from '@mui/icons-material/InsertPhotoOutlined';
 import FileDownloadOutlinedIcon from '@mui/icons-material/FileDownloadOutlined';
-import RadiusButton from '../common/buttons/RadiusButtonWithDownDrop';
-import BloodTypeToggleButton from '../common/BloodTypeToggleButton';
+import RadiusButton from '../../common/buttons/RadiusButtonWithDownDrop';
+import BloodTypeToggleButton from '../../common/buttons/SquareButton';
 import { Button } from '@mui/material';
 
 // 웹 버전 요청 게시글 등록 컴포넌트

@@ -38,13 +38,13 @@ const MobileGNB: React.FC<Props> = ({
   return (
     <MobileGNBBlock>
       {isBack ? (
-        <IconButton onClick={handleBack}>
-          <ArrowBackIosNewIcon />
+        <IconButton sx={{color:'white'}} onClick={handleBack}>
+          <ArrowBackIosNewIcon fontSize='small' />
         </IconButton>
       ) : (
         <></>
       )}
-      <div>{title}</div>
+      <div style={{color:'white',fontWeight:"bold"}}>{title}</div>
       {isSearch ? (
         <IconButton onClick={goPostRegister}>
           <img src={Search} alt="검색" />
