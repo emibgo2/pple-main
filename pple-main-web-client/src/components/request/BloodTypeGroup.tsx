@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
 import cstyled from 'styled-components';
 import { styled, ToggleButton, ToggleButtonGroup } from '@mui/material';
-import { Avatar } from '@mui/material';
-import { Spacing } from '@mui/system';
+import CheckIcon from '@mui/icons-material/Check';
 
-const BloodTypeGroupBlock = cstyled.div``;
 const StyledToggleButtonGroup = styled(ToggleButtonGroup)({
   display: 'flex',
   justifyContent: 'space-between',
@@ -27,8 +25,30 @@ const StyledToggleButtonGroup = styled(ToggleButtonGroup)({
   },
 });
 
+const StyledCheckButton = styled(ToggleButton)({
+  border: 'none',
+  '& .sm': {
+    fontSize: 'x-small',
+  },
+  '& #toggle-button-check': {
+    background: 'white',
+  },
+  '& #check-icon': {
+    fontSize: 'xx-small',
+    innerWidth: '10px',
+    border: '1px solid #B7B7B7',
+    borderRadius: '100%',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItem: 'center',
+    padding:"1px"
+  },
+});
+
 const BloodTypeGroup = () => {
   const [bloodType, setBloodType] = useState('A');
+  const [select, setSelect] = useState(false);
+
   const handleBloodType = (
     event: React.MouseEvent<HTMLElement>,
     newBloodType: string,
@@ -51,18 +71,32 @@ const BloodTypeGroup = () => {
     </ToggleButton>,
   ];
   return (
-    <BloodTypeGroupBlock>
+    <>
       <div>헌혈 종류*</div>
       <StyledToggleButtonGroup
         exclusive
         onChange={handleBloodType}
         value={bloodType}
         aria-label="select type"
-        size='large'
+        size="large"
       >
         {children}
       </StyledToggleButtonGroup>
-    </BloodTypeGroupBlock>
+      <StyledCheckButton
+        sx={{ padding: '0px' }}
+        value="check"
+        selected={select}
+        onChange={() => {
+          setSelect(!select);
+        }}
+        id="toggle-button-check"
+      >
+        <div className="sm" id="check-icon">
+          <CheckIcon />
+        </div>
+        <div className="sm">Rh- 혈액형인 경우는 체크를 해주세요</div>
+      </StyledCheckButton>
+    </>
   );
 };
 
