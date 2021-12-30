@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components'; 
 
 const RequestTemplateBlock = styled.div`
-  
+  overflow: 'scroll';
 `;
 
 interface Props {
