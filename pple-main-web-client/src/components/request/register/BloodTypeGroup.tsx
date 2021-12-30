@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import cstyled from 'styled-components';
 import { styled, ToggleButton, ToggleButtonGroup } from '@mui/material';
 import CheckIcon from '@mui/icons-material/Check';
-import palette from '../../lib/styles/palette';
+import palette from '../../../lib/styles/palette';
 
 const StyledToggleButtonGroup = styled(ToggleButtonGroup)({
   display: 'flex',
