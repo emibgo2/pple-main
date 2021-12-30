@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { MouseEventHandler } from 'react';
 import styled from 'styled-components';
 import { Button, Grid } from '@mui/material';
 import CardComponent from './CardComponent';
 import RadiusButtonWithDownDrop from '../common/buttons/RadiusButtonWithDownDrop';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import { useNavigate } from 'react-router-dom';
 const CardContainerBlock = styled.div`
   width: 100%;
   display:flex;
@@ -27,6 +28,10 @@ const ButtonGroup = styled.div`
 `;
 
 const CardTemplate = () => {
+  const navigate = useNavigate();
+  const goPostList: MouseEventHandler = () =>{
+    navigate('/post');
+  }
   return (
     <CardContainerBlock>
       <ButtonGroup>
@@ -36,7 +41,7 @@ const CardTemplate = () => {
           <RadiusButtonWithDownDrop text="필요 횟수"></RadiusButtonWithDownDrop>
         </div>
         <div>
-          <Button>
+          <Button onClick={goPostList}>
             <span>전체보기</span>
             <ChevronRightIcon />
           </Button>

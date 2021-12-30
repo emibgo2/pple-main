@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styledComponent from 'styled-components';
 import { styled, ToggleButton, ToggleButtonGroup } from '@mui/material';
 import Styled from 'styled-components';
-import palette from '../../lib/styles/palette';
+import palette from '../../../lib/styles/palette';
 
 const StyledToggleButtonGroup = styled(ToggleButtonGroup)({
   '& .MuiButtonBase-root': {
