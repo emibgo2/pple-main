@@ -1,6 +1,6 @@
 import React, { MouseEventHandler } from 'react';
 import { useNavigate } from 'react-router-dom';
-import MobileGNB from '../../navigation/MobileGNB';
+import MobileToolbar from '../../navigation/MobileToolbar';
 
 const RequestPostList: React.FC = () => {
     const navigate = useNavigate();
@@ -12,9 +12,9 @@ const RequestPostList: React.FC = () => {
     }
 
     return (
-        <div>
-            <MobileGNB title='요청하기' isBack={true} isWrite={true}/>
-        </div>
+      <div>
+        <MobileToolbar title="요청하기" isBack={true} isWrite={true} />
+      </div>
     );
 };
 

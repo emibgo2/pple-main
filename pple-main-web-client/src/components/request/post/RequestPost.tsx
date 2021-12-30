@@ -105,7 +105,6 @@ const RequestPost: React.FC = () => {
           </div>
         </RequestPostHeaderColumn>
         <RequestPostHeaderColumn>
-          <RadiusButton text="채팅하기" />
         </RequestPostHeaderColumn>
       </RequestPostHeader>
 

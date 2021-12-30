@@ -53,7 +53,6 @@ const RequestRegister: React.FC = () => {
           </IconButton>
         </div>
 
-        <RadiusButton text="내정보 불러오기" />
       </LoadButtonBox>
 
       <hr />
