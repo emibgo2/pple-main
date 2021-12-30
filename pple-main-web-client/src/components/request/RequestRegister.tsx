@@ -1,107 +1,113 @@
+import { IconButton } from '@mui/material';
 import React from 'react';
 import styled from 'styled-components';
-import { InputLabel, TextField } from '@mui/material';
-import { IconButton } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
-import InsertPhotoOutlinedIcon from '@mui/icons-material/InsertPhotoOutlined';
-import FileDownloadOutlinedIcon from '@mui/icons-material/FileDownloadOutlined';
-import RadiusButton from '../common/RadiusButton';
-import BloodTypeToggleButton from '../common/BloodTypeToggleButton';
-import { Button } from '@mui/material';
+import RadiusButton from '../common/buttons/RadiusButton';
+import { TextField } from '@mui/material';
+import RegisterInput from './RegisterInput';
+import BloodTypeGroup from './BloodTypeGroup';
+import BloodDonationType from './BloodDonationType';
+import SquareButton from '../common/buttons/SquareButton';
+import palette from '../../lib/styles/palette';
 
-const RequestRegisterHeader = styled.div`
+const RequestRegisterBlock = styled.div`
+  width: 100%;
+  height: 100%;
+  background-color: ${palette.gray[0]};
+`;
+const Header = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  background-color: white;
 `;
-const LoadButtonBox = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+const Body = styled.div`
+  width: 100%;
 `;
-const InputBody = styled.div`
+const BodyTextBox = styled.div`
   display: flex;
   flex-direction: column;
+  background-color: white;
+  margin-top: 1rem;
 `;
-const InputPatientInfo = styled.div`
+const BodyPatientInfoBox = styled.div`
+  background-color: white;
+  padding: 2rem;
+`;
 
-`;
-const RequestRegisterFooter = styled.div`
-    
+const Footer = styled.div`
+background-color:white;
+  box-sizing: border-box;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  padding: 0px 2rem;
+  & .MuiButton-root{
+    padding: 10px 0px;
+    width:45%;
+  }
 `;
 
-const RequestRegister: React.FC = () => {
+const RequestRegister = () => {
   return (
-    <>
-      <RequestRegisterHeader>
-        <h1>요청하기</h1>
-        <IconButton>
-          <CloseIcon />
-        </IconButton>
-      </RequestRegisterHeader>
-
-      <LoadButtonBox>
+    <RequestRegisterBlock>
+      <Header>
         <div>
           <IconButton>
-            <InsertPhotoOutlinedIcon />
-            <span>사진</span>
-          </IconButton>
-          <IconButton>
-            <FileDownloadOutlinedIcon />
-            <span>게시글 저장</span>
+            <CloseIcon />
           </IconButton>
         </div>
 
-        <RadiusButton text="내정보 불러오기" />
-      </LoadButtonBox>
-
-      <hr />
-
-      <InputBody>
         <div>
+          <span>요청하기</span>
+        </div>
+
+        <div>
+          <RadiusButton text="내정보 불러오기" />
+        </div>
+      </Header>
+
+      <Body>
+        <BodyTextBox>
           <TextField
-            focused
-            label="제목"
+            id="standard-basic"
             variant="standard"
+            name="request-title"
             placeholder="제목"
-            fullWidth
           />
-        </div>
-        <div>
           <TextField
-            variant="standard"
-            placeholder="내용"
+            id="standard-multiline-static"
             multiline
-            rows={10}
-            fullWidth
+            rows={6}
+            placeholder="내용"
+            variant="standard"
+            name="request-content"
           />
-        </div>
-      </InputBody>
+        </BodyTextBox>
 
-      <InputPatientInfo>
-        <div>
-          <InputLabel shrink>환자명을 입력해주세요</InputLabel>
-          <TextField required />
-          <InputLabel shrink>필요한 혈액성분을 입력해주세요</InputLabel>
-          <TextField required />
-        </div>
-        <div>
-          <InputLabel shrink>생년월일</InputLabel>
-          <TextField required />
-          <InputLabel shrink>의료기관명</InputLabel>
-          <TextField required />
-          <InputLabel shrink>병실호수</InputLabel>
-          <TextField required />
-        </div>
-        <div>
-            <BloodTypeToggleButton text="혈액형"/>
-        </div>
-      </InputPatientInfo>
-      <RequestRegisterFooter>
-          <Button>취소</Button>
-          <Button>등록</Button>
-      </RequestRegisterFooter>
-    </>
+        <BodyPatientInfoBox>
+          {/* name 값 데베랑 이름 맞추기 */}
+          <RegisterInput title="환자명" name="name" />
+          <RegisterInput title="생년월일" name="birth" />
+          <BloodTypeGroup />
+          <BloodDonationType />
+          <RegisterInput title="필요 횟수" name="need-count" />
+          <RegisterInput title="환자 등록번호" name="patient-number" />
+          <RegisterInput title="의료기관명" name="hospital" />
+          <RegisterInput title="병실호수" name="room-number" />
+        </BodyPatientInfoBox>
+      </Body>
+
+      <Footer>
+        <SquareButton
+          text="취소"
+          textColor={palette.gray[1]}
+          backgroundColor={palette.gray[0]}
+        />
+        <SquareButton text="등록" />
+      </Footer>
+    </RequestRegisterBlock>
   );
 };
 

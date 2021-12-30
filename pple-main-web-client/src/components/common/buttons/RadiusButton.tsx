@@ -17,14 +17,16 @@ const StyledButton = styled(Button)({
   },
 });
 
-const ChattingButton:React.FC = () => {
-    return (
-        <div>
-            <StyledButton>
-                채팅하기
-            </StyledButton>
-        </div>
-    );
+interface Props{
+  text: string,
+}
+
+const RadiusButton: React.FC<Props> = ({ text }) => {
+  return (
+    <div>
+      <StyledButton variant="contained">{text}</StyledButton>
+    </div>
+  );
 };
 
-export default ChattingButton;
+export default RadiusButton;

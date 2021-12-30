@@ -4,6 +4,7 @@ import RequestTemplate from '../components/request/RequestTemplate';
 
 const RequestRegisterPage: React.FC = () => {
     return (
+        // 환자 정보 리덕스 
         <RequestTemplate>
             <RequestRegister/>
         </RequestTemplate>

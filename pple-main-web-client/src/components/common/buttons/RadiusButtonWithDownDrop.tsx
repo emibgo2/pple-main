@@ -17,6 +17,7 @@ const StyledButton = styled(Button)({
     color:'white',
   },
   '& div': {
+    display:'flex',
     justifyContent: 'center',
     alignContent: 'center',
   },

@@ -4,7 +4,6 @@ import Paper from '@mui/material/Paper';
 import InputBase from '@mui/material/InputBase';
 import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
-import DropButton from './dropdown/DropButton';
 
 const SearchComponentBlock = styled.div`
   width:100%;
@@ -52,9 +51,6 @@ const SearchComponent = () => {
 
       <ButtonBox>
         <div>검색 조건 : </div>
-        <DropButton>혈액형</DropButton>
-        <DropButton>헌혈 종류</DropButton>
-        <DropButton>필요 횟수</DropButton>
       </ButtonBox>
     </SearchComponentBlock>
   );

@@ -34,7 +34,7 @@ const App: React.FC = () => {
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />
             <Route path="/post" element={<RequestPostPage />} />
-            <Route path="/postregister" element={<RequestRegisterPage />} />
+            <Route path="/post/register" element={<RequestRegisterPage />} />
           </Routes>
         </ContentBlock>
       </AppBlock>
