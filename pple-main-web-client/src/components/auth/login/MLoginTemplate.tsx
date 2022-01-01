@@ -9,7 +9,7 @@ const MLoginTemplateBlock = styled('div')({
     boxSizing:"border-box",
     display:"flex",
     flexDirection:"column",
-    justifyContent:"space-around",
+    justifyContent:"space-evenly",
     alignContent:"center"
 })
 
