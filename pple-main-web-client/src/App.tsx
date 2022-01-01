@@ -16,10 +16,12 @@ const GlobalStyles = createGlobalStyle`
 `;
 
 const AppBlock = styled.div`
+  height:inherit;
 `;
 
 const ContentBlock = styled.div`
   width: 28rem;
+  height: inherit;
 `;
 
 const App: React.FC = () => {

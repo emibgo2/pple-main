@@ -1,12 +1,13 @@
 import React from 'react';
-import AuthTemplate from '../components/auth/AuthTemplate';
-import LoginForm from '../components/auth/LoginForm';
-
+import MLoginTemplate from '../components/auth/login/MLoginTemplate';
+import MLoginHeader from '../components/auth/login/MLoginHeader';   
+import MLoginBody from '../components/auth/login/MLoginBody';
 const LoginPage: React.FC = () => {
     return (
-        <AuthTemplate>
-            <LoginForm/>
-        </AuthTemplate>
+        <MLoginTemplate>
+            <MLoginHeader/>
+            <MLoginBody/>
+        </MLoginTemplate>
     );
 };
 
