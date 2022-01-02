@@ -73,7 +73,7 @@ const BloodTypeGroup = () => {
   ];
   return (
     <>
-      <div>헌혈 종류*</div>
+      <div>혈액형*</div>
       <StyledToggleButtonGroup
         exclusive
         onChange={handleBloodType}

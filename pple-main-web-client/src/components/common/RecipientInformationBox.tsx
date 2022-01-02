@@ -46,7 +46,6 @@ const RecipientInformationBox: React.FC = () => {
     <RecipientInformationBlock>
       <PersonInformationBlock>
         <div className="recipient-info-button">
-          <RadiusButton text="AB+" isDisabled={true} />
         </div>
 
         <div>
