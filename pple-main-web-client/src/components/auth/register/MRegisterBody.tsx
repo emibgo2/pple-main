@@ -2,58 +2,32 @@ import React, { useEffect, useState } from 'react';
 import palette from '../../../lib/styles/palette';
 import {
   styled,
-  FormControl,
-  Input,
-  FormHelperText,
-  MenuItem,
-  Select,
-  SelectChangeEvent,
 } from '@mui/material';
-import BirthForm from './BirthForm';
+import BirthForm from './input/BirthForm';
+import GenderInput from './input/GenderInput';
+import BloodTypeInput from './input/BloodTypeInput';
+import TermsInput from './input/TermsInput';
+import PhoneInput from './input/PhoneInput';
+import NicknameInput from './input/NicknameInput';
 
 const MRegisterBodyBlock = styled('div')({
   padding: '0px 1rem',
-
+  boxSizing:"border-box",
   width: '100%',
 });
 
-const InputNickname = styled(Input)({
-  '& .help-text': {
-    fontSize: 'small',
-  },
-  '& .MuiInputBase-input': {
-    position: 'relative',
-    borderBottom: `1px solid ${palette.gray[1]}`,
-    width: 'auto',
-  },
-  '& .MuiInputBase-input placeholder': {
-    color: `${palette.gray[1]}`,
-  },
-});
 
-const Label = styled('div')({
-  color: 'black',
-  fontWeight: 'bold',
-  marginBottom: '0.5rem',
-  fontSize: 'smaller',
-});
 
-const MRegisterBody = () => {
+const MRegisterBody: React.FC = () => {
+  
   return (
     <MRegisterBodyBlock>
-      <FormControl variant="standard" fullWidth id="form-nickname">
-        <Label>닉네임</Label>
-        <InputNickname
-          placeholder="10자 이내로 입력해주세요"
-          id="input-nickname"
-          fullWidth
-        />
-        <FormHelperText className="help-text">
-          닉네임은 10자이내 한글, 영문, 숫자만 입력 가능합니다.
-        </FormHelperText>
-      </FormControl>
-
-        <BirthForm/>
+      <NicknameInput/>
+      <BirthForm />
+      <GenderInput />
+      <BloodTypeInput/>
+      <PhoneInput/>
+      <TermsInput/>
     </MRegisterBodyBlock>
   );
 };

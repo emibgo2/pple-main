@@ -82,7 +82,6 @@ const PhoneInput = () => {
         <Grid item sm={1}>
           <span>-</span>
         </Grid>
-
         <Grid item sm={4} className="input">
           <FormControl sx={{ width: '100%' }} variant="standard">
             <StyledInput
