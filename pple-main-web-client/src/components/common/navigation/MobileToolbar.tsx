@@ -1,16 +1,19 @@
 import React, { MouseEventHandler } from 'react';
 import { IconButton, styled } from '@mui/material';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
-import Chat from '../../lib/images/mobile-gnb/Chat.png';
-import Edit from '../../lib/images/mobile-gnb/Edit.svg';
-import Search from '../../lib/images/mobile-gnb/Search.png';
+import Chat from '../../../lib/images/mobile-gnb/Chat.png';
+import Edit from '../../../lib/images/mobile-gnb/Edit.svg';
+import Search from '../../../lib/images/mobile-gnb/Search.png';
 import { useNavigate } from 'react-router-dom';
-import palette from '../../lib/styles/palette';
+import palette from '../../../lib/styles/palette';
+
 const MobileGNBBlock = styled('div')({
+  padding:'0.2rem 0.4rem 0.2rem 0.2rem',
   display: 'flex',
   justifyContent: 'space-between',
   alignItems: 'center',
   background: `linear-gradient(109.4deg, #FF6969 -3.19%, #FF3333 109.95%);`,
+  fontWeight:"bold",
 });
 
 interface Props {

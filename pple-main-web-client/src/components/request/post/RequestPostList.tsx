@@ -1,20 +1,23 @@
-import React, { MouseEventHandler } from 'react';
-import { useNavigate } from 'react-router-dom';
-import MobileToolbar from '../../navigation/MobileToolbar';
+import React from 'react';
+import { styled } from '@mui/material';
+import MobileToolbar from '../../common/navigation/MobileToolbar';
+import SearchInput from '../../common/SearchInput';
+import SortingButtonGroup from '../../common/buttons/SortingButtonGroup';
+import FeedTemplate from './feed/FeedTemplate';
+const RequestPostListBlock = styled('div')({
+  padding:"0px 1rem",
+})
 
 const RequestPostList: React.FC = () => {
-    const navigate = useNavigate();
-    const onClick: MouseEventHandler = () =>{
-        navigate('/');
-    }
-    const onIconClick: MouseEventHandler = () =>{
-        navigate('/post/register');
-    }
-
     return (
-      <div>
-        <MobileToolbar title="요청하기" isBack={true} isWrite={true} />
-      </div>
+      <>
+        <MobileToolbar title="요청 피드" isBack={true} isWrite={true} />
+        <RequestPostListBlock>
+          <SearchInput />
+          <SortingButtonGroup/>
+          <FeedTemplate bloodType='A형' sort='혈소판 성분채혈'/>
+        </RequestPostListBlock>
+      </>
     );
 };
 

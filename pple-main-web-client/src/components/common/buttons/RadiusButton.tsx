@@ -1,8 +1,7 @@
 import React from 'react';
-import { styled } from '@mui/material'; 
-import { Button } from '@mui/material';
+import { styled,ButtonBase } from '@mui/material'; 
 
-const StyledButton = styled(Button)({
+const StyledButton = styled(ButtonBase)({
   padding: '7px 16px',
   borderRadius: '20px',
   display: 'flex',
@@ -15,6 +14,7 @@ const StyledButton = styled(Button)({
     borderColor: '#FF6980',
     boxShadow: 'none',
   },
+  fontWeight:"bold",
 });
 
 interface Props{
@@ -24,7 +24,7 @@ interface Props{
 const RadiusButton: React.FC<Props> = ({ text }) => {
   return (
     <div>
-      <StyledButton variant="contained">{text}</StyledButton>
+      <StyledButton>{text}</StyledButton>
     </div>
   );
 };
