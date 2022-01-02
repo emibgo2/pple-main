@@ -23,7 +23,7 @@ const ContentBox = styled('div')({
   },
   '& .left-border': {
     paddingLeft: '10px',
-    borderLeft: '1px solid black',
+    borderLeft: '1px solid #E6E6E6',
     borderRadius: '2px',
   },
 });

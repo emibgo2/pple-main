@@ -7,6 +7,7 @@ const SortingButtonGroupBlock = styled('div')({
     justifyContent:'flex-start',
     width:'100%',
     padding:'0px',
+    marginBottom:"20px",
 });
 
 
