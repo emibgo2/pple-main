@@ -4,7 +4,6 @@ import HomePageHeader from '../components/home/HomePageHeader';
 import CardTemplate from '../components/home/CardTemplate';
 
 const HomepageBlock = styled.div`
-    box-sizing:border-box;
 `;
 
 const HomePage: React.FC = () => {

@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import palette from '../../lib/styles/palette';
+import palette from '../../../lib/styles/palette';
 import homeImg from '../../lib/images/navigation/fluent_home-24-filled.png';
 import noticeImg from '../../lib/images/navigation/codicon_bell-dot.png'
 import chattingImg from '../../lib/images/navigation/bx_bxs-chat.png'

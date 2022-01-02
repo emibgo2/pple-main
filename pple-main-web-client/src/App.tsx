@@ -2,7 +2,6 @@ import React from 'react';
 import { createGlobalStyle } from 'styled-components';
 import reset from 'styled-reset';
 import styled from 'styled-components';
-import NavigationBar from './components/navigation/NavigationBar';
 import { Routes, Route } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';

@@ -1,13 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
-import palette from '../../lib/styles/palette';
 import Subract from '../../lib/images/Subtract.png';
 import IconButton from '@mui/material/IconButton';
 import applogo from '../../lib/images/Ellipse 2.png';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import BloodTypeBlock from '../common/BloodTypeBlock';
+import BloodTypeBlock from '../BloodTypeBlock';
+import palette from '../../../lib/styles/palette';
 
 const GlobalNavigationBarBlock = styled.div`
   width: 100%;
