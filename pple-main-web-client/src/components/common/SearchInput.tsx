@@ -10,7 +10,7 @@ const SearchInputBlock = styled('div')({
     backgroundColor: `${palette.gray[0]}`,
     color: `${palette.gray[1]}`,
     borderRadius: '15px',
-    padding: '0.5rem 1rem 0.5rem 0.5rem',
+    padding: '0.2rem 1rem 0.2rem 0.5rem',
   },
 });
 

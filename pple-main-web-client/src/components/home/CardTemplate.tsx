@@ -2,7 +2,7 @@ import React, { MouseEventHandler } from 'react';
 import styles from 'styled-components';
 import { Button, styled} from '@mui/material';
 import CardComponent from './CardComponent';
-import RadiusButtonWithDownDrop from '../common/buttons/RadiusButtonWithDownDrop1';
+import RadiusButtonWithDownDrop from '../common/buttons/RadiusButtonWithDownDrop';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import { useNavigate } from 'react-router-dom';
 import palette from '../../lib/styles/palette';
