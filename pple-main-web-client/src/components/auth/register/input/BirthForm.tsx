@@ -47,7 +47,7 @@ const BirthForm = () => {
   return (
     <>
       <Label>생년월일</Label>
-      <BirthSelectBox>
+      <BirthSelectBox className='form'>
         <FormControl variant="standard" className="form-birth" fullWidth>
           <Select value={birth.year} name="year" onChange={handleBirth}>
             {Year.map((year, idx) => (
