@@ -1,14 +1,15 @@
 import { IconButton } from '@mui/material';
-import React from 'react';
+import React, { MouseEventHandler } from 'react';
 import styled from 'styled-components';
 import CloseIcon from '@mui/icons-material/Close';
-import RadiusButton from '../common/buttons/RadiusButton';
+import RadiusButton from '../../common/buttons/RadiusButton';
 import { TextField } from '@mui/material';
 import RegisterInput from './RegisterInput';
 import BloodTypeGroup from './BloodTypeGroup';
 import BloodDonationType from './BloodDonationType';
-import SquareButton from '../common/buttons/SquareButton';
-import palette from '../../lib/styles/palette';
+import SquareButton from '../../common/buttons/SquareButton';
+import palette from '../../../lib/styles/palette';
+import { useNavigate } from 'react-router-dom';
 
 const RequestRegisterBlock = styled.div`
   width: 100%;
@@ -50,11 +51,15 @@ background-color:white;
 `;
 
 const RequestRegister = () => {
+  const navigate = useNavigate();
+  const onClickExit: MouseEventHandler = () =>{
+    navigate(-1);
+  }
   return (
     <RequestRegisterBlock>
       <Header>
         <div>
-          <IconButton>
+          <IconButton onClick={onClickExit}>
             <CloseIcon />
           </IconButton>
         </div>
@@ -101,6 +106,7 @@ const RequestRegister = () => {
 
       <Footer>
         <SquareButton
+          onClick={onClickExit}
           text="취소"
           textColor={palette.gray[1]}
           backgroundColor={palette.gray[0]}

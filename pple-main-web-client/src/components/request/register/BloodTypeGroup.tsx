@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import cstyled from 'styled-components';
 import { styled, ToggleButton, ToggleButtonGroup } from '@mui/material';
 import CheckIcon from '@mui/icons-material/Check';
+import palette from '../../../lib/styles/palette';
 
 const StyledToggleButtonGroup = styled(ToggleButtonGroup)({
   display: 'flex',
@@ -12,14 +13,14 @@ const StyledToggleButtonGroup = styled(ToggleButtonGroup)({
   },
   '& #circle-toggle': {
     borderRadius: '100%',
-    border: '1px solid #B7B7B7',
+    border: `1px solid ${palette.gray[1]}`,
     backgroundColor: 'white',
     minWidth: '64px',
-    color: '#B7B7B7',
+    color: `${palette.gray[1]}`,
     padding: '1rem',
     transition: "all ease 0.5s 0s",
     '&:focus': {
-      backgroundColor: '#FF6969',
+      backgroundColor: `${palette.red[1]}`,
       color:"white",
     },
   },
@@ -36,7 +37,7 @@ const StyledCheckButton = styled(ToggleButton)({
   '& #check-icon': {
     fontSize: 'xx-small',
     innerWidth: '10px',
-    border: '1px solid #B7B7B7',
+    border: `1px solid ${palette.gray[1]}`,
     borderRadius: '100%',
     display: 'flex',
     justifyContent: 'center',
@@ -72,7 +73,7 @@ const BloodTypeGroup = () => {
   ];
   return (
     <>
-      <div>헌혈 종류*</div>
+      <div>혈액형*</div>
       <StyledToggleButtonGroup
         exclusive
         onChange={handleBloodType}

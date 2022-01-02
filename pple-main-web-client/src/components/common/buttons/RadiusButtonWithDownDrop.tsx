@@ -1,42 +1,68 @@
-import React from 'react';
+import React, { MouseEventHandler, useState } from 'react';
+import { Button, Fade, Menu, MenuItem, MenuList, styled } from '@mui/material';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
-import {styled} from '@mui/material';
-import { Button } from '@mui/material';
+import palette from '../../../lib/styles/palette';
 const StyledButton = styled(Button)({
-  padding: '7px 16px',
-  borderRadius: '20px',
   display: 'flex',
-  justifyContent: 'center',
-  alignContent: 'center',
-  borderColor: 'red',
-  color: 'gray',
+  alignItems: 'center',
+  borderRadius: '18px',
+  backgroundColor: 'white',
+  color: `${palette.gray[1]}`,
+  fontSize:'small',
+  padding:'5px 10px',
+  marginRight:'0.5rem',
   '&:hover': {
-    backgroundColor: 'red',
-    borderColor: 'red',
+    backgroundColor: `${palette.red[2]}`,
+    color: 'white',
+    borderColor: '#FF6980',
     boxShadow: 'none',
-    color:'white',
-  },
-  '& div': {
-    display:'flex',
-    justifyContent: 'center',
-    alignContent: 'center',
   },
 });
 
-type Props = {
-    text: string;
-    isDisabled?: boolean;
+// 드롭 메뉴 배경 커스텀 
+const StyledMenuList = styled(MenuList)({
+})
+
+
+interface Props {
+  title: string;
+  list: Array<string>;
 }
 
-const RadiusButton: React.FC<Props> = ({text,isDisabled}) => {
+const RadiusButtonWithDownDrop: React.FC<Props> = ({ title, list }) => {
+  const [anchorEl, setAnchorEl] = useState<undefined | HTMLElement>();
+  const open = Boolean(anchorEl);
+  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(undefined);
+  };
+
   return (
-    <StyledButton color='error' variant='outlined' disabled={isDisabled}>
-      <div>
-      {text}
-      <ArrowDropDownIcon />
-      </div>
-    </StyledButton>
+    <div>
+      <StyledButton id="drop-button" variant="contained" onClick={handleClick}>
+        <span>{title}</span>
+        <ArrowDropDownIcon />
+      </StyledButton>
+      <Menu
+        id="demo-positioned-menu"
+        aria-labelledby="demo-positioned-button"
+        open={open}
+        anchorEl={anchorEl}
+        onClose={handleClose}
+        TransitionComponent={Fade}
+      >
+        <StyledMenuList>
+          {list.map((item, idx) => (
+            <MenuItem key={idx} onClick={handleClose}>
+              {item}
+            </MenuItem>
+          ))}
+        </StyledMenuList>
+      </Menu>
+    </div>
   );
 };
 
-export default RadiusButton;
+export default RadiusButtonWithDownDrop;

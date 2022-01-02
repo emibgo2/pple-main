@@ -2,20 +2,21 @@ import React, { useState } from 'react';
 import styledComponent from 'styled-components';
 import { styled, ToggleButton, ToggleButtonGroup } from '@mui/material';
 import Styled from 'styled-components';
+import palette from '../../../lib/styles/palette';
 
 const StyledToggleButtonGroup = styled(ToggleButtonGroup)({
   '& .MuiButtonBase-root': {
     border: 'none',
   },
   '& #square-toggle': {
-    border: '1px solid #B7B7B7',
+    border: `1px solid ${palette.gray[1]}`,
     backgroundColor: 'white',
     minWidth: '64px',
-    color: '#B7B7B7',
+    color: `${palette.gray[1]}`,
     padding: '1rem',
     transition: 'all ease 0.5s 0s',
     '&:focus': {
-      backgroundColor: '#FF6969',
+      backgroundColor:`${palette.red[1]}`,
       color: 'white',
     },
   },

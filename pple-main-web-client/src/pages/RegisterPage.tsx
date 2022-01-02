@@ -1,12 +1,15 @@
 import React from 'react';
-import AuthTemplate from '../components/auth/AuthTemplate';
-import RegisterForm from '../components/auth/RegisterForm';
+import {styled}from'@mui/material';
+import MRegisterTemplate from '../components/auth/register/MRegisterTemplate';  
+import MRegisterHeader from '../components/auth/register/MRegisterHeader';
+import MRegisterBody from '../components/auth/register/MRegisterBody';
 
-const RegisterPage = () => {
+const RegisterPage: React.FC = () => {
     return (
-        <AuthTemplate>
-            <RegisterForm/>
-        </AuthTemplate>
+        <MRegisterTemplate>
+          <MRegisterHeader />
+          <MRegisterBody />
+        </MRegisterTemplate>
     );
 };
 

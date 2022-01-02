@@ -1,14 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
-import Subract from '../../lib/images/Subtract.png';
-import BloodTypeBlock from '../common/BloodTypeBlock';
-import RadiusButton from '../common/buttons/RadiusButtonWithDownDrop';
+import Subract from '../../../lib/images/Subtract.png';
+import BloodTypeBlock from '../../common/BloodTypeBlock';
+import RadiusButton from '../../common/buttons/RadiusButtonWithDownDrop';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
-import RecipientInformationBox from '../common/RecipientInformationBox';
+import RecipientInformationBox from '../../common/RecipientInformationBox';
 import SmsOutlinedIcon from '@mui/icons-material/SmsOutlined';
 import FileUploadOutlinedIcon from '@mui/icons-material/FileUploadOutlined';
 import RemoveRedEyeOutlinedIcon from '@mui/icons-material/RemoveRedEyeOutlined';
-import Comment from '../common/Comment';
+import Comment from '../../common/Comment';
 import SendIcon from '@mui/icons-material/Send';
 import SentimentSatisfiedOutlinedIcon from '@mui/icons-material/SentimentSatisfiedOutlined';
 import { InputBase } from '@mui/material';
@@ -105,7 +105,6 @@ const RequestPost: React.FC = () => {
           </div>
         </RequestPostHeaderColumn>
         <RequestPostHeaderColumn>
-          <RadiusButton text="채팅하기" />
         </RequestPostHeaderColumn>
       </RequestPostHeader>
 

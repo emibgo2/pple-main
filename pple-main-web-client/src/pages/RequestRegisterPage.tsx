@@ -1,7 +1,6 @@
 import React from 'react';
-import RequestRegister from '../components/request/RequestRegister';
 import RequestTemplate from '../components/request/RequestTemplate';
-
+import RequestRegister from '../components/request/register/RequestRegister';
 const RequestRegisterPage: React.FC = () => {
     return (
         // 환자 정보 리덕스 
