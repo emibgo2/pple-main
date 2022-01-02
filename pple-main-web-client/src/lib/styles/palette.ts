@@ -5,6 +5,7 @@ const palette = {
         "#AEAEAE",
         "#767676",
         "#222222",
+        "#C7C7C7",
     ],
     red:[
         "#FFA3A3",

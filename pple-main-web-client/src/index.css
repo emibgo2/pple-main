@@ -68,7 +68,6 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  height: 100%;
 }
 
 code {
@@ -76,3 +75,6 @@ code {
     monospace;
 }
 
+html, body, #root, .App {
+   height: 100vh ;
+}

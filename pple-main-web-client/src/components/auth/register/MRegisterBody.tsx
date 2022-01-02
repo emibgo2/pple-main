@@ -9,11 +9,18 @@ import BloodTypeInput from './input/BloodTypeInput';
 import TermsInput from './input/TermsInput';
 import PhoneInput from './input/PhoneInput';
 import NicknameInput from './input/NicknameInput';
+import RegisterButton from './input/RegisterButton';
 
 const MRegisterBodyBlock = styled('div')({
-  padding: '0px 1rem',
+  height:"100%",
+  padding: '0px 1rem 44px 1rem',
   boxSizing:"border-box",
   width: '100%',
+  display:"flex",
+  marginTop:"2rem",
+  flexDirection:"column",
+  alignContent:"center",
+  justifyContent:"space-between",
 });
 
 
@@ -28,6 +35,7 @@ const MRegisterBody: React.FC = () => {
       <BloodTypeInput/>
       <PhoneInput/>
       <TermsInput/>
+      <RegisterButton/>
     </MRegisterBodyBlock>
   );
 };

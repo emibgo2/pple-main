@@ -39,17 +39,28 @@ const PhoneInput = () => {
   });
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const onlyNumber = e.target.value.replace(/[^0-9]/g, '');
-    setNumber({
-      ...number,
-      [e.target.name]: onlyNumber,
-    });
+    if (e.target.name == 'second' || e.target.name == 'third'){
+      if(onlyNumber.length <= 4){
+        setNumber({
+          ...number,
+          [e.target.name]: onlyNumber,
+        });
+      }
+      return;
+    }
+    if(onlyNumber.length <= 3){
+      setNumber({
+        ...number,
+        [e.target.name]: onlyNumber,
+      });
+    }
   };
   return (
     <div>
       <Label>휴대폰 번호</Label>
       <StyledGrid container spacing={3}>
 
-        <Grid item sm={2} className="input">
+        <Grid item xs={2} className="input">
           <FormControl
             sx={{ width: '100%' }}
             variant="standard"
@@ -64,11 +75,11 @@ const PhoneInput = () => {
           </FormControl>
         </Grid>
 
-        <Grid item sm={1}>
+        <Grid item xs={1}>
           <span>-</span>
         </Grid>
 
-        <Grid item sm={4} className="input">
+        <Grid item xs={4} className="input">
           <FormControl sx={{ width: '100%' }} variant="standard">
             <StyledInput
               name="second"
@@ -79,10 +90,10 @@ const PhoneInput = () => {
           </FormControl>
         </Grid>
 
-        <Grid item sm={1}>
+        <Grid item xs={1}>
           <span>-</span>
         </Grid>
-        <Grid item sm={4} className="input">
+        <Grid item xs={4} className="input">
           <FormControl sx={{ width: '100%' }} variant="standard">
             <StyledInput
               name="third"

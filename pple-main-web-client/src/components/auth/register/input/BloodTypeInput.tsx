@@ -5,6 +5,8 @@ import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 
 const BloodTypeInputBlock = styled('div')({
   '& .rh-text': {
+    display:'inline-block',
+    marginTop:'0.5rem',
     fontSize: 'small',
     color: `${palette.gray[1]}`,
     border: 'none',

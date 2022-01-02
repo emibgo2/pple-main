@@ -16,12 +16,13 @@ const GlobalStyles = createGlobalStyle`
 `;
 
 const AppBlock = styled.div`
-  height:inherit;
+  width: 28rem;
+  height: 100%;
 `;
 
 const ContentBlock = styled.div`
   width: 28rem;
-  height: inherit;
+  height: 100%;
 `;
 
 const App: React.FC = () => {
@@ -29,7 +30,6 @@ const App: React.FC = () => {
     <>
       <GlobalStyles />
       <AppBlock>
-        <ContentBlock>
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/login" element={<LoginPage />} />
@@ -37,7 +37,6 @@ const App: React.FC = () => {
             <Route path="/post" element={<RequestPostPage />} />
             <Route path="/post/register" element={<RequestRegisterPage />} />
           </Routes>
-        </ContentBlock>
       </AppBlock>
     </>
   );

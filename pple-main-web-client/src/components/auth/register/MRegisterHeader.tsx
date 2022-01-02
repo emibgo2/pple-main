@@ -12,6 +12,8 @@ const MRegisterHeaderBlock = styled('div')({
   '& .title': {
     fontSize: 'large',
   },
+  boxSizing:"border-box",
+  paddingRight:"3rem",
 });
 
 const MRegisterHeader: React.FC = () => {
