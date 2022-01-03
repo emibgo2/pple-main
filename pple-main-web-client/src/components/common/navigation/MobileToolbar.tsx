@@ -1,3 +1,4 @@
+
 import React, { MouseEventHandler } from 'react';
 import { IconButton, styled } from '@mui/material';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
@@ -24,7 +25,7 @@ interface Props {
   isChat?: boolean;
 }
 
-const MobileGNB: React.FC<Props> = ({
+const MobileToolbar: React.FC<Props> = ({
   isBack,
   title,
   isSearch,
@@ -41,13 +42,13 @@ const MobileGNB: React.FC<Props> = ({
   return (
     <MobileGNBBlock>
       {isBack ? (
-        <IconButton sx={{color:'white'}} onClick={handleBack}>
-          <ArrowBackIosNewIcon fontSize='small' />
+        <IconButton sx={{ color: 'white' }} onClick={handleBack}>
+          <ArrowBackIosNewIcon fontSize="small" />
         </IconButton>
       ) : (
         <></>
       )}
-      <div style={{color:'white',fontWeight:"bold"}}>{title}</div>
+      <div style={{ color: 'white', fontWeight: 'bold' }}>{title}</div>
       {isSearch ? (
         <IconButton onClick={goPostRegister}>
           <img src={Search} alt="검색" />
@@ -73,4 +74,4 @@ const MobileGNB: React.FC<Props> = ({
   );
 };
 
-export default MobileGNB;
+export default MobileToolbar;

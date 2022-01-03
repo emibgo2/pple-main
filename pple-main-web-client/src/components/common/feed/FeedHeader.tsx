@@ -4,15 +4,20 @@ import heartImg from '../../../lib/images/heart.png';
 import bar from '../../../lib/images/bar.png';
 import RadiusButton from '../buttons/RadiusButton';
 
-const FeedHeaderBlock = styled('div')({
-  width: '100%',
-  borderRadius: '14px',
-  '& .header': {
-    backgroundColor: 'whitesmoke',
-    padding: '9px 22px',
-    borderRadius:"14px 14px 0px 0px",
-  },
-});
+interface FeedHeaderBlockProp{
+  noBorderRadius?: boolean
+}
+const FeedHeaderBlock = styled('div')<FeedHeaderBlockProp>(
+  ({ noBorderRadius }) => ({
+    width: '100%',
+    borderRadius: '14px',
+    '& .header': {
+      backgroundColor: 'whitesmoke',
+      padding: '9px 22px',
+      borderRadius: !noBorderRadius ? '14px 14px 0px 0px' : '0px 0px 0px 0px',
+    },
+  }),
+);
 
 const TimeBox = styled('div')({
   fontSize: 'x-small',
@@ -60,11 +65,16 @@ const CardComponentHeaderColumn = styled('div')({
 interface CardProps {
   bloodType: string;
   sort: string;
+  noBorderRadius?: boolean;
 }
 
-const FeedHeader: React.FC<CardProps> = ({ bloodType, sort }) => {
+const FeedHeader: React.FC<CardProps> = ({
+  bloodType,
+  sort,
+  noBorderRadius,
+}) => {
   return (
-    <FeedHeaderBlock>
+    <FeedHeaderBlock noBorderRadius={noBorderRadius}>
       <div className="header">
         <TimeBox>
           <div>2021년 12월 13일 등록</div>
@@ -86,7 +96,15 @@ const FeedHeader: React.FC<CardProps> = ({ bloodType, sort }) => {
               </div>
               <div className="header-text">
                 <div className="header-text-title">헌혈 종류</div>
-                <div style={{ color: '#FF6969' ,fontWeight:"bold",marginTop:"5px" }}>{sort}</div>
+                <div
+                  style={{
+                    color: '#FF6969',
+                    fontWeight: 'bold',
+                    marginTop: '5px',
+                  }}
+                >
+                  {sort}
+                </div>
               </div>
             </CardComponentHeaderColumn>
           </div>
