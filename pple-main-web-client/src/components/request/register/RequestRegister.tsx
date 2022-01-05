@@ -4,9 +4,9 @@ import styled from 'styled-components';
 import CloseIcon from '@mui/icons-material/Close';
 import RadiusButton from '../../common/buttons/RadiusButton';
 import { TextField } from '@mui/material';
-import RegisterInput from './RegisterInput';
-import BloodTypeGroup from './BloodTypeGroup';
-import BloodDonationType from './BloodDonationType';
+import RegisterInput from './input/RegisterInput';
+import BloodTypeGroup from './input/BloodTypeGroup';
+import BloodDonationType from './input/BloodDonationType';
 import SquareButton from '../../common/buttons/SquareButton';
 import palette from '../../../lib/styles/palette';
 import { useNavigate } from 'react-router-dom';
@@ -50,7 +50,7 @@ background-color:white;
   }
 `;
 
-const RequestRegister = () => {
+const RequestRegister: React.FC = () => {
   const navigate = useNavigate();
   const onClickExit: MouseEventHandler = () =>{
     navigate(-1);
