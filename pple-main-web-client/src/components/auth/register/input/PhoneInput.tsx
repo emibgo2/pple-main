@@ -1,13 +1,7 @@
 import React, { useState } from 'react';
 import { styled, Grid, FormControl, Input } from '@mui/material';
 import palette from '../../../../lib/styles/palette';
-
-const Label = styled('div')({
-  color: 'black',
-  fontWeight: 'bold',
-  marginBottom: '0.5rem',
-  fontSize: 'smaller',
-});
+import Label from '../../../common/Label';
 
 const StyledInput = styled(Input)({
   '& .help-text': {

@@ -6,13 +6,7 @@ import {
   Select,
   SelectChangeEvent,
 } from '@mui/material';
-
-const Label = styled('div')({
-  color: 'black',
-  fontWeight: 'bold',
-  marginBottom: '0.5rem',
-  fontSize: 'smaller',
-});
+import Label from '../../../common/Label';
 
 const BirthSelectBox = styled('div')({
   width: '100%',

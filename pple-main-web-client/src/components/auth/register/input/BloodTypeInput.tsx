@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { IconButton, styled, ToggleButton, ToggleButtonGroup } from '@mui/material';
 import palette from '../../../../lib/styles/palette';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
-
+import Label from '../../../common/Label';
 const BloodTypeInputBlock = styled('div')({
   '& .rh-text': {
     display:'inline-block',
@@ -38,13 +38,6 @@ const StyledToggleButtonGroup = styled(ToggleButtonGroup)({
       color: 'white',
     },
   },
-});
-
-const Label = styled('div')({
-  color: 'black',
-  fontWeight: 'bold',
-  marginBottom: '0.5rem',
-  fontSize: 'smaller',
 });
 
 const BloodTypeInput = () => {

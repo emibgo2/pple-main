@@ -5,6 +5,7 @@ import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import palette from '../../../../lib/styles/palette';
+import Label from '../../../common/Label';
 
 const BpIcon = styled('span')(({ theme }) => ({
   borderRadius: '50%',
@@ -68,13 +69,6 @@ function BpRadio(props: RadioProps) {
     />
   );
 }
-
-const Label = styled('div')({
-  color: 'black',
-  fontWeight: 'bold',
-  marginBottom: '0.5rem',
-  fontSize: 'smaller',
-});
 
 export default function TermsInput() {
   return (

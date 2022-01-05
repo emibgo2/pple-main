@@ -1,7 +1,7 @@
 import React from 'react';
 import { styled,Input,FormControl,FormHelperText } from '@mui/material';
 import palette from '../../../../lib/styles/palette';
-
+import Label from '../../../common/Label';
 const InputNickname = styled(Input)({
   '& .help-text': {
     fontSize: 'small',
@@ -16,12 +16,7 @@ const InputNickname = styled(Input)({
   },
 });
 
-const Label = styled('div')({
-  color: 'black',
-  fontWeight: 'bold',
-  marginBottom: '0.5rem',
-  fontSize: 'smaller',
-});
+
 const NicknameInput: React.FC = () => {
     return (
       <FormControl variant="standard" fullWidth className="form">
