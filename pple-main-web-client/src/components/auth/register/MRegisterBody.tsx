@@ -10,6 +10,7 @@ import TermsInput from './input/TermsInput';
 import PhoneInput from './input/PhoneInput';
 import NicknameInput from './input/NicknameInput';
 import RegisterButton from './input/RegisterButton';
+import NameInput from './input/NameInput';
 
 const MRegisterBodyBlock = styled('div')({
   height:"100%",
@@ -20,7 +21,6 @@ const MRegisterBodyBlock = styled('div')({
   marginTop:"2rem",
   flexDirection:"column",
   alignContent:"center",
-  justifyContent:"space-between",
 });
 
 
@@ -29,6 +29,7 @@ const MRegisterBody: React.FC = () => {
   
   return (
     <MRegisterBodyBlock>
+      <NameInput/>
       <NicknameInput/>
       <BirthForm />
       <GenderInput />

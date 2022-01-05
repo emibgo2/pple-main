@@ -3,6 +3,8 @@ import {styled,Button, ButtonBase} from '@mui/material';
 import palette from '../../../../lib/styles/palette';
 const RegisterButtonBlock = styled('div')({
     width:"100%",
+    marginTop:"25px",
+    paddingBottom:"25px",
 })
 
 const StyledButton = styled(ButtonBase)({

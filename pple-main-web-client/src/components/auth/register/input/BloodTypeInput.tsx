@@ -4,6 +4,7 @@ import palette from '../../../../lib/styles/palette';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import Label from '../../../common/Label';
 const BloodTypeInputBlock = styled('div')({
+  marginTop:"25px",
   '& .rh-text': {
     display:'inline-block',
     marginTop:'0.5rem',
@@ -16,6 +17,12 @@ const BloodTypeInputBlock = styled('div')({
     background: 'none',
     marginRight:'0.5rem',
   },
+  '& .title':{
+    display:'flex',
+    justifyContent:"space-between",
+    alignItems:"center",
+  },
+  marginBottom:"25px",
 });
 
 const StyledToggleButtonGroup = styled(ToggleButtonGroup)({
@@ -67,7 +74,27 @@ const BloodTypeInput = () => {
   ];
   return (
     <BloodTypeInputBlock>
-      <Label>혈액형</Label>
+      <div className="title">
+        <Label>본인 혈액형</Label>
+        <div>
+          <ToggleButton
+            sx={{
+              color: select ? 'black' : 'white',
+              background: 'none',
+            }}
+            value="check"
+            selected={select}
+            onChange={() => {
+              setSelect(!select);
+            }}
+            className="rh-text"
+            id="custom-toggle"
+          >
+            <CheckCircleOutlineIcon fontSize="small" />
+          </ToggleButton>
+          <span className="rh-text">Rh- 혈액형인 경우는 체크를 해주세요</span>
+        </div>
+      </div>
       <StyledToggleButtonGroup
         exclusive
         onChange={handleBloodType}
@@ -77,21 +104,6 @@ const BloodTypeInput = () => {
       >
         {children}
       </StyledToggleButtonGroup>
-      <ToggleButton
-      sx={{
-          color: select ? 'black' : 'white',
-          background : 'none',
-      }}
-      value='check'
-      selected={select}
-      onChange={()=>{
-          setSelect(!select);
-      }}
-       className="rh-text"
-       id="custom-toggle">
-        <CheckCircleOutlineIcon fontSize="small" />
-      </ToggleButton>
-      <span className="rh-text">Rh- 혈액형인 경우는 체크를 해주세요</span>
     </BloodTypeInputBlock>
   );
 };
