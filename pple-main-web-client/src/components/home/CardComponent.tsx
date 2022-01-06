@@ -1,29 +1,34 @@
 import React from 'react';
-import styled from 'styled-components';
+import { styled } from '@mui/system';
+import { Paper } from '@mui/material';
 import FeedHeader from '../common/feed/FeedHeader';
+import FeedContent from '../common/feed/FeedContent';
 
-const CardComponentBlock = styled.div`
-  width: 100%;
-  border-radius: 14px;
-  border: 1px solid black;
-  & .header {
-    background-color: whitesmoke;
-  }
-`;
+const CardComponentBlock = styled('div')({
+    width:"100%",
+    marginTop:"15px",
+})
 
-const CardComponentContent = styled.div``;
+const CardContentBox = styled('div')({
+    padding: "8px 27px"
+});
 
-interface CardProps {
-  bloodType: string;
-  sort: string;
-  story: string;
-}
-
-const CardComponent: React.FC<CardProps> = ({ bloodType, sort, story }) => {
+const CardComponent: React.FC = () => {
   return (
     <CardComponentBlock>
-      <FeedHeader bloodType={bloodType} sort={sort}/>
-      <CardComponentContent>{story}</CardComponentContent>
+      <Paper sx={{ borderRadius: '14px', border: 'none' }} elevation={2}>
+        <FeedHeader
+          bloodType="AB형"
+          sort="혈소판성분채혈"
+          noBorderRadius={false}
+        />
+        <CardContentBox>
+          <FeedContent
+            title="저희 아버지가 재생불량성빈혈을 판정을 받"
+            content=" "
+          />
+        </CardContentBox>
+      </Paper>
     </CardComponentBlock>
   );
 };
