@@ -1,9 +1,5 @@
 server:
   port: 10001
-  servlet:
-    session:
-      cookie:
-        name: SID
   error:
     whitelabel:
       enabled: false
@@ -16,7 +12,7 @@ spring:
         registration:
           kakao:
             client-name: KAKAO
-            client-id: --
+            client-id: 59578bc34fde4f117b8ddb5ab2447e6d
             scope:
               - profile_nickname
               - profile_image
@@ -51,7 +47,7 @@ management:
 pple:
   auth:
     tokenCookieName: jwt
-    tokenSecret: --
+    tokenSecret: ABCABCABCABCABCABCABCABCABCABCAB
     tokenExpirationMillis: 864000000
   oauth2:
     # 1. OAuth2 Provider 인증

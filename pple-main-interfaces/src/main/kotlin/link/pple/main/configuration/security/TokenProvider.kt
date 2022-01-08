@@ -29,12 +29,12 @@ class TokenProvider(
             .compact()
     }
 
-    fun getIdentifierFromToken(token: String): Long {
+    fun getIdentifierFromToken(token: String): String {
         val claims: Claims = Jwts.parser()
             .setSigningKey(ppleProperties.auth.tokenSecret)
             .parseClaimsJws(token)
             .body
-        return claims.subject.toLong()
+        return claims.subject
     }
 
     fun validateToken(authToken: String?): Boolean {

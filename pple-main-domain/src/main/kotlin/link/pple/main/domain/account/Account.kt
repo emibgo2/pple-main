@@ -1,15 +1,32 @@
 package link.pple.main.domain.account
 
+import link.pple.assets.client.AccountApplyDefinitionDto
 import link.pple.assets.client.AccountDto
+import link.pple.assets.client.BloodDto
 import java.io.Serializable
+import java.time.LocalDate
 
 interface Account : Serializable {
     val id: Long
-    val provider: Provider
+    val uuid: String
+    val key: Provider
     val email: String
     val displayName: String
+
     val role: String
+
+    val status: String
+
+    val birthDay: LocalDate?
+    val gender: String?
+    val phoneNumber: String?
     val profileImageUrl: String?
+    val blood: Blood?
+
+    data class Blood(
+        val abo: String,
+        val rh: String
+    ) : Serializable
 
     data class Provider(
         val type: AccountProviderType,
@@ -20,14 +37,25 @@ interface Account : Serializable {
         fun from(dto: AccountDto): Account {
             return SimpleAccount(
                 id = dto.id,
-                provider = Provider(
+                uuid = dto.uuid,
+                key = Provider(
                     type = AccountProviderType.from(dto.key.type),
                     id = dto.key.id
                 ),
                 email = dto.email,
                 displayName = dto.displayName,
                 role = dto.role,
-                profileImageUrl = dto.profileImageUrl
+                profileImageUrl = dto.profileImageUrl,
+                status = dto.status,
+                birthDay = dto.birthDay,
+                gender = dto.gender,
+                phoneNumber = dto.phoneNumber,
+                blood = dto.blood?.let {
+                    Blood(
+                        rh = it.rh,
+                        abo = it.abo
+                    )
+                }
             )
         }
     }
@@ -35,9 +63,39 @@ interface Account : Serializable {
 
 data class SimpleAccount(
     override val id: Long,
-    override val provider: Account.Provider,
+    override val uuid: String,
+    override val key: Account.Provider,
     override val email: String,
     override val displayName: String,
     override val role: String,
-    override val profileImageUrl: String?
+    override val profileImageUrl: String?,
+    override val status: String,
+    override val birthDay: LocalDate?,
+    override val gender: String?,
+    override val phoneNumber: String?,
+    override val blood: Account.Blood?
 ) : Account
+
+
+// ===============
+
+data class AccountApplyDefinition(
+    val uuid: String,
+    val birthDay: LocalDate,
+    val gender: String,
+    val phoneNumber: String,
+    val blood: Account.Blood
+)
+
+// ================
+
+internal fun AccountApplyDefinition.toDto() = AccountApplyDefinitionDto(
+    uuid = uuid,
+    birthDay = birthDay,
+    gender = gender,
+    phoneNumber = phoneNumber,
+    blood = BloodDto(
+        abo = blood.abo,
+        rh = blood.rh
+    )
+)

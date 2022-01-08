@@ -10,32 +10,68 @@ import org.springframework.web.bind.annotation.*
 interface AssetsAccountClient {
 
     /**
-     * Create Account
+     * UUID 로 회원 정보 조회
+     * @Author Heli
+     */
+    @GetMapping(
+        value = ["/account/api/v1/account/{accountUuid}"],
+        produces = [MediaType.APPLICATION_JSON_VALUE]
+    )
+    fun getAccount(
+        @PathVariable accountUuid: String
+    ): AccountDto
+
+    /**
+     * Email 로 회원 정보 조회
+     * @Author Heli
+     */
+    @GetMapping(
+        value = ["/account/api/v1/account"],
+        produces = [MediaType.APPLICATION_JSON_VALUE]
+    )
+    fun getAccountByEmail(
+//        @RequestHeader(name = ACCOUNT_UUID_HEADER) accountUuid: String,
+        @RequestParam email: String
+    ): AccountDto?
+
+    /**
+     * 회원 가입: OAuth2 최초 인증, 계정에 추가 정보 없음
+     * @Author Heli
      */
     @PostMapping(
-        value = ["/account/api/v1/accounts"],
+        value = ["/account/api/v1/account"],
         consumes = [MediaType.APPLICATION_JSON_VALUE],
         produces = [MediaType.APPLICATION_JSON_VALUE]
     )
     fun createAccount(
-        @RequestBody definitionDto: AccountDefinitionDto
+        @RequestBody definitionDto: AccountCreateDefinitionDto
     ): AccountDto
 
     /**
-     * Get Account By Id
+     * 회원 가입: OAuth2 가입 후 추가 정보 입력
+     * @Author Heli
      */
-    @GetMapping(
-        value = ["/account/api/v1/accounts/{accountId}"],
+    @PatchMapping(
+        value = ["/account/api/v1/account"],
+        consumes = [MediaType.APPLICATION_JSON_VALUE],
         produces = [MediaType.APPLICATION_JSON_VALUE]
     )
-    fun getAccount(@PathVariable accountId: Long): AccountDto
+    fun applyAccount(
+        @RequestHeader(name = ACCOUNT_UUID_HEADER) accountUuid: String,
+        @RequestBody dto: AccountApplyDefinitionDto
+    ): AccountDto
 
     /**
-     * Get Account By Email
+     * 회원 정보 수정(DisplayName, ProfileImageUrl)
+     * @Author Heli
      */
-    @GetMapping(
-        value = ["/account/api/v1/accounts"],
+    @PatchMapping(
+        value = ["/account/api/v1/account/{accountUuid}"],
+        consumes = [MediaType.APPLICATION_JSON_VALUE],
         produces = [MediaType.APPLICATION_JSON_VALUE]
     )
-    fun getAccount(@RequestParam email: String): AccountDto
+    fun updateAccount(
+        @PathVariable accountUuid: String,
+        @RequestBody definitionDto: AccountPatchDto
+    ): AccountDto
 }

@@ -18,5 +18,5 @@ class OAuth2Account(
 ) : OAuth2User by oAuth2User, Serializable {
 
     val identifier: String
-        get() = "${account.id}"
+        get() = account.uuid
 }

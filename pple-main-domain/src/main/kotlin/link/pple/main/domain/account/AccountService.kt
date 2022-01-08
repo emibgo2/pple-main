@@ -1,34 +1,31 @@
 package link.pple.main.domain.account
 
-import link.pple.assets.client.AccountDefinitionDto
+import link.pple.assets.client.AccountCreateDefinitionDto
 import link.pple.assets.client.AccountDto
 import link.pple.assets.client.AssetsAccountClient
 import org.springframework.stereotype.Service
-import java.time.LocalDateTime
 
 @Service
 class AccountService(
     private val accountClient: AssetsAccountClient
 ) {
 
-    fun getAccount(accountId: Long): Account {
-        val accountDto = accountClient.getAccount(accountId)
+    fun getAccount(accountUuid: String): Account {
+        val accountDto = accountClient.getAccount(
+            accountUuid = accountUuid
+        )
         return Account.from(accountDto)
     }
 
-    fun getAccountOrNull(email: String): Account? {
-//        val accountDto = accountClient.getAccount(email)
-        val accountDto = AccountDto(
-            id = 5,
-            createdAt = LocalDateTime.now(),
-            modifiedAt = LocalDateTime.now(),
-            key = AccountDto.ProviderKeyDto("KAKAO", "10"),
-            email = "college@kakao.com",
-            displayName = "Sun",
-            role = "USER",
-            profileImageUrl = "abc"
+    fun getAccountOrNull(
+        email: String
+    ): Account? {
+        val accountDto = accountClient.getAccountByEmail(
+            email = email
         )
-        return Account.from(accountDto)
+        return accountDto?.let {
+            Account.from(it)
+        }
     }
 
     fun createAccount(providerAccount: ProviderAccount): Account {
@@ -37,14 +34,26 @@ class AccountService(
     }
 
     fun getAccountOrCreate(providerAccount: ProviderAccount): Account {
-        val account = getAccountOrNull(providerAccount.email)
+        val account = getAccountOrNull(
+            email = providerAccount.email
+        )
         if (account != null) {
             return account
         }
         return createAccount(providerAccount)
     }
 
-    private fun ProviderAccount.toRequestDto() = AccountDefinitionDto(
+    fun applyAccount(uuid: String, definition: AccountApplyDefinition): Account {
+
+        val account = accountClient.applyAccount(
+            accountUuid = uuid,
+            dto = definition.toDto()
+        )
+
+        return Account.from(account)
+    }
+
+    private fun ProviderAccount.toRequestDto() = AccountCreateDefinitionDto(
         key = AccountDto.ProviderKeyDto(
             type = providerType.name,
             id = id

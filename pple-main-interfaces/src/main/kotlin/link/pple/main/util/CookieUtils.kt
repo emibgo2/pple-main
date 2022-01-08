@@ -23,6 +23,7 @@ object CookieUtils {
 
     fun addCookie(response: HttpServletResponse, name: String, value: String, maxAge: Int) {
         val cookie = Cookie(name, value)
+        cookie.domain = "ppledev.link"
         cookie.path = "/"
         cookie.isHttpOnly = true
         cookie.maxAge = maxAge // seconds
@@ -34,6 +35,7 @@ object CookieUtils {
         if (cookies.isNotEmpty()) {
             for (cookie in cookies) {
                 if (cookie.name.equals(name)) {
+                    cookie.domain = "ppledev.link"
                     cookie.value = ""
                     cookie.path = "/"
                     cookie.maxAge = 0
