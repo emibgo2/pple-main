@@ -2,6 +2,7 @@ package link.pple.main.domain.account
 
 import link.pple.assets.client.AccountApplyDefinitionDto
 import link.pple.assets.client.AccountDto
+import link.pple.assets.client.AccountPatchDto
 import link.pple.assets.client.BloodDto
 import java.io.Serializable
 import java.time.LocalDate
@@ -87,6 +88,11 @@ data class AccountApplyDefinition(
     val blood: Account.Blood
 )
 
+data class AccountPatchDefinition(
+    val accountUuid: String,
+    val displayName: String
+)
+
 // ================
 
 internal fun AccountApplyDefinition.toDto() = AccountApplyDefinitionDto(
@@ -98,4 +104,9 @@ internal fun AccountApplyDefinition.toDto() = AccountApplyDefinitionDto(
         abo = blood.abo,
         rh = blood.rh
     )
+)
+
+internal fun AccountPatchDefinition.toDto() = AccountPatchDto(
+    displayName = displayName,
+    profileImageUrl = null
 )

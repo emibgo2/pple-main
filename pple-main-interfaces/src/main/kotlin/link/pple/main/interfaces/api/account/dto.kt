@@ -16,6 +16,10 @@ data class AccountApplyDto(
     val blood: Account.Blood
 )
 
+data class AccountPatchDto(
+    val displayName: String
+)
+
 data class AccountDto(
     val id: Long,
     val uuid: String,

@@ -46,14 +46,25 @@ class AccountService(
     fun applyAccount(uuid: String, definition: AccountApplyDefinition): Account {
 
         val account = accountClient.applyAccount(
-            accountUuid = uuid,
+            xUuid = uuid,
             dto = definition.toDto()
         )
 
         return Account.from(account)
     }
 
-    private fun ProviderAccount.toRequestDto() = AccountCreateDefinitionDto(
+    fun updateAccount(xUuid: String, definition: AccountPatchDefinition): Account {
+
+        val account = accountClient.updateAccount(
+            xUuid = xUuid,
+            accountUuid = definition.accountUuid,
+            definitionDto = definition.toDto()
+        )
+
+        return Account.from(account)
+    }
+
+    fun ProviderAccount.toRequestDto() = AccountCreateDefinitionDto(
         key = AccountDto.ProviderKeyDto(
             type = providerType.name,
             id = id

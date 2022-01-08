@@ -57,7 +57,7 @@ interface AssetsAccountClient {
         produces = [MediaType.APPLICATION_JSON_VALUE]
     )
     fun applyAccount(
-        @RequestHeader(name = ACCOUNT_UUID_HEADER) accountUuid: String,
+        @RequestHeader(name = ACCOUNT_UUID_HEADER) xUuid: String,
         @RequestBody dto: AccountApplyDefinitionDto
     ): AccountDto
 
@@ -71,6 +71,7 @@ interface AssetsAccountClient {
         produces = [MediaType.APPLICATION_JSON_VALUE]
     )
     fun updateAccount(
+        @RequestHeader(name = ACCOUNT_UUID_HEADER) xUuid: String,
         @PathVariable accountUuid: String,
         @RequestBody definitionDto: AccountPatchDto
     ): AccountDto
