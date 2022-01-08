@@ -1,54 +1,85 @@
 import { IconButton } from '@mui/material';
 import React, { MouseEventHandler } from 'react';
-import styled from 'styled-components';
 import CloseIcon from '@mui/icons-material/Close';
 import RadiusButton from '../../common/buttons/RadiusButton';
-import { TextField } from '@mui/material';
+import { TextField,styled } from '@mui/material';
 import RegisterInput from './input/RegisterInput';
 import BloodTypeGroup from './input/BloodTypeGroup';
 import BloodDonationType from './input/BloodDonationType';
 import SquareButton from '../../common/buttons/SquareButton';
 import palette from '../../../lib/styles/palette';
 import { useNavigate } from 'react-router-dom';
+import PhoneInput from './input/PhoneInput';
 
-const RequestRegisterBlock = styled.div`
-  width: 100%;
-  height: 100%;
-  background-color: ${palette.gray[0]};
-`;
-const Header = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background-color: white;
-`;
-const Body = styled.div`
-  width: 100%;
-`;
-const BodyTextBox = styled.div`
-  display: flex;
-  flex-direction: column;
-  background-color: white;
-  margin-top: 1rem;
-`;
-const BodyPatientInfoBox = styled.div`
-  background-color: white;
-  padding: 2rem;
-`;
+const Divider = styled('div')({
+  width:"100%",
+  height:"9px",
+  backgroundColor:"#F4F4F4",
+})
 
-const Footer = styled.div`
-background-color:white;
-  box-sizing: border-box;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-content: center;
-  padding: 0px 2rem;
-  & .MuiButton-root{
-    padding: 10px 0px;
-    width:45%;
+const RequestRegisterBlock = styled('div')({
+  width: "100%",
+  height: '100%',
+});
+const Header = styled('div')({
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'space-between',
+  backgroundColor: 'white',
+  padding: '14px 17px 14px 10px',
+  "& .button":{
+    display:"flex",
+    alignItems:'center',
+    fontWeight:"bold",
+  },
+  "& .button span":{
+    display:'block',
+    marginTop:"3px",
+    marginRight:"77px",
+    fontSize:"larger"
   }
-`;
+});
+
+const Body = styled('div')({
+  width: "100%",
+}); 
+
+const BodyTextBox = styled('div')({
+  display: 'flex',
+  flexDirection: 'column',
+  backgroundColor: 'white',
+  marginTop: '1rem',
+  padding: '10px',
+  '& #title': {
+    fontSize: 'large',
+    color: '#222222',
+    fontWeight: 'bold',
+  },
+});
+
+const BodyPatientInfoBox = styled("div")({
+    display: "flex",
+  flexDirection: 'column',
+  backgroundColor: 'white',
+  marginTop: "1rem",
+  padding:"0px 17px",
+});
+
+const Footer = styled('div')({
+  backgroundColor:"white",
+  boxSizing: "border-box",
+  width: '100%',
+  display: 'flex',
+  justifyContent: "space-between",
+  alignContent: 'center',
+  padding: '0px 2rem',
+  marginTop:"48.35px",
+  "& .MuiButton-root" : {
+    padding: '10px 0px',
+    width:"45%",
+  }
+
+});
 
 const RequestRegister: React.FC = () => {
   const navigate = useNavigate();
@@ -64,19 +95,16 @@ const RequestRegister: React.FC = () => {
           </IconButton>
         </div>
 
-        <div>
+        <div className='button'>
           <span>요청하기</span>
-        </div>
-
-        <div>
           <RadiusButton text="내정보 불러오기" />
         </div>
       </Header>
-
+      <Divider/>
       <Body>
         <BodyTextBox>
           <TextField
-            id="standard-basic"
+            id="title"
             variant="standard"
             name="request-title"
             placeholder="제목"
@@ -93,14 +121,9 @@ const RequestRegister: React.FC = () => {
 
         <BodyPatientInfoBox>
           {/* name 값 데베랑 이름 맞추기 */}
-          <RegisterInput title="환자명" name="name" />
-          <RegisterInput title="생년월일" name="birth" />
           <BloodTypeGroup />
           <BloodDonationType />
-          <RegisterInput title="필요 횟수" name="need-count" />
-          <RegisterInput title="환자 등록번호" name="patient-number" />
-          <RegisterInput title="의료기관명" name="hospital" />
-          <RegisterInput title="병실호수" name="room-number" />
+          <PhoneInput/>
         </BodyPatientInfoBox>
       </Body>
 
