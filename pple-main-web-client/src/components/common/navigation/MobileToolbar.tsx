@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router-dom';
 import palette from '../../../lib/styles/palette';
 
 const MobileGNBBlock = styled('div')({
-  padding:'0.2rem 0.4rem 0.2rem 0.2rem',
+  padding:'0.2rem 0rem 0.2rem 0.2rem',
   display: 'flex',
   justifyContent: 'space-between',
   alignItems: 'center',
@@ -46,7 +46,7 @@ const MobileToolbar: React.FC<Props> = ({
           <ArrowBackIosNewIcon fontSize="small" />
         </IconButton>
       ) : (
-        <></>
+        <div></div>
       )}
       <div style={{ color: 'white', fontWeight: 'bold' }}>{title}</div>
       {isSearch ? (
@@ -54,21 +54,21 @@ const MobileToolbar: React.FC<Props> = ({
           <img src={Search} alt="검색" />
         </IconButton>
       ) : (
-        <></>
+        <div></div>
       )}
       {isWrite ? (
         <IconButton onClick={goPostRegister}>
           <img src={Edit} alt="검색" />
         </IconButton>
       ) : (
-        <></>
+        <div></div>
       )}
       {isChat ? (
         <IconButton onClick={goPostRegister}>
           <img src={Chat} alt="검색" />
         </IconButton>
       ) : (
-        <></>
+        <div></div>
       )}
     </MobileGNBBlock>
   );

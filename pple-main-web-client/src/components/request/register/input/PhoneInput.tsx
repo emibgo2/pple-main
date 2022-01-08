@@ -3,6 +3,18 @@ import { styled, Grid, FormControl, Input } from '@mui/material';
 import palette from '../../../../lib/styles/palette';
 import Label from '../../../common/Label';
 import StyleInput from '../../../common/input/StyleInput';
+const PhoneInputBlock = styled('div')({
+  marginTop: '25px',
+  display: 'flex',
+  alignItems: 'center',
+  '& .title': {
+    color: 'black',
+    fontWeight: 'bold',
+    fontSize: 'smaller',
+    minWidth: '50px',
+    display: 'flex',
+  },
+});
 const InputBlock = styled('div')({
   display: 'flex',
   alignContent: 'center',
@@ -11,8 +23,11 @@ const InputBlock = styled('div')({
     borderBottom: '1px solid #EDEDED',
     height: '28px',
     width: '50px',
-    margin: '0px 10px',
+    margin: '15px 10px',
   },
+  '& .input-form':{
+    marginTop:"16px",
+  }
 });
 
 const PhoneInput = () => {
@@ -40,8 +55,8 @@ const PhoneInput = () => {
     }
   };
   return (
-    <div>
-      <Label>휴대폰 번호</Label>
+    <PhoneInputBlock>
+      <div className="title">연락처 *</div>
       <InputBlock>
         <FormControl
           sx={{ width: '100%' }}
@@ -57,7 +72,11 @@ const PhoneInput = () => {
           ></StyleInput>
         </FormControl>
         <div className="divider"></div>
-        <FormControl sx={{ width: '100%' }} variant="standard">
+        <FormControl
+          sx={{ width: '100%' }}
+          variant="standard"
+          className="input-form"
+        >
           <StyleInput
             name="second"
             id="second"
@@ -67,7 +86,11 @@ const PhoneInput = () => {
           ></StyleInput>
         </FormControl>
         <div className="divider"></div>
-        <FormControl sx={{ width: '100%' }} variant="standard">
+        <FormControl
+          sx={{ width: '100%' }}
+          variant="standard"
+          className="input-form"
+        >
           <StyleInput
             name="third"
             id="third"
@@ -77,7 +100,7 @@ const PhoneInput = () => {
           ></StyleInput>
         </FormControl>
       </InputBlock>
-    </div>
+    </PhoneInputBlock>
   );
 };
 

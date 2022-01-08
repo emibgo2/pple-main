@@ -109,7 +109,7 @@ const FeedHeader: React.FC<CardProps> = ({
             </CardComponentHeaderColumn>
           </div>
           <CardComponentHeaderColumn>
-            <RadiusButton text="채팅하기" />
+            <RadiusButton text="도움주기" />
           </CardComponentHeaderColumn>
         </CardComponentHeader>
       </div>
