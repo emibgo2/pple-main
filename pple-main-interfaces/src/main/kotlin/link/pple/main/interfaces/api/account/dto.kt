@@ -2,6 +2,7 @@ package link.pple.main.interfaces.api.account
 
 import link.pple.main.domain.account.Account
 import link.pple.main.domain.account.AccountApplyDefinition
+import link.pple.main.domain.donation.Blood
 import java.time.LocalDate
 
 /**
@@ -13,7 +14,7 @@ data class AccountApplyDto(
     val birthDay: LocalDate,
     val gender: String,
     val phoneNumber: String,
-    val blood: Account.Blood
+    val blood: Blood
 )
 
 data class AccountPatchDto(
@@ -35,7 +36,7 @@ data class AccountDto(
     val gender: String?,
     val phoneNumber: String?,
     val profileImageUrl: String?,
-    val blood: Account.Blood?
+    val blood: Blood?
 )
 
 // ===============

@@ -4,6 +4,7 @@ import link.pple.assets.client.AccountApplyDefinitionDto
 import link.pple.assets.client.AccountDto
 import link.pple.assets.client.AccountPatchDto
 import link.pple.assets.client.BloodDto
+import link.pple.main.domain.donation.Blood
 import java.io.Serializable
 import java.time.LocalDate
 
@@ -23,11 +24,6 @@ interface Account : Serializable {
     val phoneNumber: String?
     val profileImageUrl: String?
     val blood: Blood?
-
-    data class Blood(
-        val abo: String,
-        val rh: String
-    ) : Serializable
 
     data class Provider(
         val type: AccountProviderType,
@@ -53,8 +49,8 @@ interface Account : Serializable {
                 phoneNumber = dto.phoneNumber,
                 blood = dto.blood?.let {
                     Blood(
-                        rh = it.rh,
-                        abo = it.abo
+                        rh = Blood.RH.from(it.rh),
+                        abo = Blood.ABO.from(it.abo)
                     )
                 }
             )
@@ -74,7 +70,7 @@ data class SimpleAccount(
     override val birthDay: LocalDate?,
     override val gender: String?,
     override val phoneNumber: String?,
-    override val blood: Account.Blood?
+    override val blood: Blood?
 ) : Account
 
 
@@ -85,7 +81,7 @@ data class AccountApplyDefinition(
     val birthDay: LocalDate,
     val gender: String,
     val phoneNumber: String,
-    val blood: Account.Blood
+    val blood: Blood
 )
 
 data class AccountPatchDefinition(
@@ -101,8 +97,8 @@ internal fun AccountApplyDefinition.toDto() = AccountApplyDefinitionDto(
     gender = gender,
     phoneNumber = phoneNumber,
     blood = BloodDto(
-        abo = blood.abo,
-        rh = blood.rh
+        rh = blood.rh.name,
+        abo = blood.abo.name
     )
 )
 

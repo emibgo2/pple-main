@@ -28,6 +28,17 @@ data class AccountCreateDefinitionDto(
     val profileImageUrl: String?
 )
 
+data class DonationDefinitionDto(
+    val title: String,
+    val content: String,
+    val bloodProduct: List<String>,
+    val patient: PatientDefinitionDto,
+    val phoneNumber: String
+)
+
+data class PatientDefinitionDto(
+    val blood: BloodDto
+)
 
 data class BloodDto(
     val abo: String,
@@ -56,3 +67,31 @@ data class AccountDto(
         val id: String
     )
 }
+
+data class DonationDto(
+    val id: Long,
+    val uuid: String,
+    val createdAt: LocalDateTime,
+    val createdBy: Long,
+    val modifiedAt: LocalDateTime,
+    val modifiedBy: Long,
+    val title: String,
+    val content: String,
+    val bloodProduct: List<String>,
+    val patient: PatientDto,
+    val phoneNumber: String,
+    val status: String,
+    val lastRenewedAt: LocalDateTime?,
+    val renewedCount: Long
+)
+
+data class PatientDto(
+    val id: Long,
+    val uuid: String,
+    val createdAt: LocalDateTime,
+    val createdBy: Long,
+    val modifiedAt: LocalDateTime,
+    val modifiedBy: Long,
+    val blood: BloodDto,
+    val status: String
+)
