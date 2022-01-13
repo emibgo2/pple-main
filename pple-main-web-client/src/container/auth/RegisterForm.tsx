@@ -30,7 +30,7 @@ const RegisterForm = () => {
     gender: '',
     blood: {
       rh: 'POSITIVE',
-      abo: '',
+      abo: 'A',
     },
     phone: {
       first: '',

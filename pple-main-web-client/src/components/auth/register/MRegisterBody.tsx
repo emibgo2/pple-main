@@ -58,9 +58,6 @@ const MRegisterBody: React.FC<IRegister> = ({
   handleRh
 }) => {
   const { name, nickname, year, month, day, gender, blood, phone } = user;
-  const onTestClick = () => {
-    console.log(user);
-  };
   return (
     <MRegisterBodyBlock>
       <NameInput name={name} onChange={onChange} />
@@ -74,8 +71,7 @@ const MRegisterBody: React.FC<IRegister> = ({
       />
       <PhoneInput phone={phone} handlePhoneNumber={handlePhoneNumber} />
       <TermsInput />
-      <RegisterButton />
-      <button onClick={onTestClick}>test</button>
+      <RegisterButton user={user} />
     </MRegisterBodyBlock>
   );
 };
