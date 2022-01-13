@@ -22,13 +22,20 @@ const StyledButton = styled(ButtonBase)({
   },
 });
 
-const RegisterButton: React.FC = () => {
+interface IButton{
+  user: any,
+}
+
+const RegisterButton: React.FC<IButton> = ({user}) => {
+    const onSubmit = ()=>{
+      console.log(user);
+    }
     return (
-        <RegisterButtonBlock>
-            <StyledButton>
-                <div>회원 가입</div>
-            </StyledButton>
-        </RegisterButtonBlock>
+      <RegisterButtonBlock>
+        <StyledButton onClick={onSubmit}>
+          <div>회원 가입</div>
+        </StyledButton>
+      </RegisterButtonBlock>
     );
 };
 

@@ -15,30 +15,16 @@ const InputBlock = styled('div')({
   },
 });
 
-const PhoneInput = () => {
-  const [number, setNumber] = useState({
-    first: '',
-    second: '',
-    third: '',
-  });
-  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const onlyNumber = e.target.value.replace(/[^0-9]/g, '');
-    if (e.target.name == 'second' || e.target.name == 'third') {
-      if (onlyNumber.length <= 4) {
-        setNumber({
-          ...number,
-          [e.target.name]: onlyNumber,
-        });
-      }
-      return;
-    }
-    if (onlyNumber.length <= 3) {
-      setNumber({
-        ...number,
-        [e.target.name]: onlyNumber,
-      });
-    }
+interface IPhone{
+  phone:{
+    first: string;
+    second: string;
+    third: string;
   };
+  handlePhoneNumber: any;
+}
+
+const PhoneInput: React.FC<IPhone> = ({phone,handlePhoneNumber}) => {
   return (
     <div>
       <Label>휴대폰 번호</Label>
@@ -51,8 +37,8 @@ const PhoneInput = () => {
           <StyleInput
             name="first"
             id="first"
-            value={number.first}
-            onChange={onChange}
+            value={phone.first}
+            onChange={handlePhoneNumber}
             inputProps={{ inputMode: 'numeric', pattern: '/[0-9]/g3' }}
           ></StyleInput>
         </FormControl>
@@ -61,8 +47,8 @@ const PhoneInput = () => {
           <StyleInput
             name="second"
             id="second"
-            value={number.second}
-            onChange={onChange}
+            value={phone.second}
+            onChange={handlePhoneNumber}
             inputProps={{ inputMode: 'numeric', pattern: '/[0-9]/g4' }}
           ></StyleInput>
         </FormControl>
@@ -71,8 +57,8 @@ const PhoneInput = () => {
           <StyleInput
             name="third"
             id="third"
-            value={number.third}
-            onChange={onChange}
+            value={phone.third}
+            onChange={handlePhoneNumber}
             inputProps={{ inputMode: 'numeric', pattern: '/[0-9]/g4' }}
           ></StyleInput>
         </FormControl>

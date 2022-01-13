@@ -1,74 +1,108 @@
 import React, { useState } from 'react';
-import { IconButton, styled, ToggleButton, ToggleButtonGroup } from '@mui/material';
+import {
+  IconButton,
+  styled,
+  ToggleButton,
+  ToggleButtonGroup,
+} from '@mui/material';
 import palette from '../../../../lib/styles/palette';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import Label from '../../../common/Label';
 const BloodTypeInputBlock = styled('div')({
-  marginTop:"25px",
+  marginTop: '25px',
   '& .rh-text': {
-    display:'inline-block',
-    marginTop:'0.5rem',
+    display: 'inline-block',
+    marginTop: '0.5rem',
     fontSize: 'small',
     color: `${palette.gray[1]}`,
     border: 'none',
   },
   '& #custom-toggle': {
-    padding:'0px',
+    padding: '0px',
     background: 'none',
-    marginRight:'0.5rem',
+    marginRight: '0.5rem',
   },
-  '& .title':{
-    display:'flex',
-    justifyContent:"space-between",
-    alignItems:"center",
+  '& .title': {
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
   },
-  marginBottom:"25px",
+  marginBottom: '25px',
 });
 
-const StyledToggleButtonGroup = styled(ToggleButtonGroup)({
-  display: 'flex',
-  justifyContent: 'space-between',
-  borderRadius: '50%',
-  '& .MuiButtonBase-root': {
-    border: 'none',
-  },
-  '& #circle-toggle': {
-    borderRadius: '100%',
-    border: `1px solid ${palette.gray[1]}`,
-    backgroundColor: 'white',
-    minWidth: '64px',
-    color: `${palette.gray[1]}`,
-    padding: '1rem',
-    transition: 'all ease 0.5s 0s',
-    '&:focus': {
-      backgroundColor: `${palette.red[1]}`,
+interface IType {
+  type: string;
+}
+
+const StyledToggleButtonGroup = styled(ToggleButtonGroup)<IType>(
+  ({ type }) => ({
+    display: 'flex',
+    justifyContent: 'space-between',
+    '& .MuiButtonBase-root': {
+      backgroundColor: 'white',
+      minWidth: '64px',
+      color: `${palette.gray[1]}`,
+      padding: '1rem',
+      transition: 'all ease 0.5s 0s',
+    },
+    '& .MuiToggleButton-root.Mui-selected': {
+      background: `${palette.red[1]} !important`,
       color: 'white',
     },
-  },
-});
+    '& #circle-toggle': {
+      borderRadius: '100%',
+      border: `1px solid ${palette.gray[1]}`,
+    },
+  }),
+);
 
-const BloodTypeInput = () => {
-  const [bloodType, setBloodType] = useState('A');
+interface IBloodType {
+  blood: {
+    rh: string;
+    abo: string;
+  };
+
+  handleBloodType: any;
+  handleRh: any;
+}
+
+const BloodTypeInput: React.FC<IBloodType> = ({
+  blood,
+  handleBloodType,
+  handleRh,
+}) => {
+  // 토글 버튼 UI 관련 변수
   const [select, setSelect] = useState(false);
+  const [alignment, setAlignment] = React.useState<string | null>('A');
 
-  const handleBloodType = (
-    event: React.MouseEvent<HTMLElement>,
-    newBloodType: string,
+  const handleAlignment = (
+    e: React.MouseEvent,
+    newAlignment: string | null,
   ) => {
-    setBloodType(newBloodType);
+    setAlignment(newAlignment);
+  };
+
+  const onChange = (e: any) => {
+    handleAlignment(e, e.target.value);
+    handleBloodType(e);
+  };
+
+  const handleRhChange = () => {
+    setSelect(!select);
+    handleRh();
   };
 
   const children = [
-    <ToggleButton id="circle-toggle" value="A+" key="A+">
+    <ToggleButton id="circle-toggle" value="A" key="A+">
       <span>A+ </span>
     </ToggleButton>,
-    <ToggleButton id="circle-toggle" value="B+" key="B+">
+    <ToggleButton id="circle-toggle" value="B" key="B+">
       <span>B+ </span>
     </ToggleButton>,
-    <ToggleButton id="circle-toggle" value="O+" key="O+">
+    <ToggleButton id="circle-toggle" value="O" key="O+">
       <span>O+ </span>
     </ToggleButton>,
-    <ToggleButton id="circle-toggle" value="AB+" key="AB+">
+    <ToggleButton id="circle-toggle" value="AB" key="AB+">
       <span>AB+</span>
     </ToggleButton>,
   ];
@@ -82,11 +116,9 @@ const BloodTypeInput = () => {
               color: select ? 'black' : 'white',
               background: 'none',
             }}
-            value="check"
+            value={blood.rh}
             selected={select}
-            onChange={() => {
-              setSelect(!select);
-            }}
+            onChange={handleRhChange}
             className="rh-text"
             id="custom-toggle"
           >
@@ -97,10 +129,11 @@ const BloodTypeInput = () => {
       </div>
       <StyledToggleButtonGroup
         exclusive
-        onChange={handleBloodType}
-        value={bloodType}
+        value={alignment}
+        type={blood.abo}
         aria-label="select type"
         size="large"
+        onChange={onChange}
       >
         {children}
       </StyledToggleButtonGroup>

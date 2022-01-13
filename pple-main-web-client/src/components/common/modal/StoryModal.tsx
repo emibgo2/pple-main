@@ -3,7 +3,6 @@ import Modal from 'react-modal';
 import { styled, Paper, IconButton } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import Clock from '../../../lib/images/modal/Clock.svg';
-import SquareButton from '../buttons/SquareButton';
 import ModalButton from './ModalButton';
 
 const StyledModal = styled(Modal)({
