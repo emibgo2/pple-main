@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import {
-  styled,
+  styled, 
   FormControl,
   MenuItem,
   Select,
-  SelectChangeEvent,
   InputBase,
 } from '@mui/material';
 import Label from '../../../common/Label';
@@ -35,20 +34,17 @@ const Year: Array<number> = [...Array(100).keys()];
 const Month: Array<number> = [...Array(12).keys()];
 const Day: Array<number> = [...Array(31).keys()];
 
-const BirthForm = () => {
-  const [birth, setBirth] = useState<IBirth>({
-    year: '',
-    month: '',
-    day: '',
-  });
+interface IBirthForm {
+  year: string; 
+  month: string;
+  day: string; 
+  onChange: any;
+}
 
-  const handleBirth = (event: SelectChangeEvent<any>) => {
-    setBirth({
-      ...birth,
-      [event.target.name]: event.target.value,
-    });
-  };
-
+const BirthForm: React.FC<IBirthForm> = ({
+  year,month,day,
+  onChange,
+}) => {
   return (
     <>
       <Label>생년월일</Label>
@@ -56,12 +52,12 @@ const BirthForm = () => {
         <FormControl
           variant="outlined"
           className="form-birth"
-          sx={{ width: '30%'}}
+          sx={{ width: '30%' }}
         >
           <Select
-            value={birth.year}
+            value={year}
             name="year"
-            onChange={handleBirth}
+            onChange={onChange}
             input={<BaseInput />}
             displayEmpty
             renderValue={select => {
@@ -86,9 +82,9 @@ const BirthForm = () => {
         >
           <Select
             placeholder="월"
-            value={birth.month}
+            value={month}
             name="month"
-            onChange={handleBirth}
+            onChange={onChange}
             input={<BaseInput />}
             displayEmpty
             renderValue={select => {
@@ -113,9 +109,9 @@ const BirthForm = () => {
         >
           <Select
             placeholder="일"
-            value={birth.day}
+            value={day}
             name="day"
-            onChange={handleBirth}
+            onChange={onChange}
             input={<BaseInput />}
             displayEmpty
             renderValue={select => {
