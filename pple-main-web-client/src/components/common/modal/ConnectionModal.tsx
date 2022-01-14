@@ -125,7 +125,7 @@ const ConnectionModal: React.FC = () => {
               <ContentBox>
                 근처 헌혈의 집 혹은 헌혈카페에 방문해<br/> 지정헌혈을 완료해주세요
               </ContentBox>
-            </SwiperSlide>
+              </SwiperSlide>
           </Swiper>
         </StyledPaper>
       </StyledModal>
