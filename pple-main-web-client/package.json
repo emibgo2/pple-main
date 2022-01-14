@@ -41,6 +41,7 @@
     "sart": "^0.0.0",
     "styled-components": "^5.3.3",
     "styled-reset": "^4.3.4",
+    "swiper": "6.8.4",
     "typesafe-actions": "^5.1.0",
     "typescript": "^4.4.2",
     "web-vitals": "^2.1.0"
