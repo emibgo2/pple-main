@@ -7,6 +7,9 @@ const HeaderBlock = styled('div')({
   display: 'flex',
   alignContent: 'center',
   padding: '12px 0px 12px 14px',
+  background: 'linear-gradient(109.4deg, #FF6969 -3.19%, #FF3333 109.95%)',
+  color: 'white',
+  fontWeight: 'bold',
   '& .icon': {
     width: '40%',
   },
@@ -17,40 +20,21 @@ const HeaderBlock = styled('div')({
   },
 });
 
-interface Props {
-  isBack?: boolean;
-  title: string;
-}
 
-const MyPageHeader: React.FC<Props> = ({ isBack, title }) => {
+const MyPageHeader: React.FC = () => {
   const navigate = useNavigate();
   const handleBack: MouseEventHandler = () => {
     navigate(-1);
   };
   return (
-    <HeaderBlock
-      sx={{
-        background:
-          title != '마이페이지'
-            ? 'white'
-            : 'linear-gradient(109.4deg, #FF6969 -3.19%, #FF3333 109.95%)',
-      }}
-    >
-      {isBack ? (
-        <div className='icon'>
-          <IconButton sx={{ color: 'white' }} onClick={handleBack}>
-            <ArrowBackIosNewIcon fontSize="small" />
-          </IconButton>
-        </div>
-      ) : (
-        <div></div>
-      )}
-      <div style={{ color:
-          title != '마이페이지'
-            ? '#222222'
-            : 'white', fontWeight: 'bold' }}
-            className='title'
-            >{title}</div>
+    <HeaderBlock>
+      <div className="icon">
+        <IconButton sx={{ color: 'white' }} onClick={handleBack}>
+          <ArrowBackIosNewIcon fontSize="small" />
+        </IconButton>
+      </div>
+
+      <div className="title">마이페이지</div>
     </HeaderBlock>
   );
 };
