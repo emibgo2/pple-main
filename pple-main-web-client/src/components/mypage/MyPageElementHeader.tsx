@@ -10,12 +10,17 @@ const Block = styled('div')({
   color: '#222222',
   fontWeight: 'bold',
   '& .icon': {
-    width: '40%',
+    width: '33%',
   },
   '& .title': {
+    width: '33%',
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'flex-start',
+    justifyContent: 'center',
+    transform: 'translateX(-10%)',
+  },
+  '& .blank': {
+    width: '33%',
   },
 });
 
@@ -38,6 +43,7 @@ const MyPageElementHeader: React.FC<IHeader> = ({title}) => {
         </div>
 
         <div className="title">{title}</div>
+        <div className='blank'></div>
       </Block>
     );
 };
