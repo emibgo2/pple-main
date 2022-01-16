@@ -5,13 +5,16 @@ import FeedPatientInfo from '../../../common/feed/FeedPatientInfo';
 import FeedContent from '../../../common/feed/FeedContent';
 import FeedFooter from '../../../common/feed/FeedFooter';
 import { useNavigate } from 'react-router-dom';
+import FeedUserInfo from './FeedUserInfo';
 
 const FeedTemplateBlock = styled('div')({
   '& .feed': {
     cursor: 'pointer',
   },
 });
-const FeedBox = styled('div')({});
+const FeedBox = styled('div')({
+  marginBottom:"15px",
+});
 const FeedContentBox = styled('div')({
   padding: '0px 15px 18px 15px',
   background: '#FFFFFF',
@@ -37,25 +40,44 @@ interface Props {
 
 const FeedTemplate: React.FC<Props> = ({ bloodType, sort }) => {
   const navigate = useNavigate();
-  const onClick = (event: React.MouseEvent<HTMLElement>) => {
-    const userId = event.currentTarget.ariaLabel;
-    navigate(`/post/${userId}`);
-  };
   return (
     <FeedTemplateBlock>
       <Paper
         className="feed"
         sx={{ borderRadius: '14px', border: 'none' }}
-        elevation={2}
+        elevation={1}
       >
-        <FeedBox 
-        aria-label='1'
-        onClick={onClick}>
-          <FeedHeader bloodType={bloodType} sort={sort}/>
+        <FeedBox>
+          <FeedHeader bloodType={bloodType} sort={sort} buttonText="도움주기" />
           <FeedContentBox>
+            <FeedUserInfo />
             <FeedContent />
-            <FeedPatientInfo />
-            <FeedFooter />
+          </FeedContentBox>
+        </FeedBox>
+      </Paper>
+      <Paper
+        className="feed"
+        sx={{ borderRadius: '14px', border: 'none' }}
+        elevation={1}
+      >
+        <FeedBox>
+          <FeedHeader bloodType={bloodType} sort={sort} buttonText="도움주기" />
+          <FeedContentBox>
+            <FeedUserInfo />
+            <FeedContent />
+          </FeedContentBox>
+        </FeedBox>
+      </Paper>
+      <Paper
+        className="feed"
+        sx={{ borderRadius: '14px', border: 'none' }}
+        elevation={1}
+      >
+        <FeedBox>
+          <FeedHeader bloodType={bloodType} sort={sort} buttonText="도움주기" />
+          <FeedContentBox>
+            <FeedUserInfo />
+            <FeedContent />
           </FeedContentBox>
         </FeedBox>
       </Paper>

@@ -27,6 +27,7 @@ const RequestPost: React.FC = () => {
       <MobileToolbar isBack={true} title="요청 피드" isSearch={true} />
       <RequestPostBlock>
         <FeedHeader
+          buttonText='도움주기'
           bloodType="AB+"
           sort="혈소판성분채혈"
           noBorderRadius={true}
@@ -34,8 +35,6 @@ const RequestPost: React.FC = () => {
         <FeedContentBox>
         <FeedUserInfo/>
           <FeedContent />
-          <FeedPatientInfo />
-          <FeedFooter />
         </FeedContentBox>
       </RequestPostBlock>
     </>
