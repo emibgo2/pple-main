@@ -6,7 +6,7 @@ import Profile from '../components/mypage/Profile';
 const MyPage: React.FC = () => {
     return (
       <MyPageTemplate>
-        <MyPageHeader title="마이페이지" isBack={true}/>
+        <MyPageHeader/>
         <Profile />
         <MyPageList />
       </MyPageTemplate>

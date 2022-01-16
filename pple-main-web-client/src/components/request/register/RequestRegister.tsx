@@ -3,13 +3,13 @@ import React, { MouseEventHandler } from 'react';
 import CloseIcon from '@mui/icons-material/Close';
 import RadiusButton from '../../common/buttons/RadiusButton';
 import { TextField,styled } from '@mui/material';
-import RegisterInput from './input/RegisterInput';
-import BloodTypeGroup from './input/BloodTypeGroup';
-import BloodDonationType from './input/BloodDonationType';
+import RegisterInput from '../../common/input/RegisterInput';
+import BloodTypeGroup from '../../common/input/BloodTypeGroup';
+import BloodDonationType from '../../common/input/BloodDonationType';
 import SquareButton from '../../common/buttons/SquareButton';
 import palette from '../../../lib/styles/palette';
 import { useNavigate } from 'react-router-dom';
-import PhoneInput from './input/PhoneInput';
+import PhoneInput from '../../common/input/PhoneInput';
 
 const Divider = styled('div')({
   width:"100%",

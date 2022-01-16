@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { styled, Grid, FormControl, Input } from '@mui/material';
-import palette from '../../../../lib/styles/palette';
-import Label from '../../../common/Label';
-import StyleInput from '../../../common/input/StyleInput';
+import palette from '../../../lib/styles/palette';
+import Label from '../Label';
+import StyleInput from './StyleInput';
 const PhoneInputBlock = styled('div')({
   marginTop: '25px',
   display: 'flex',

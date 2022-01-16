@@ -10,6 +10,9 @@ import RequestPostPage from './pages/RequestPostPage';
 import RequestRegisterPage from './pages/RequestRegisterPage';
 import RequestPost from './components/request/post/RequestPost';
 import MyPage from './pages/MyPage';
+import MyStory from './components/mypage/my-story/MyStory';
+import ModifyStory from './components/mypage/my-story/ModifyStory';
+import FAQ from './components/mypage/faq/FAQ';
 
 const GlobalStyles = createGlobalStyle`
   ${reset};
@@ -38,7 +41,9 @@ const App: React.FC = () => {
             <Route path="/post" element={<RequestPostPage />}/>
             <Route path="/post/:userId" element={<RequestPost/>} />
             <Route path="/post/register" element={<RequestRegisterPage />} />
-            <Route path="/page" element={<MyPage/>}/> 
+            <Route path="/page" element={<MyPage/>}/>
+            <Route path="/faq" element={<FAQ/>}/>
+            <Route path="/test" element={<ModifyStory/>}/> 
           </Routes>
       </AppBlock>
     </>
