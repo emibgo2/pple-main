@@ -5,9 +5,9 @@ import {
   ToggleButton,
   ToggleButtonGroup,
 } from '@mui/material';
-import palette from '../../../../lib/styles/palette';
+import palette from '../../../lib/styles/palette';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
-import Label from '../../../common/Label';
+import Label from '../Label';
 const BloodTypeInputBlock = styled('div')({
   marginTop: '25px',
   '& .rh-text': {
@@ -52,7 +52,7 @@ const StyledToggleButtonGroup = styled(ToggleButtonGroup)({
   },
 });
 
-const BloodTypeInput = () => {
+const BloodTypeGroup = () => {
   const [bloodType, setBloodType] = useState('A');
   const [select, setSelect] = useState(false);
 
@@ -113,4 +113,4 @@ const BloodTypeInput = () => {
   );
 };
 
-export default BloodTypeInput;
+export default BloodTypeGroup;
