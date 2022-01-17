@@ -1,4 +1,4 @@
-import React, { MouseEventHandler } from 'react';
+import React, { MouseEventHandler, useEffect } from 'react';
 import styles from 'styled-components';
 import { Button, styled} from '@mui/material';
 import RadiusButtonWithDownDrop from '../common/buttons/RadiusButtonWithDownDrop';
@@ -7,6 +7,8 @@ import { useNavigate } from 'react-router-dom';
 import palette from '../../lib/styles/palette';
 import SortingButtonGroup from '../common/buttons/SortingButtonGroup';
 import CardComponent from './CardComponent';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../models';
 
 const CardContainerBlock = styles.div`
   width: 100%;
@@ -45,10 +47,19 @@ const StyledButton = styled(Button)({
 });
 
 const CardTemplate = () => {
+  const token = useSelector((state: RootState)=>state.account?.token); 
   const navigate = useNavigate();
-  const goPostList: MouseEventHandler = () => {
-    navigate('/post');
-  };
+  const handleCookies =
+    (token: string | undefined) =>
+    (event: React.MouseEvent | React.KeyboardEvent) => {
+      console.log(token);
+      if (token == '') {
+        navigate('/');
+      } else {
+        // navigate('/post');
+        console.log('hi');
+      }
+    };
   return (
     <CardContainerBlock>
       <ButtonGroup>
@@ -56,7 +67,7 @@ const CardTemplate = () => {
           <SortingButtonGroup />
         </div>
         <div>
-          <StyledButton sx={{ padding: '0px' }} onClick={goPostList}>
+          <StyledButton sx={{ padding: '0px' }} onClick={handleCookies(token)}>
             <span>전체보기</span>
             <ChevronRightIcon />
           </StyledButton>
