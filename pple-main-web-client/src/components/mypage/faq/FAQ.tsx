@@ -55,7 +55,6 @@ const FAQ = () => {
       </SearchBox>
       <TabContext value={value}>
         <StyledTabList
-          className="hihi"
           onChange={handleChange}
           aria-label="select faq"
           variant="fullWidth"
