@@ -74,6 +74,9 @@ const HomePageHeader: React.FC<HomeHeaderProps> = ({ name }) => {
   const goRequestRegister: MouseEventHandler = () => {
     navigate('/post/register');
   };
+  const goReserve: MouseEventHandler = () =>{
+    window.open('https://www.bloodinfo.net/blood_reserve.do');
+  }
   return (
     <HomePageHeaderBlock>
       <Title>
@@ -90,7 +93,7 @@ const HomePageHeader: React.FC<HomeHeaderProps> = ({ name }) => {
             <div className="button-text-bottom">요청하기</div>
           </ButtonContent>
         </HomeButton>
-        <HomeButton variant="contained" onClick={goRequestRegister}>
+        <HomeButton variant="contained" onClick={goReserve}>
           <img src={Calendar} alt="A" style={{ marginTop: '7px' }} />
           <ButtonContent>
             <div className="button-text-top">헌혈</div>
