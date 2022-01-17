@@ -1,7 +1,7 @@
 import React from 'react';
 import { styled, Paper, InputBase, IconButton } from '@mui/material';
-import palette from '../../lib/styles/palette';
-import searchImg from '../../lib/images/Search.png';
+import palette from '../../../lib/styles/palette';
+import searchImg from '../../../lib/images/Search.png';
 
 const SearchInputBlock = styled('div')({
   margin: '20px 0px',
@@ -20,13 +20,17 @@ const SearchComponentsBox = styled('div')({
   justifyContent: 'space-between',
 });
 
-const SearchInput: React.FC = () => {
+interface ISearch{
+  placeholder: string; 
+}
+
+const SearchInput: React.FC<ISearch> = ({placeholder}) => {
   return (
     <SearchInputBlock>
       <Paper elevation={0}>
         <SearchComponentsBox>
           <InputBase
-            placeholder="요청을 검색해 보세요"
+            placeholder={placeholder}
             sx={{ ml: 1, flex: 1, fontWeight: 'bold' }}
             inputProps={{ 'aria-label': 'search request feed' }}
           ></InputBase>

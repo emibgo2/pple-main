@@ -69,20 +69,36 @@ function BpRadio(props: RadioProps) {
   );
 }
 
+interface IGender {
+  gender: string;
+  onChange: any;
+}
 
-export default function GenderInput() {
+const GenderInput: React.FC<IGender> = ({ gender, onChange }) => {
   return (
     <FormControl fullWidth component="fieldset">
       <Label>성별</Label>
       <RadioGroup
+        value={gender}
+        onChange={onChange}
         row
         defaultValue="male"
         aria-label="gender"
-        name="customized-radios"
+        name="gender"
       >
-        <FormControlLabel sx={{marginRight:"4rem"}} value="male" control={<BpRadio />} label="남자" />
-        <FormControlLabel value="female" control={<BpRadio />} label="여자" />
+        <FormControlLabel
+          sx={{ marginRight: '4rem' }}
+          control={<BpRadio value="MALE" />}
+          label="남자"
+        />
+        <FormControlLabel
+          sx={{ marginRight: '4rem' }}
+          control={<BpRadio value="FEMALE" />}
+          label="여자"
+        />
       </RadioGroup>
     </FormControl>
   );
-}
+};
+
+export default GenderInput;

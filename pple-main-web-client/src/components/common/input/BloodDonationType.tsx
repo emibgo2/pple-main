@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Label from '../../../common/Label';
+import Label from '../Label';
 import { ToggleButton, styled } from '@mui/material';
 
 const BloodDonationTypeBlock = styled('div')({

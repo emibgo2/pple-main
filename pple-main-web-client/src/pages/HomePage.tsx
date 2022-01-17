@@ -1,12 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import HomePageHeader from '../components/home/HomePageHeader';
 import CardTemplate from '../components/home/CardTemplate';
+import ConnectionModal from '../components/common/modal/ConnectionModal';
+import axios from 'axios';
+import { useNavigate, useSearchParams } from 'react-router-dom';
+import { customAxios } from '../lib/customAxios';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../models';
+import { setToken } from '../models/auth/token';
+import { setUuid } from '../models/auth/uuid';
 
-const HomepageBlock = styled.div`
-`;
+const HomepageBlock = styled.div``;
 
 const HomePage: React.FC = () => {
     // const navigate = useNavigate();

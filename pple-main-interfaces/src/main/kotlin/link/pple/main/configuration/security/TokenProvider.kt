@@ -29,6 +29,16 @@ class TokenProvider(
             .compact()
     }
 
+    fun createRefreshToken(): String {
+        val now = Date()
+        val expiryDate = Date(now.time + ppleProperties.auth.tokenExpirationMillis)
+        return Jwts.builder()
+            .setIssuedAt(now)
+            .setExpiration(expiryDate)
+            .signWith(SignatureAlgorithm.HS512, ppleProperties.auth.tokenSecret)
+            .compact()
+    }
+
     fun getIdentifierFromToken(token: String): String {
         val claims: Claims = Jwts.parser()
             .setSigningKey(ppleProperties.auth.tokenSecret)

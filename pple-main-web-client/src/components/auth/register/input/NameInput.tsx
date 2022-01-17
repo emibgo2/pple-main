@@ -25,16 +25,18 @@ const StyledInput = styled(TextField)<StyleInputProps>(({ text }) => ({
   },
 }));
 
-const NameInput: React.FC = () => {
-  const [name, setName] = useState('');
-  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setName(e.target.value);
-  };
+interface IName{
+  name: string; 
+  onChange: any; 
+}
+
+const NameInput: React.FC<IName> = ({name,onChange}) => {
   return (
     <div>
       <Label>이름</Label>
       <StyleInput
         id="user-name"
+        name='name'
         placeholder="실명을 입력해주세요"
         value={name}
         onChange={onChange}

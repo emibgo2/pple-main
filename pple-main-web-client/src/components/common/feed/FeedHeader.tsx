@@ -66,12 +66,14 @@ interface CardProps {
   bloodType: string;
   sort: string;
   noBorderRadius?: boolean;
+  buttonText: string;
 }
 
 const FeedHeader: React.FC<CardProps> = ({
   bloodType,
   sort,
   noBorderRadius,
+  buttonText
 }) => {
   return (
     <FeedHeaderBlock noBorderRadius={noBorderRadius}>
@@ -109,7 +111,7 @@ const FeedHeader: React.FC<CardProps> = ({
             </CardComponentHeaderColumn>
           </div>
           <CardComponentHeaderColumn>
-            <RadiusButton text="도움주기" />
+            <RadiusButton text={buttonText} />
           </CardComponentHeaderColumn>
         </CardComponentHeader>
       </div>

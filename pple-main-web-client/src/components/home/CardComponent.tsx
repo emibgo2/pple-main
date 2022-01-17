@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { styled } from '@mui/system';
 import { Paper } from '@mui/material';
 import FeedHeader from '../common/feed/FeedHeader';
@@ -21,6 +21,7 @@ const CardComponent: React.FC = () => {
           bloodType="AB형"
           sort="혈소판성분채혈"
           noBorderRadius={false}
+          buttonText='도움주기'
         />
         <CardContentBox>
           <FeedContent
