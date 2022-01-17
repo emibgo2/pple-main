@@ -1,7 +1,6 @@
-import React, { MouseEventHandler, useEffect } from 'react';
+import React, { useState } from 'react';
 import styles from 'styled-components';
 import { Button, styled} from '@mui/material';
-import RadiusButtonWithDownDrop from '../common/buttons/RadiusButtonWithDownDrop';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import { useNavigate } from 'react-router-dom';
 import palette from '../../lib/styles/palette';
@@ -9,6 +8,7 @@ import SortingButtonGroup from '../common/buttons/SortingButtonGroup';
 import CardComponent from './CardComponent';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../models';
+import LoginRequestModal from '../common/modal/LoginRequestModal';
 
 const CardContainerBlock = styles.div`
   width: 100%;
@@ -54,12 +54,17 @@ const CardTemplate = () => {
     (event: React.MouseEvent | React.KeyboardEvent) => {
       console.log(token);
       if (token == '') {
-        navigate('/');
-      } else {
-        // navigate('/post');
-        console.log('hi');
-      }
+        // navigate('/login');
+        setOpen(!open); 
+        return
+      } 
+      navigate('/post');
     };
+
+    const [open,setOpen] = useState(false); 
+    const handleModalOpen = () =>{
+      setOpen(!open); 
+    }
   return (
     <CardContainerBlock>
       <ButtonGroup>
@@ -71,6 +76,8 @@ const CardTemplate = () => {
             <span>전체보기</span>
             <ChevronRightIcon />
           </StyledButton>
+
+          <LoginRequestModal open={open} onClick={handleModalOpen}/>
         </div>
       </ButtonGroup>
       <CardComponent />

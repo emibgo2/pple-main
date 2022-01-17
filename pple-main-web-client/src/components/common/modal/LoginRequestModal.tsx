@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import Modal from 'react-modal';
-import { styled, Paper, IconButton } from '@mui/material';
+import { styled, Paper, IconButton,Button } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import Coin from '../../../lib/images/modal/Coin.svg';
 import { useNavigate } from 'react-router-dom';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import palette from '../../../lib/styles/palette';
 
 const StyledModal = styled(Modal)({
   position: 'fixed',
@@ -51,19 +53,19 @@ const ContentBox = styled('div')({
   }
 });
 
-const LoginRequestModal: React.FC = () => {
-  const navigate = useNavigate(); 
-    const [open, setOpen] = useState(false);
-  const onClick = () => {
-    setOpen(!open);
+interface IModal { 
+  open: boolean;
+  onClick: () => void;
+}
+
+const LoginRequestModal: React.FC<IModal> = ({ open, onClick }) => {
+  const navigate = useNavigate();
+  const goLogin = () => {
+    navigate('/login');
   };
-  const goLogin = () =>{
-      navigate('/login');
-  }
   return (
-    <>
-      <button onClick={onClick}></button>
-      <StyledModal isOpen={open}>
+    <div>
+      <StyledModal isOpen={open} ariaHideApp={false}>
         <StyledPaper elevation={1}>
           <CloseBox>
             <IconButton onClick={onClick}>
@@ -76,15 +78,13 @@ const LoginRequestModal: React.FC = () => {
           <TitleBox>
             로그인 후<br /> 헌혈 서비스를 이용해보세요
           </TitleBox>
-          <ContentBox
-            onClick={goLogin}
-          >
+          <ContentBox onClick={goLogin}>
             <u>로그인 하기</u>
           </ContentBox>
         </StyledPaper>
       </StyledModal>
-    </>
+    </div>
   );
-};
+}
 
 export default LoginRequestModal;
