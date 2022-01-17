@@ -36,6 +36,7 @@ class SecurityConfig(
             .logout().disable()
             .cors().and()
             .authorizeRequests()
+            .antMatchers("/swagger-ui/**").permitAll()
             .antMatchers("/api/**").authenticated()
             .antMatchers("/api/admin/**").hasAuthority("ADMIN")
             .antMatchers("/admin/**").hasAuthority("ADMIN")
