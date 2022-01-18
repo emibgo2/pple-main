@@ -1,11 +1,11 @@
 import React from 'react';
-import {styled,Button, ButtonBase} from '@mui/material';
+import { styled, Button, ButtonBase } from '@mui/material';
 import palette from '../../../../lib/styles/palette';
 const RegisterButtonBlock = styled('div')({
-    width:"100%",
-    marginTop:"25px",
-    paddingBottom:"25px",
-})
+  width: '100%',
+  marginTop: '25px',
+  paddingBottom: '25px',
+});
 
 const StyledButton = styled(ButtonBase)({
   width: '100%',
@@ -13,7 +13,7 @@ const StyledButton = styled(ButtonBase)({
   backgroundColor: `${palette.gray[5]}`,
   borderRadius: '15px',
   padding: '17px 0px',
-  transition:"0.2s ease-in-out 0.2s",
+  transition: '0.2s ease-in-out 0.2s',
   '&:active': {
     backgroundColor: `${palette.red[1]}`,
   },
@@ -22,21 +22,21 @@ const StyledButton = styled(ButtonBase)({
   },
 });
 
-interface IButton{
-  user: any,
+interface IButton {
+  user: any;
 }
 
-const RegisterButton: React.FC<IButton> = ({user}) => {
-    const onSubmit = ()=>{
-      console.log(user);
-    }
-    return (
-      <RegisterButtonBlock>
-        <StyledButton onClick={onSubmit}>
-          <div>회원 가입</div>
-        </StyledButton>
-      </RegisterButtonBlock>
-    );
+const RegisterButton: React.FC<IButton> = ({ user }) => {
+  const onSubmit = () => {
+    console.log(user);
+  };
+  return (
+    <RegisterButtonBlock>
+      <StyledButton onClick={onSubmit}>
+        <div>회원 가입</div>
+      </StyledButton>
+    </RegisterButtonBlock>
+  );
 };
 
 export default RegisterButton;

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { styled, Grid, FormControl, Input } from '@mui/material';
 import palette from '../../../../lib/styles/palette';
 import Label from '../../../common/Label';
@@ -15,16 +15,25 @@ const InputBlock = styled('div')({
   },
 });
 
-interface IPhone{
-  phone:{
+interface IPhone {
+  phone: {
     first: string;
     second: string;
     third: string;
   };
   handlePhoneNumber: any;
+  createPhoneFormat: (phone: any) => void;
 }
 
-const PhoneInput: React.FC<IPhone> = ({phone,handlePhoneNumber}) => {
+const PhoneInput: React.FC<IPhone> = ({
+  phone,
+  handlePhoneNumber,
+  createPhoneFormat,
+}) => {
+  useEffect(() => {
+    createPhoneFormat(phone);
+  }, [phone]);
+
   return (
     <div>
       <Label>휴대폰 번호</Label>

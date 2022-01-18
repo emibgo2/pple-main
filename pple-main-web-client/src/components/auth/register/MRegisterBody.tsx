@@ -1,8 +1,6 @@
 import React, { ChangeEventHandler, useEffect, useState } from 'react';
 import palette from '../../../lib/styles/palette';
-import {
-  styled,
-} from '@mui/material';
+import { styled } from '@mui/material';
 import BirthForm from './input/BirthForm';
 import GenderInput from './input/GenderInput';
 import BloodTypeInput from './input/BloodTypeInput';
@@ -13,14 +11,14 @@ import RegisterButton from './input/RegisterButton';
 import NameInput from './input/NameInput';
 
 const MRegisterBodyBlock = styled('div')({
-  height:"100%",
+  height: '100%',
   padding: '0px 1rem 44px 1rem',
-  boxSizing:"border-box",
+  boxSizing: 'border-box',
   width: '100%',
-  display:"flex",
-  marginTop:"2rem",
-  flexDirection:"column",
-  alignContent:"center",
+  display: 'flex',
+  marginTop: '2rem',
+  flexDirection: 'column',
+  alignContent: 'center',
 });
 
 interface IUser {
@@ -47,7 +45,8 @@ interface IRegister {
   onChange: any;
   handlePhoneNumber: any;
   handleBloodType: any;
-  handleRh : any; 
+  handleRh: any;
+  createPhoneFormat: (phone: any) => void;
 }
 
 const MRegisterBody: React.FC<IRegister> = ({
@@ -55,7 +54,8 @@ const MRegisterBody: React.FC<IRegister> = ({
   onChange,
   handlePhoneNumber,
   handleBloodType,
-  handleRh
+  handleRh,
+  createPhoneFormat,
 }) => {
   const { name, nickname, year, month, day, gender, blood, phone } = user;
   return (
@@ -69,7 +69,11 @@ const MRegisterBody: React.FC<IRegister> = ({
         handleBloodType={handleBloodType}
         handleRh={handleRh}
       />
-      <PhoneInput phone={phone} handlePhoneNumber={handlePhoneNumber} />
+      <PhoneInput
+        phone={phone}
+        handlePhoneNumber={handlePhoneNumber}
+        createPhoneFormat={createPhoneFormat}
+      />
       <TermsInput />
       <RegisterButton user={user} />
     </MRegisterBodyBlock>

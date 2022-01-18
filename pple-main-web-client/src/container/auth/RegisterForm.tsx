@@ -19,6 +19,7 @@ interface IUser {
     second: string;
     third: string;
   };
+  phoneNumber: string;
 }
 const RegisterForm = () => {
   const [user, setUser] = useState<IUser>({
@@ -37,6 +38,7 @@ const RegisterForm = () => {
       second: '',
       third: '',
     },
+    phoneNumber: '',
   });
 
   const onChange = (e: { target: HTMLInputElement | HTMLButtonElement }) => {
@@ -57,7 +59,6 @@ const RegisterForm = () => {
         if (onlyNumber.length <= 3) {
           draftState.phone.first = onlyNumber;
         }
-        console.log('hello first');
         return;
       }
       // 두 번째 자리
@@ -76,14 +77,22 @@ const RegisterForm = () => {
     setUser(nextState);
   };
 
+  const createPhoneFormat = (phone: any) => {
+    const temp = phone.first + phone.second + phone.third;
+    setUser({
+      ...user,
+      phoneNumber: temp.replace(/(\d{3})(\d{4})(\d{4})/, '$1-$2-$3'),
+    });
+  };
+
   const handleBloodType = (e: { target: HTMLButtonElement }) => {
     const { value } = e.target;
     setUser({
       ...user,
-      blood:{
-        abo: value, 
+      blood: {
+        abo: value,
         rh: user.blood.rh,
-      }
+      },
     });
   };
 
@@ -92,7 +101,7 @@ const RegisterForm = () => {
       if (user.blood.rh == 'POSITIVE') {
         draftState.blood.rh = 'NEGATIVE';
         return;
-      } 
+      }
       draftState.blood.rh = 'POSITIVE';
     });
     setUser(nextState);
@@ -105,6 +114,7 @@ const RegisterForm = () => {
       handlePhoneNumber={handlePhoneNumber}
       handleBloodType={handleBloodType}
       handleRh={handleRh}
+      createPhoneFormat={createPhoneFormat}
     />
   );
 };
