@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styles from 'styled-components';
-import { Button, styled} from '@mui/material';
+import { Button, styled } from '@mui/material';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import { useNavigate } from 'react-router-dom';
 import palette from '../../lib/styles/palette';
@@ -36,35 +36,34 @@ const ButtonGroup = styles.div`
 `;
 
 const StyledButton = styled(Button)({
-  fontSize:'small',
-  color:`${palette.gray[1]}`,
-  display:'flex',
-  justifyContent:'flex-end',
-  alignItems:'center',
-  '&:hover':{
-    color:`${palette.gray[2]}`,
-  }
+  fontSize: 'small',
+  color: `${palette.gray[1]}`,
+  display: 'flex',
+  justifyContent: 'flex-end',
+  alignItems: 'center',
+  '&:hover': {
+    color: `${palette.gray[2]}`,
+  },
 });
 
 const CardTemplate = () => {
-  const token = useSelector((state: RootState)=>state.account?.token); 
+  const token = useSelector((state: RootState) => state.account.token);
   const navigate = useNavigate();
   const handleCookies =
     (token: string | undefined) =>
     (event: React.MouseEvent | React.KeyboardEvent) => {
       console.log(token);
       if (token == '') {
-        // navigate('/login');
-        setOpen(!open); 
-        return
-      } 
+        setOpen(!open);
+        return;
+      }
       navigate('/post');
     };
 
-    const [open,setOpen] = useState(false); 
-    const handleModalOpen = () =>{
-      setOpen(!open); 
-    }
+  const [open, setOpen] = useState(false);
+  const handleModalOpen = () => {
+    setOpen(!open);
+  };
   return (
     <CardContainerBlock>
       <ButtonGroup>
@@ -77,7 +76,7 @@ const CardTemplate = () => {
             <ChevronRightIcon />
           </StyledButton>
 
-          <LoginRequestModal open={open} onClick={handleModalOpen}/>
+          <LoginRequestModal open={open} onClick={handleModalOpen} />
         </div>
       </ButtonGroup>
       <CardComponent />

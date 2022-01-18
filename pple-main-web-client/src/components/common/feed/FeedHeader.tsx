@@ -72,11 +72,10 @@ interface CardProps {
 const FeedHeader: React.FC<CardProps> = ({
   bloodType,
   sort,
-  noBorderRadius,
   buttonText
 }) => {
   return (
-    <FeedHeaderBlock noBorderRadius={noBorderRadius}>
+    <FeedHeaderBlock>
       <div className="header">
         <TimeBox>
           <div>2021년 12월 13일 등록</div>

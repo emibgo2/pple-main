@@ -6,18 +6,18 @@ import { useSearchParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../models';
 import { setToken } from '../models/auth/account';
+import { customAxios } from '../lib/customAxios';
+import setAccessToken from '../lib/hooks/setAccessToken';
+import checkUserState from '../lib/hooks/checkUserState';
 
 const HomepageBlock = styled.div``;
 
-const HomePage: React.FC = () => {  
-  const uuid = useSelector((state: RootState) => state.account?.uuid);
-  const token = useSelector((state: RootState) => state.account?.token);
-  const dispatch = useDispatch();
+const HomePage: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const userToken = searchParams.get('token'); 
-  useEffect(()=>{
-      console.log(userToken);
-  });
+  const userToken = searchParams.get('token');
+
+  setAccessToken(userToken);
+  checkUserState();
 
   return (
     <HomepageBlock>
