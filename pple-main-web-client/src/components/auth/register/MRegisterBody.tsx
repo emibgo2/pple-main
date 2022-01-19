@@ -46,7 +46,6 @@ interface IRegister {
   handlePhoneNumber: any;
   handleBloodType: any;
   handleRh: any;
-  createPhoneFormat: (phone: any) => void;
 }
 
 const MRegisterBody: React.FC<IRegister> = ({
@@ -55,7 +54,6 @@ const MRegisterBody: React.FC<IRegister> = ({
   handlePhoneNumber,
   handleBloodType,
   handleRh,
-  createPhoneFormat,
 }) => {
   const { name, nickname, year, month, day, gender, blood, phone } = user;
   return (
@@ -69,11 +67,7 @@ const MRegisterBody: React.FC<IRegister> = ({
         handleBloodType={handleBloodType}
         handleRh={handleRh}
       />
-      <PhoneInput
-        phone={phone}
-        handlePhoneNumber={handlePhoneNumber}
-        createPhoneFormat={createPhoneFormat}
-      />
+      <PhoneInput phone={phone} handlePhoneNumber={handlePhoneNumber} />
       <TermsInput />
       <RegisterButton user={user} />
     </MRegisterBodyBlock>
