@@ -22,7 +22,6 @@ const MRegisterBodyBlock = styled('div')({
 });
 
 interface IUser {
-  name: string;
   nickname: string;
   year: string;
   month: string;
@@ -55,10 +54,9 @@ const MRegisterBody: React.FC<IRegister> = ({
   handleBloodType,
   handleRh,
 }) => {
-  const { name, nickname, year, month, day, gender, blood, phone } = user;
+  const { nickname, year, month, day, gender, blood, phone } = user;
   return (
     <MRegisterBodyBlock>
-      <NameInput name={name} onChange={onChange} />
       <NicknameInput nickname={nickname} onChange={onChange} />
       <BirthForm year={year} month={month} day={day} onChange={onChange} />
       <GenderInput gender={gender} onChange={onChange} />

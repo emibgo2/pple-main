@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import MRegisterBody from '../../components/auth/register/MRegisterBody';
 import produce from 'immer';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../models';
 
 // 회원 정보 관련 인터페이스
 interface IUser {
-  name: string;
   nickname: string;
   year: string;
   month: string;
@@ -22,8 +23,8 @@ interface IUser {
   phoneNumber: string;
 }
 const RegisterForm = () => {
+  const uuid = useSelector((state: RootState) => state.account.uuid);
   const [user, setUser] = useState<IUser>({
-    name: '',
     nickname: '',
     year: '',
     month: '',
@@ -77,16 +78,7 @@ const RegisterForm = () => {
     setUser(nextState);
   };
 
-  const createPhoneFormat = (phone: any) => {
-    const temp = phone.first + phone.second + phone.third;
-    setUser({
-      ...user,
-      phoneNumber: temp.replace(/(\d{3})(\d{4})(\d{4})/, '$1-$2-$3'),
-    });
-  };
-
-  const handleBloodType = (e: { target: HTMLButtonElement }) => {
-    const { value } = e.target;
+  const handleBloodType = (value: string) => {
     setUser({
       ...user,
       blood: {
@@ -107,15 +99,33 @@ const RegisterForm = () => {
     setUser(nextState);
   };
 
+  const onSubmit = (e: any) => {
+    e.preventDefault();
+    const body = {
+      uuid: uuid,
+      birth: `${user.year}-${user.month}-${user.day}`,
+      gender: user.gender,
+      phoneNumber: user.phone.first + user.phone.second + user.phone.third,
+      blood: {
+        rh: user.blood.rh,
+        abo: user.blood.abo,
+      },
+    };
+    console.log(body);
+  };
+
   return (
-    <MRegisterBody
-      user={user}
-      onChange={onChange}
-      handlePhoneNumber={handlePhoneNumber}
-      handleBloodType={handleBloodType}
-      handleRh={handleRh}
-      createPhoneFormat={createPhoneFormat}
-    />
+    <>
+      <form onSubmit={onSubmit}>
+        <MRegisterBody
+          user={user}
+          onChange={onChange}
+          handlePhoneNumber={handlePhoneNumber}
+          handleBloodType={handleBloodType}
+          handleRh={handleRh}
+        />
+      </form>
+    </>
   );
 };
 
