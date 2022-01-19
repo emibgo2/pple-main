@@ -15,7 +15,6 @@ const HomepageBlock = styled.div``;
 const HomePage: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const userToken = searchParams.get('token');
-
   setAccessToken(userToken);
   checkUserState();
 
