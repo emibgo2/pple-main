@@ -3,6 +3,7 @@ import MRegisterBody from '../../components/auth/register/MRegisterBody';
 import produce from 'immer';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../models';
+import { customAxios } from '../../lib/customAxios';
 
 // 회원 정보 관련 인터페이스
 interface IUser {
@@ -44,6 +45,22 @@ const RegisterForm = () => {
 
   const onChange = (e: { target: HTMLInputElement | HTMLButtonElement }) => {
     const { name, value } = e.target;
+    setUser({
+      ...user,
+      [name]: value,
+    });
+  };
+  const handleBirthDay = (e: {
+    target: HTMLInputElement | HTMLButtonElement;
+  }) => {
+    const { name, value } = e.target;
+    if (parseInt(value) < 10) {
+      setUser({
+        ...user,
+        [name]: `0${value}`,
+      });
+      return;
+    }
     setUser({
       ...user,
       [name]: value,
@@ -98,12 +115,11 @@ const RegisterForm = () => {
     });
     setUser(nextState);
   };
-
   const onSubmit = (e: any) => {
     e.preventDefault();
     const body = {
       uuid: uuid,
-      birth: `${user.year}-${user.month}-${user.day}`,
+      birthDay: `${user.year}-${user.month}-${user.day}`,
       gender: user.gender,
       phoneNumber: user.phone.first + user.phone.second + user.phone.third,
       blood: {
@@ -111,7 +127,15 @@ const RegisterForm = () => {
         abo: user.blood.abo,
       },
     };
-    console.log(body);
+    customAxios
+      .patch('/api/v1/account', body)
+      .then(() => {
+        console.log('success');
+      })
+      .catch(e => {
+        console.log('ERROR');
+        console.log(e);
+      });
   };
 
   return (
@@ -123,6 +147,7 @@ const RegisterForm = () => {
           handlePhoneNumber={handlePhoneNumber}
           handleBloodType={handleBloodType}
           handleRh={handleRh}
+          handleBirthDay={handleBirthDay}
         />
       </form>
     </>

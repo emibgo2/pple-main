@@ -27,12 +27,9 @@ interface IButton {
 }
 
 const RegisterButton: React.FC<IButton> = ({ user }) => {
-  const onSubmit = () => {
-    console.log(user);
-  };
   return (
     <RegisterButtonBlock>
-      <StyledButton onClick={onSubmit}>
+      <StyledButton type="submit">
         <div>회원 가입</div>
       </StyledButton>
     </RegisterButtonBlock>

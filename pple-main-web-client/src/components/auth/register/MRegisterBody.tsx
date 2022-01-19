@@ -1,5 +1,4 @@
-import React, { ChangeEventHandler, useEffect, useState } from 'react';
-import palette from '../../../lib/styles/palette';
+import React from 'react';
 import { styled } from '@mui/material';
 import BirthForm from './input/BirthForm';
 import GenderInput from './input/GenderInput';
@@ -8,7 +7,6 @@ import TermsInput from './input/TermsInput';
 import PhoneInput from './input/PhoneInput';
 import NicknameInput from './input/NicknameInput';
 import RegisterButton from './input/RegisterButton';
-import NameInput from './input/NameInput';
 
 const MRegisterBodyBlock = styled('div')({
   height: '100%',
@@ -45,6 +43,7 @@ interface IRegister {
   handlePhoneNumber: any;
   handleBloodType: any;
   handleRh: any;
+  handleBirthDay: any;
 }
 
 const MRegisterBody: React.FC<IRegister> = ({
@@ -53,12 +52,18 @@ const MRegisterBody: React.FC<IRegister> = ({
   handlePhoneNumber,
   handleBloodType,
   handleRh,
+  handleBirthDay,
 }) => {
   const { nickname, year, month, day, gender, blood, phone } = user;
   return (
     <MRegisterBodyBlock>
       <NicknameInput nickname={nickname} onChange={onChange} />
-      <BirthForm year={year} month={month} day={day} onChange={onChange} />
+      <BirthForm
+        year={year}
+        month={month}
+        day={day}
+        onChange={handleBirthDay}
+      />
       <GenderInput gender={gender} onChange={onChange} />
       <BloodTypeInput
         blood={blood}

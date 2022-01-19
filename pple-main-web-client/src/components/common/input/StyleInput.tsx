@@ -23,14 +23,14 @@ const StyledInput = styled(TextField)<StyleInputProps>(({ text }) => ({
   marginBottom: '25px',
 }));
 
-interface InputProps {
+type InputProps = {
   name?: string;
   id: string;
   placeholder?: string;
   value: string;
   onChange: React.ChangeEventHandler<HTMLInputElement>;
   inputProps?: any;
-}
+};
 
 const StyleInput: React.FC<InputProps> = ({
   id,

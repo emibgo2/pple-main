@@ -75,16 +75,18 @@ const BloodTypeInput: React.FC<IBloodType> = ({
   const [select, setSelect] = useState(false);
   const [alignment, setAlignment] = React.useState<string | null>('A');
 
-  const handleAlignment = (
-    e: React.MouseEvent,
-    newAlignment: string | null,
-  ) => {
+  const handleAlignment = (newAlignment: string | null) => {
     setAlignment(newAlignment);
   };
 
-  const onChange = (e: any) => {
-    handleAlignment(e, e.target.value);
-    handleBloodType(e);
+  const onChange = async (e: any) => {
+    const { value } = e.target;
+    if (value != undefined) {
+      handleAlignment(value);
+      handleBloodType(value);
+      return;
+    }
+    console.log('뭐가 문제지..');
   };
 
   const handleRhChange = () => {
@@ -94,16 +96,16 @@ const BloodTypeInput: React.FC<IBloodType> = ({
 
   const children = [
     <ToggleButton id="circle-toggle" value="A" key="A+">
-      <span>A+ </span>
+      <span>A</span>
     </ToggleButton>,
     <ToggleButton id="circle-toggle" value="B" key="B+">
-      <span>B+ </span>
+      <span>B</span>
     </ToggleButton>,
     <ToggleButton id="circle-toggle" value="O" key="O+">
-      <span>O+ </span>
+      <span>O</span>
     </ToggleButton>,
     <ToggleButton id="circle-toggle" value="AB" key="AB+">
-      <span>AB+</span>
+      <span>AB</span>
     </ToggleButton>,
   ];
   return (

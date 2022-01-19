@@ -22,55 +22,33 @@ interface IPhone {
     third: string;
   };
   handlePhoneNumber: any;
-  createPhoneFormat: (phone: any) => void;
 }
 
-const PhoneInput: React.FC<IPhone> = ({
-  phone,
-  handlePhoneNumber,
-  createPhoneFormat,
-}) => {
-  useEffect(() => {
-    createPhoneFormat(phone);
-  }, [phone]);
-
+const PhoneInput: React.FC<IPhone> = ({ phone, handlePhoneNumber }) => {
   return (
     <div>
       <Label>휴대폰 번호</Label>
       <InputBlock>
-        <FormControl
-          sx={{ width: '100%' }}
-          variant="standard"
-          className="input-form"
-        >
-          <StyleInput
-            name="first"
-            id="first"
-            value={phone.first}
-            onChange={handlePhoneNumber}
-            inputProps={{ inputMode: 'numeric', pattern: '/[0-9]/g3' }}
-          ></StyleInput>
-        </FormControl>
+        <StyleInput
+          name="first"
+          id="first"
+          value={phone.first}
+          onChange={handlePhoneNumber}
+        ></StyleInput>
         <div className="divider"></div>
-        <FormControl sx={{ width: '100%' }} variant="standard">
-          <StyleInput
-            name="second"
-            id="second"
-            value={phone.second}
-            onChange={handlePhoneNumber}
-            inputProps={{ inputMode: 'numeric', pattern: '/[0-9]/g4' }}
-          ></StyleInput>
-        </FormControl>
+        <StyleInput
+          name="second"
+          id="second"
+          value={phone.second}
+          onChange={handlePhoneNumber}
+        ></StyleInput>
         <div className="divider"></div>
-        <FormControl sx={{ width: '100%' }} variant="standard">
-          <StyleInput
-            name="third"
-            id="third"
-            value={phone.third}
-            onChange={handlePhoneNumber}
-            inputProps={{ inputMode: 'numeric', pattern: '/[0-9]/g4' }}
-          ></StyleInput>
-        </FormControl>
+        <StyleInput
+          name="third"
+          id="third"
+          value={phone.third}
+          onChange={handlePhoneNumber}
+        ></StyleInput>
       </InputBlock>
     </div>
   );
