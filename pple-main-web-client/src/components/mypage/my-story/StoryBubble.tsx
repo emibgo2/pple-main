@@ -4,6 +4,7 @@ import FeedHeader from '../../common/feed/FeedHeader';
 import FeedContent from '../../common/feed/FeedContent';
 import FeedUserInfo from '../../request/post/feed/FeedUserInfo';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
+import { useNavigate } from 'react-router-dom';
 
 const StoryBubbleBlock = styled('div')({});
 const ContentWithMore = styled('div')({
@@ -22,7 +23,7 @@ const ContentWithMore = styled('div')({
   },
 });
 const ContentDetail = styled('div')({
-    padding:"0px 17px 0px 17px",
+  padding: '0px 17px 0px 17px',
 });
 
 const Title = styled('div')({
@@ -32,8 +33,8 @@ const Title = styled('div')({
   lineHeight: '22px',
   letterSpacing: '-0.03em',
   color: '#222222',
-  margin:"15px 0px"
-}); 
+  margin: '15px 0px',
+});
 const Content = styled('div')({
   fontStyle: 'normal',
   fontWeight: 'normal',
@@ -41,18 +42,22 @@ const Content = styled('div')({
   lineHeight: '20px',
   letterSpacing: '-0.03em',
   color: '#222222',
-}); 
+});
 const ReduceButton = styled('div')({
-    width:"100%",
-    textAlign:'center',
-    marginTop:"10px",
-})
+  width: '100%',
+  textAlign: 'center',
+  marginTop: '10px',
+});
 
 const StoryBubble: React.FC = () => {
+  const navigate = useNavigate();
   const str = '저희 아버지가 재생불량성빈혈을 판정을 받았습니다';
   const [detail, setDetail] = useState(false);
   const handleDetail = () => {
     setDetail(!detail);
+  };
+  const handleModifyButton = () => {
+    navigate('/page/story/modify');
   };
   return (
     <StoryBubbleBlock>
@@ -61,6 +66,7 @@ const StoryBubble: React.FC = () => {
           bloodType="AB+"
           sort="혈소판성분채혈"
           buttonText="정보수정"
+          onClick={handleModifyButton}
         />
         {detail ? (
           <ContentDetail>

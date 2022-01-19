@@ -4,8 +4,8 @@ import heartImg from '../../../lib/images/heart.png';
 import bar from '../../../lib/images/bar.png';
 import RadiusButton from '../buttons/RadiusButton';
 
-interface FeedHeaderBlockProp{
-  noBorderRadius?: boolean
+interface FeedHeaderBlockProp {
+  noBorderRadius?: boolean;
 }
 const FeedHeaderBlock = styled('div')<FeedHeaderBlockProp>(
   ({ noBorderRadius }) => ({
@@ -51,7 +51,7 @@ const CardComponentHeader = styled('div')({
 const CardComponentHeaderColumn = styled('div')({
   '& .blood-icon': {
     position: 'relative',
-    marginRight:'10px',
+    marginRight: '10px',
   },
   '& .blood-icon .card-text': {
     position: 'absolute',
@@ -67,12 +67,14 @@ interface CardProps {
   sort: string;
   noBorderRadius?: boolean;
   buttonText: string;
+  onClick?: any;
 }
 
 const FeedHeader: React.FC<CardProps> = ({
   bloodType,
   sort,
-  buttonText
+  buttonText,
+  onClick,
 }) => {
   return (
     <FeedHeaderBlock>
@@ -110,7 +112,7 @@ const FeedHeader: React.FC<CardProps> = ({
             </CardComponentHeaderColumn>
           </div>
           <CardComponentHeaderColumn>
-            <RadiusButton text={buttonText} />
+            <RadiusButton onClick={onClick} text={buttonText} />
           </CardComponentHeaderColumn>
         </CardComponentHeader>
       </div>

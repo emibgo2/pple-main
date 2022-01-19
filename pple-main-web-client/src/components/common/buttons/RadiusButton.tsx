@@ -1,5 +1,5 @@
 import React from 'react';
-import { styled,ButtonBase } from '@mui/material'; 
+import { styled, ButtonBase } from '@mui/material';
 
 const StyledButton = styled(ButtonBase)({
   padding: '7px 16px',
@@ -14,17 +14,18 @@ const StyledButton = styled(ButtonBase)({
     borderColor: '#FF6980',
     boxShadow: 'none',
   },
-  fontWeight:"bold",
+  fontWeight: 'bold',
 });
 
-interface Props{
-  text: string,
+interface Props {
+  text: string;
+  onClick?: any;
 }
 
-const RadiusButton: React.FC<Props> = ({ text }) => {
+const RadiusButton: React.FC<Props> = ({ text, onClick }) => {
   return (
     <div>
-      <StyledButton>{text}</StyledButton>
+      <StyledButton onClick={onClick}>{text}</StyledButton>
     </div>
   );
 };
