@@ -57,17 +57,16 @@ const StyledToggleButtonGroup = styled(ToggleButtonGroup)<IType>(
 );
 
 interface IBloodType {
-  blood: {
-    rh: string;
-    abo: string;
-  };
+  rh: string;
+  abo: string;
 
   handleBloodType: any;
   handleRh: any;
 }
 
 const BloodTypeInput: React.FC<IBloodType> = ({
-  blood,
+  rh,
+  abo,
   handleBloodType,
   handleRh,
 }) => {
@@ -79,31 +78,22 @@ const BloodTypeInput: React.FC<IBloodType> = ({
     setAlignment(newAlignment);
   };
 
-  const onChange = (e: any) => {
-    const { value } = e.target;
-    if (value != undefined) {
-      handleAlignment(value);
-      handleBloodType(value);
-      return;
-    }
-  };
-
   const handleRhChange = () => {
     setSelect(!select);
     handleRh();
   };
 
   const children = [
-    <ToggleButton id="circle-toggle" value="A" key="A+">
+    <ToggleButton id="circle-toggle" value="A" key="A+" aria-label="abo">
       <span>A</span>
     </ToggleButton>,
-    <ToggleButton id="circle-toggle" value="B" key="B+">
+    <ToggleButton id="circle-toggle" value="B" key="B+" aria-label="abo">
       <span>B</span>
     </ToggleButton>,
-    <ToggleButton id="circle-toggle" value="O" key="O+">
+    <ToggleButton id="circle-toggle" value="O" key="O+" aria-label="abo">
       <span>O</span>
     </ToggleButton>,
-    <ToggleButton id="circle-toggle" value="AB" key="AB+">
+    <ToggleButton id="circle-toggle" value="AB" key="AB" aria-label="abo">
       <span>AB</span>
     </ToggleButton>,
   ];
@@ -117,7 +107,7 @@ const BloodTypeInput: React.FC<IBloodType> = ({
               color: select ? 'black' : 'white',
               background: 'none',
             }}
-            value={blood.rh}
+            value={rh}
             selected={select}
             onChange={handleRhChange}
             className="rh-text"
@@ -130,11 +120,11 @@ const BloodTypeInput: React.FC<IBloodType> = ({
       </div>
       <StyledToggleButtonGroup
         exclusive
-        value={alignment}
-        type={blood.abo}
+        value={abo}
+        type={abo}
         aria-label="select type"
         size="large"
-        onChange={onChange}
+        onChange={handleBloodType}
       >
         {children}
       </StyledToggleButtonGroup>

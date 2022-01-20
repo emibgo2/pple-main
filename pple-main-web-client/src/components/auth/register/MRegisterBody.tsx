@@ -25,10 +25,8 @@ interface IUser {
   month: string;
   day: string;
   gender: string;
-  blood: {
-    rh: string;
-    abo: string;
-  };
+  rh: string;
+  abo: string;
   phone: {
     first: string;
     second: string;
@@ -54,7 +52,7 @@ const MRegisterBody: React.FC<IRegister> = ({
   handleRh,
   handleBirthDay,
 }) => {
-  const { nickname, year, month, day, gender, blood, phone } = user;
+  const { nickname, year, month, day, gender, abo, rh, phone } = user;
   return (
     <MRegisterBodyBlock>
       <NicknameInput nickname={nickname} onChange={onChange} />
@@ -66,7 +64,8 @@ const MRegisterBody: React.FC<IRegister> = ({
       />
       <GenderInput gender={gender} onChange={onChange} />
       <BloodTypeInput
-        blood={blood}
+        abo={abo}
+        rh={rh}
         handleBloodType={handleBloodType}
         handleRh={handleRh}
       />

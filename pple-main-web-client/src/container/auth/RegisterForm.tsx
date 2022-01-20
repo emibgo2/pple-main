@@ -12,10 +12,8 @@ interface IUser {
   month: string;
   day: string;
   gender: string;
-  blood: {
-    rh: string;
-    abo: string;
-  };
+  rh: string;
+  abo: string;
   phone: {
     first: string;
     second: string;
@@ -31,10 +29,8 @@ const RegisterForm = () => {
     month: '',
     day: '',
     gender: '',
-    blood: {
-      rh: 'POSITIVE',
-      abo: 'A',
-    },
+    rh: 'POSITIVE',
+    abo: 'A',
     phone: {
       first: '',
       second: '',
@@ -95,25 +91,28 @@ const RegisterForm = () => {
     setUser(nextState);
   };
 
-  const handleBloodType = (value: string) => {
+  const handleBloodType = (e: {
+    target: HTMLInputElement | HTMLButtonElement;
+  }) => {
+    const { ariaLabel, value } = e.target;
     setUser({
       ...user,
-      blood: {
-        abo: value,
-        rh: user.blood.rh,
-      },
+      [ariaLabel]: value,
     });
   };
 
   const handleRh = (e: { target: HTMLButtonElement }) => {
-    const nextState = produce(user, draftState => {
-      if (user.blood.rh == 'POSITIVE') {
-        draftState.blood.rh = 'NEGATIVE';
-        return;
-      }
-      draftState.blood.rh = 'POSITIVE';
+    if (user.rh == 'POSITIVE') {
+      setUser({
+        ...user,
+        rh: 'NEGATIVE',
+      });
+      return;
+    }
+    setUser({
+      ...user,
+      rh: 'POSITIVE',
     });
-    setUser(nextState);
   };
   const onSubmit = (e: any) => {
     e.preventDefault();
@@ -123,8 +122,8 @@ const RegisterForm = () => {
       gender: user.gender,
       phoneNumber: user.phone.first + user.phone.second + user.phone.third,
       blood: {
-        rh: user.blood.rh,
-        abo: user.blood.abo,
+        rh: user.rh,
+        abo: user.abo,
       },
     };
     customAxios

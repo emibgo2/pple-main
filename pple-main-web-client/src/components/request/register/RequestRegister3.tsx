@@ -24,12 +24,8 @@ const InputBody = styled.div`
   display: flex;
   flex-direction: column;
 `;
-const InputPatientInfo = styled.div`
-
-`;
-const RequestRegisterFooter = styled.div`
-    
-`;
+const InputPatientInfo = styled.div``;
+const RequestRegisterFooter = styled.div``;
 
 const RequestRegister: React.FC = () => {
   return (
@@ -52,7 +48,6 @@ const RequestRegister: React.FC = () => {
             <span>게시글 저장</span>
           </IconButton>
         </div>
-
       </LoadButtonBox>
 
       <hr />
@@ -94,12 +89,12 @@ const RequestRegister: React.FC = () => {
           <TextField required />
         </div>
         <div>
-            <BloodTypeToggleButton text="혈액형"/>
+          <BloodTypeToggleButton type="button" text="혈액형" />
         </div>
       </InputPatientInfo>
       <RequestRegisterFooter>
-          <Button>취소</Button>
-          <Button>등록</Button>
+        <Button>취소</Button>
+        <Button>등록</Button>
       </RequestRegisterFooter>
     </>
   );

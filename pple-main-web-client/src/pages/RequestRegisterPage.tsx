@@ -1,13 +1,13 @@
 import React from 'react';
 import RequestTemplate from '../components/request/RequestTemplate';
-import RequestRegister from '../components/request/register/RequestRegister';
+import RequestRegisterForm from '../container/post/RequestRegisterForm';
 const RequestRegisterPage: React.FC = () => {
-    return (
-        // 환자 정보 리덕스 
-        <RequestTemplate>
-            <RequestRegister/>
-        </RequestTemplate>
-    );
+  return (
+    // 환자 정보 리덕스
+    <RequestTemplate>
+      <RequestRegisterForm />
+    </RequestTemplate>
+  );
 };
 
 export default RequestRegisterPage;

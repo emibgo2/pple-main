@@ -33,48 +33,50 @@ const BloodTypeInputBlock = styled('div')({
 const StyledToggleButtonGroup = styled(ToggleButtonGroup)({
   display: 'flex',
   justifyContent: 'space-between',
-  borderRadius: '50%',
   '& .MuiButtonBase-root': {
-    border: 'none',
-  },
-  '& #circle-toggle': {
-    borderRadius: '100%',
-    border: `1px solid ${palette.gray[1]}`,
     backgroundColor: 'white',
     minWidth: '64px',
     color: `${palette.gray[1]}`,
     padding: '1rem',
     transition: 'all ease 0.5s 0s',
-    '&:focus': {
-      backgroundColor: `${palette.red[1]}`,
-      color: 'white',
-    },
+  },
+  '& .MuiToggleButton-root.Mui-selected': {
+    background: `${palette.red[1]} !important`,
+    color: 'white',
+  },
+  '& #circle-toggle': {
+    borderRadius: '100%',
+    border: `1px solid ${palette.gray[1]}`,
   },
 });
 
-const BloodTypeGroup = () => {
-  const [bloodType, setBloodType] = useState('A');
-  const [select, setSelect] = useState(false);
+// ModifyStory Container 달 때 ? 삭제
+interface IBlood {
+  onChange?: any;
+  abo?: string;
+  rh?: string;
+  handleRh?: any;
+}
 
-  const handleBloodType = (
-    event: React.MouseEvent<HTMLElement>,
-    newBloodType: string,
-  ) => {
-    setBloodType(newBloodType);
+const BloodTypeGroup: React.FC<IBlood> = ({ onChange, abo, rh, handleRh }) => {
+  const [select, setSelect] = useState(false);
+  const handleRhButton = () => {
+    setSelect(!select);
+    handleRh();
   };
 
   const children = [
-    <ToggleButton id="circle-toggle" value="A+" key="A+">
-      <span>A+ </span>
+    <ToggleButton id="circle-toggle" value="A" key="A+" aria-label="abo">
+      <span>A</span>
     </ToggleButton>,
-    <ToggleButton id="circle-toggle" value="B+" key="B+">
-      <span>B+ </span>
+    <ToggleButton id="circle-toggle" value="B" key="B+" aria-label="abo">
+      <span>B</span>
     </ToggleButton>,
-    <ToggleButton id="circle-toggle" value="O+" key="O+">
-      <span>O+ </span>
+    <ToggleButton id="circle-toggle" value="O" key="O+" aria-label="abo">
+      <span>O</span>
     </ToggleButton>,
-    <ToggleButton id="circle-toggle" value="AB+" key="AB+">
-      <span>AB+</span>
+    <ToggleButton id="circle-toggle" value="AB" key="AB+" aria-label="abo">
+      <span>AB</span>
     </ToggleButton>,
   ];
   return (
@@ -87,11 +89,9 @@ const BloodTypeGroup = () => {
               color: select ? 'black' : 'white',
               background: 'none',
             }}
-            value="check"
+            value={rh}
             selected={select}
-            onChange={() => {
-              setSelect(!select);
-            }}
+            onChange={handleRhButton}
             className="rh-text"
             id="custom-toggle"
           >
@@ -102,8 +102,8 @@ const BloodTypeGroup = () => {
       </div>
       <StyledToggleButtonGroup
         exclusive
-        onChange={handleBloodType}
-        value={bloodType}
+        onChange={onChange}
+        value={abo}
         aria-label="select type"
         size="large"
       >
