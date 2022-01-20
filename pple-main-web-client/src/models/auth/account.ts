@@ -19,7 +19,7 @@ type AccountState = {
 
 const initialState: AccountState = {
   uuid: '',
-  token: 'aa',
+  token: '',
 };
 
 const account = (
@@ -28,12 +28,14 @@ const account = (
 ): AccountState => {
   switch (action.type) {
     case SET_UUID:
+      console.log('uuid');
       return {
         ...initialState,
         uuid: action.uuid,
       };
 
     case SET_TOKEN:
+      console.log('token');
       return {
         ...initialState,
         token: action.token,
