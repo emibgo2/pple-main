@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useCookies } from 'react-cookie';
 import { useDispatch } from 'react-redux';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import { setUuid } from '../../models/auth/account';
+import { setToken, setUuid } from '../../models/auth/account';
 import { customAxios } from '../customAxios';
 
 const CookieUtil = () => {
@@ -30,16 +30,24 @@ export const setCookie = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const userToken = searchParams.get('token');
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     // 쿠기 없으면 설정
     if (cookies.jwt == undefined && userToken != null) {
       setCookie('jwt', userToken);
+      dispatch(setToken(userToken));
       // 토큰 날리기
       navigate('/');
     }
     // 쿠기 만료 시 처리
   }, [cookies]);
+};
+
+export const getCookie = () => {
+  const [cookies, setCookie, removeCookie] = useCookies(['jwt']);
+
+  return cookies.jwt;
 };
 
 export const checkUser = () => {
