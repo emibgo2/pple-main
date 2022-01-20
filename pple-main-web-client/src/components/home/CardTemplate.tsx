@@ -9,6 +9,7 @@ import CardComponent from './CardComponent';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../models';
 import LoginRequestModal from '../common/modal/LoginRequestModal';
+import { useCookies } from 'react-cookie';
 
 const CardContainerBlock = styles.div`
   width: 100%;
@@ -47,17 +48,18 @@ const StyledButton = styled(Button)({
 });
 
 const CardTemplate = () => {
-  const token = useSelector((state: RootState) => state.account.token);
+  const [cookies, setCookie, removeCookie] = useCookies(['jwt']);
+  const uuid = useSelector((state: RootState) => state.account.uuid);
   const navigate = useNavigate();
   const handleCookies =
-    (token: string | undefined) =>
+    (uuid: string | undefined) =>
     (event: React.MouseEvent | React.KeyboardEvent) => {
-      console.log(token);
-      if (token == '') {
-        setOpen(!open);
+      console.log(uuid);
+      if (cookies.jwt !== undefined) {
+        navigate('/post');
         return;
       }
-      navigate('/post');
+      setOpen(!open);
     };
 
   const [open, setOpen] = useState(false);
@@ -71,7 +73,7 @@ const CardTemplate = () => {
           <SortingButtonGroup />
         </div>
         <div>
-          <StyledButton sx={{ padding: '0px' }} onClick={handleCookies(token)}>
+          <StyledButton sx={{ padding: '0px' }} onClick={handleCookies(uuid)}>
             <span>전체보기</span>
             <ChevronRightIcon />
           </StyledButton>
