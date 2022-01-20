@@ -79,14 +79,13 @@ const BloodTypeInput: React.FC<IBloodType> = ({
     setAlignment(newAlignment);
   };
 
-  const onChange = async (e: any) => {
+  const onChange = (e: any) => {
     const { value } = e.target;
     if (value != undefined) {
       handleAlignment(value);
       handleBloodType(value);
       return;
     }
-    console.log('뭐가 문제지..');
   };
 
   const handleRhChange = () => {
