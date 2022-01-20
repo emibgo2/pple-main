@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import {
-  styled, 
+  styled,
   FormControl,
   MenuItem,
   Select,
@@ -11,8 +11,8 @@ import Label from '../../../common/Label';
 const BirthSelectBox = styled('div')({
   width: '100%',
   display: 'flex',
-  justifyContent:'space-between',
-  marginBottom:"25px",
+  justifyContent: 'space-between',
+  marginBottom: '25px',
 });
 
 const BaseInput = styled(InputBase)({
@@ -20,7 +20,7 @@ const BaseInput = styled(InputBase)({
     background: '#F9F9F9',
     border: '1px solid #EDEDED',
     borderRadius: '10px',
-    padding:"12px 0px 12px 12px",
+    padding: '12px 0px 12px 12px',
   },
 });
 
@@ -35,16 +35,13 @@ const Month: Array<number> = [...Array(12).keys()];
 const Day: Array<number> = [...Array(31).keys()];
 
 interface IBirthForm {
-  year: string; 
+  year: string;
   month: string;
-  day: string; 
+  day: string;
   onChange: any;
 }
 
-const BirthForm: React.FC<IBirthForm> = ({
-  year,month,day,
-  onChange,
-}) => {
+const BirthForm: React.FC<IBirthForm> = ({ year, month, day, onChange }) => {
   return (
     <>
       <Label>생년월일</Label>
@@ -96,7 +93,7 @@ const BirthForm: React.FC<IBirthForm> = ({
           >
             {Month.map((month, idx) => (
               <MenuItem key={month + 1} value={month + 1}>
-                {month + 1}
+                {month + 1 < 10 ? `0${month + 1}` : month + 1}
               </MenuItem>
             ))}
           </Select>
@@ -123,7 +120,7 @@ const BirthForm: React.FC<IBirthForm> = ({
           >
             {Day.map((day, idx) => (
               <MenuItem key={day + 1} value={day + 1}>
-                {day + 1}
+                {day + 1 < 10 ? `0${day + 1}` : day + 1}
               </MenuItem>
             ))}
           </Select>

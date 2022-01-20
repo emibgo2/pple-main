@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { styled, Input, FormControl, FormHelperText } from '@mui/material';
-import palette from '../../../../lib/styles/palette';
+import { styled } from '@mui/material';
 import Label from '../../../common/Label';
 import StyleInput from '../../../common/input/StyleInput';
 

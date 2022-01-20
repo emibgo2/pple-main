@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Label from '../Label';
 import { ToggleButton, styled } from '@mui/material';
+import palette from '../../../lib/styles/palette';
 
 const BloodDonationTypeBlock = styled('div')({
   '& .MuiButtonBase-root': {
@@ -8,70 +9,81 @@ const BloodDonationTypeBlock = styled('div')({
     border: '1px solid #EDEDED',
     borderRadius: '10px',
     color: '#B7B7B7',
-    marginTop:"8px",
+    marginTop: '8px',
   },
-  
 });
 const StyleToggleButton = styled(ToggleButton)({
+  '&.Mui-selected': {
+    background: `${palette.red[1]} !important`,
+    color: 'white !important',
+  },
 });
 
-const BloodDonationType = () => {
-  const [selected1,setSelected1] = useState(false);
-  const [selected2,setSelected2] = useState(false);
-  const [selected3,setSelected3] = useState(false);
-  const [selected4,setSelected4] = useState(false);
-  const [selected5,setSelected5] = useState(false);
+interface IBloodProduce {
+  handleBloodProduction?: any;
+}
+
+const BloodDonationType: React.FC<IBloodProduce> = ({
+  handleBloodProduction,
+}) => {
+  const [selected1, setSelected1] = useState(false);
+  const [selected2, setSelected2] = useState(false);
+  const [selected3, setSelected3] = useState(false);
+  const [selected4, setSelected4] = useState(false);
+  const [selected5, setSelected5] = useState(false);
+
+  const handleSelect =
+    (
+      selected: boolean,
+      setSelect: React.Dispatch<React.SetStateAction<boolean>>,
+    ) =>
+    (e: React.ChangeEvent<HTMLButtonElement>) => {
+      setSelect(!selected);
+      handleBloodProduction(e);
+    };
+
   return (
     <BloodDonationTypeBlock>
       <Label>헌혈 종류*</Label>
       <StyleToggleButton
-        sx={{background : selected1 ? "#FF6969" :"gray" }}
+        sx={{ background: selected1 ? '#FF6969' : 'gray' }}
         fullWidth
-        value="whole-blood"
+        value="전혈"
         selected={selected1}
-        onChange={() => {
-          setSelected1(!selected1);
-        }}
+        onChange={handleSelect(selected1, setSelected1)}
+        name="전혈"
       >
         전혈
       </StyleToggleButton>
       <StyleToggleButton
-        sx={{ width: '48%',marginRight:"16px" }}
-        value="whole-blood"
+        sx={{ width: '48%', marginRight: '16px' }}
+        value="성분채혈 혈소판"
         selected={selected2}
-        onChange={() => {
-          setSelected2(!selected2);
-        }}
+        onChange={handleSelect(selected2, setSelected2)}
       >
         성분채혈 혈소판
       </StyleToggleButton>
       <StyleToggleButton
         sx={{ width: '48%' }}
-        value="whole-blood"
+        value="성분채혈 백혈구"
         selected={selected3}
-        onChange={() => {
-          setSelected3(!selected3);
-        }}
+        onChange={handleSelect(selected3, setSelected3)}
       >
         성분채혈 백혈구
       </StyleToggleButton>
       <StyleToggleButton
-        sx={{ width: '48%' ,marginRight:"16px"}}
-        value="whole-blood"
+        sx={{ width: '48%', marginRight: '16px' }}
+        value="농축적혈구"
         selected={selected4}
-        onChange={() => {
-          setSelected4(!selected4);
-        }}
+        onChange={handleSelect(selected4, setSelected4)}
       >
         농축적혈구
       </StyleToggleButton>
       <StyleToggleButton
         sx={{ width: '48%' }}
-        value="whole-blood"
+        value="백혈구여과재거적혈구"
         selected={selected5}
-        onChange={() => {
-          setSelected5(!selected5);
-        }}
+        onChange={handleSelect(selected5, setSelected5)}
       >
         백혈구여과재거적혈구
       </StyleToggleButton>

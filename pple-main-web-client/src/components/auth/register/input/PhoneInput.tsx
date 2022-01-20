@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { styled, Grid, FormControl, Input } from '@mui/material';
 import palette from '../../../../lib/styles/palette';
 import Label from '../../../common/Label';
@@ -15,8 +15,8 @@ const InputBlock = styled('div')({
   },
 });
 
-interface IPhone{
-  phone:{
+interface IPhone {
+  phone: {
     first: string;
     second: string;
     third: string;
@@ -24,44 +24,31 @@ interface IPhone{
   handlePhoneNumber: any;
 }
 
-const PhoneInput: React.FC<IPhone> = ({phone,handlePhoneNumber}) => {
+const PhoneInput: React.FC<IPhone> = ({ phone, handlePhoneNumber }) => {
   return (
     <div>
       <Label>휴대폰 번호</Label>
       <InputBlock>
-        <FormControl
-          sx={{ width: '100%' }}
-          variant="standard"
-          className="input-form"
-        >
-          <StyleInput
-            name="first"
-            id="first"
-            value={phone.first}
-            onChange={handlePhoneNumber}
-            inputProps={{ inputMode: 'numeric', pattern: '/[0-9]/g3' }}
-          ></StyleInput>
-        </FormControl>
+        <StyleInput
+          name="first"
+          id="first"
+          value={phone.first}
+          onChange={handlePhoneNumber}
+        ></StyleInput>
         <div className="divider"></div>
-        <FormControl sx={{ width: '100%' }} variant="standard">
-          <StyleInput
-            name="second"
-            id="second"
-            value={phone.second}
-            onChange={handlePhoneNumber}
-            inputProps={{ inputMode: 'numeric', pattern: '/[0-9]/g4' }}
-          ></StyleInput>
-        </FormControl>
+        <StyleInput
+          name="second"
+          id="second"
+          value={phone.second}
+          onChange={handlePhoneNumber}
+        ></StyleInput>
         <div className="divider"></div>
-        <FormControl sx={{ width: '100%' }} variant="standard">
-          <StyleInput
-            name="third"
-            id="third"
-            value={phone.third}
-            onChange={handlePhoneNumber}
-            inputProps={{ inputMode: 'numeric', pattern: '/[0-9]/g4' }}
-          ></StyleInput>
-        </FormControl>
+        <StyleInput
+          name="third"
+          id="third"
+          value={phone.third}
+          onChange={handlePhoneNumber}
+        ></StyleInput>
       </InputBlock>
     </div>
   );

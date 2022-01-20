@@ -13,6 +13,7 @@ import MyPage from './pages/MyPage';
 import MyStory from './components/mypage/my-story/MyStory';
 import ModifyStory from './components/mypage/my-story/ModifyStory';
 import FAQ from './components/mypage/faq/FAQ';
+import Helped from './components/mypage/help/Helped';
 
 const GlobalStyles = createGlobalStyle`
   ${reset};
@@ -34,17 +35,19 @@ const App: React.FC = () => {
     <>
       <GlobalStyles />
       <AppBlock>
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/register" element={<RegisterPage />} />
-            <Route path="/post" element={<RequestPostPage />}/>
-            <Route path="/post/:userId" element={<RequestPost/>} />
-            <Route path="/post/register" element={<RequestRegisterPage />} />
-            <Route path="/page" element={<MyPage/>}/>
-            <Route path="/faq" element={<FAQ/>}/>
-            <Route path="/test" element={<ModifyStory/>}/> 
-          </Routes>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/post" element={<RequestPostPage />} />
+          <Route path="/post/:userId" element={<RequestPost />} />
+          <Route path="/post/register" element={<RequestRegisterPage />} />
+          <Route path="/page" element={<MyPage />} />
+          <Route path="/page/faq" element={<FAQ />} />
+          <Route path="/page/helper" element={<Helped />} />
+          <Route path="/page/story" element={<MyStory />} />
+          <Route path="/page/story/modify" element={<ModifyStory />} />
+        </Routes>
       </AppBlock>
     </>
   );

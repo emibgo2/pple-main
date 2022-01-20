@@ -1,46 +1,62 @@
 import React, { useState } from 'react';
 import MRegisterBody from '../../components/auth/register/MRegisterBody';
 import produce from 'immer';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../models';
+import { customAxios } from '../../lib/customAxios';
 
 // 회원 정보 관련 인터페이스
 interface IUser {
-  name: string;
   nickname: string;
   year: string;
   month: string;
   day: string;
   gender: string;
-  blood: {
-    rh: string;
-    abo: string;
-  };
+  rh: string;
+  abo: string;
   phone: {
     first: string;
     second: string;
     third: string;
   };
+  phoneNumber: string;
 }
 const RegisterForm = () => {
+  const uuid = useSelector((state: RootState) => state.account.uuid);
   const [user, setUser] = useState<IUser>({
-    name: '',
     nickname: '',
     year: '',
     month: '',
     day: '',
     gender: '',
-    blood: {
-      rh: 'POSITIVE',
-      abo: 'A',
-    },
+    rh: 'POSITIVE',
+    abo: 'A',
     phone: {
       first: '',
       second: '',
       third: '',
     },
+    phoneNumber: '',
   });
 
   const onChange = (e: { target: HTMLInputElement | HTMLButtonElement }) => {
     const { name, value } = e.target;
+    setUser({
+      ...user,
+      [name]: value,
+    });
+  };
+  const handleBirthDay = (e: {
+    target: HTMLInputElement | HTMLButtonElement;
+  }) => {
+    const { name, value } = e.target;
+    if (parseInt(value) < 10) {
+      setUser({
+        ...user,
+        [name]: `0${value}`,
+      });
+      return;
+    }
     setUser({
       ...user,
       [name]: value,
@@ -57,7 +73,6 @@ const RegisterForm = () => {
         if (onlyNumber.length <= 3) {
           draftState.phone.first = onlyNumber;
         }
-        console.log('hello first');
         return;
       }
       // 두 번째 자리
@@ -76,36 +91,65 @@ const RegisterForm = () => {
     setUser(nextState);
   };
 
-  const handleBloodType = (e: { target: HTMLButtonElement }) => {
-    const { value } = e.target;
+  const handleBloodType = (e: {
+    target: HTMLInputElement | HTMLButtonElement;
+  }) => {
+    const { ariaLabel, value } = e.target;
     setUser({
       ...user,
-      blood:{
-        abo: value, 
-        rh: user.blood.rh,
-      }
+      [ariaLabel]: value,
     });
   };
 
   const handleRh = (e: { target: HTMLButtonElement }) => {
-    const nextState = produce(user, draftState => {
-      if (user.blood.rh == 'POSITIVE') {
-        draftState.blood.rh = 'NEGATIVE';
-        return;
-      } 
-      draftState.blood.rh = 'POSITIVE';
+    if (user.rh == 'POSITIVE') {
+      setUser({
+        ...user,
+        rh: 'NEGATIVE',
+      });
+      return;
+    }
+    setUser({
+      ...user,
+      rh: 'POSITIVE',
     });
-    setUser(nextState);
+  };
+  const onSubmit = (e: any) => {
+    e.preventDefault();
+    const body = {
+      uuid: uuid,
+      birthDay: `${user.year}-${user.month}-${user.day}`,
+      gender: user.gender,
+      phoneNumber: user.phone.first + user.phone.second + user.phone.third,
+      blood: {
+        rh: user.rh,
+        abo: user.abo,
+      },
+    };
+    customAxios
+      .patch('/api/v1/account', body)
+      .then(() => {
+        console.log('success');
+      })
+      .catch(e => {
+        console.log('ERROR');
+        console.log(e);
+      });
   };
 
   return (
-    <MRegisterBody
-      user={user}
-      onChange={onChange}
-      handlePhoneNumber={handlePhoneNumber}
-      handleBloodType={handleBloodType}
-      handleRh={handleRh}
-    />
+    <>
+      <form onSubmit={onSubmit}>
+        <MRegisterBody
+          user={user}
+          onChange={onChange}
+          handlePhoneNumber={handlePhoneNumber}
+          handleBloodType={handleBloodType}
+          handleRh={handleRh}
+          handleBirthDay={handleBirthDay}
+        />
+      </form>
+    </>
   );
 };
 

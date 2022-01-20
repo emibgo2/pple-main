@@ -57,17 +57,16 @@ const StyledToggleButtonGroup = styled(ToggleButtonGroup)<IType>(
 );
 
 interface IBloodType {
-  blood: {
-    rh: string;
-    abo: string;
-  };
+  rh: string;
+  abo: string;
 
   handleBloodType: any;
   handleRh: any;
 }
 
 const BloodTypeInput: React.FC<IBloodType> = ({
-  blood,
+  rh,
+  abo,
   handleBloodType,
   handleRh,
 }) => {
@@ -75,16 +74,8 @@ const BloodTypeInput: React.FC<IBloodType> = ({
   const [select, setSelect] = useState(false);
   const [alignment, setAlignment] = React.useState<string | null>('A');
 
-  const handleAlignment = (
-    e: React.MouseEvent,
-    newAlignment: string | null,
-  ) => {
+  const handleAlignment = (newAlignment: string | null) => {
     setAlignment(newAlignment);
-  };
-
-  const onChange = (e: any) => {
-    handleAlignment(e, e.target.value);
-    handleBloodType(e);
   };
 
   const handleRhChange = () => {
@@ -93,17 +84,17 @@ const BloodTypeInput: React.FC<IBloodType> = ({
   };
 
   const children = [
-    <ToggleButton id="circle-toggle" value="A" key="A+">
-      <span>A+ </span>
+    <ToggleButton id="circle-toggle" value="A" key="A+" aria-label="abo">
+      <span>A</span>
     </ToggleButton>,
-    <ToggleButton id="circle-toggle" value="B" key="B+">
-      <span>B+ </span>
+    <ToggleButton id="circle-toggle" value="B" key="B+" aria-label="abo">
+      <span>B</span>
     </ToggleButton>,
-    <ToggleButton id="circle-toggle" value="O" key="O+">
-      <span>O+ </span>
+    <ToggleButton id="circle-toggle" value="O" key="O+" aria-label="abo">
+      <span>O</span>
     </ToggleButton>,
-    <ToggleButton id="circle-toggle" value="AB" key="AB+">
-      <span>AB+</span>
+    <ToggleButton id="circle-toggle" value="AB" key="AB" aria-label="abo">
+      <span>AB</span>
     </ToggleButton>,
   ];
   return (
@@ -116,7 +107,7 @@ const BloodTypeInput: React.FC<IBloodType> = ({
               color: select ? 'black' : 'white',
               background: 'none',
             }}
-            value={blood.rh}
+            value={rh}
             selected={select}
             onChange={handleRhChange}
             className="rh-text"
@@ -129,11 +120,11 @@ const BloodTypeInput: React.FC<IBloodType> = ({
       </div>
       <StyledToggleButtonGroup
         exclusive
-        value={alignment}
-        type={blood.abo}
+        value={abo}
+        type={abo}
         aria-label="select type"
         size="large"
-        onChange={onChange}
+        onChange={handleBloodType}
       >
         {children}
       </StyledToggleButtonGroup>

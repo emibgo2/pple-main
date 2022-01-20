@@ -20,23 +20,31 @@ const StyledInput = styled(TextField)<StyleInputProps>(({ text }) => ({
       borderColor: '#767676',
     },
   },
-  marginBottom:"25px",
+  marginBottom: '25px',
 }));
 
-interface InputProps {
-  name?: string
+type InputProps = {
+  name?: string;
   id: string;
   placeholder?: string;
   value: string;
   onChange: React.ChangeEventHandler<HTMLInputElement>;
-  inputProps?: any
-}
+  inputProps?: any;
+};
 
-const StyleInput: React.FC<InputProps> = ({ id,placeholder,value, onChange,inputProps,name }) => {
+const StyleInput: React.FC<InputProps> = ({
+  id,
+  placeholder,
+  value,
+  onChange,
+  inputProps,
+  name,
+}) => {
   return (
     <>
       <StyledInput
-      name={name}
+        required
+        name={name}
         text={value}
         value={value}
         fullWidth

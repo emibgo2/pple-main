@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styles from 'styled-components';
-import { Button, styled} from '@mui/material';
+import { Button, styled } from '@mui/material';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import { useNavigate } from 'react-router-dom';
 import palette from '../../lib/styles/palette';
@@ -9,6 +9,7 @@ import CardComponent from './CardComponent';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../models';
 import LoginRequestModal from '../common/modal/LoginRequestModal';
+import { useCookies } from 'react-cookie';
 
 const CardContainerBlock = styles.div`
   width: 100%;
@@ -36,35 +37,35 @@ const ButtonGroup = styles.div`
 `;
 
 const StyledButton = styled(Button)({
-  fontSize:'small',
-  color:`${palette.gray[1]}`,
-  display:'flex',
-  justifyContent:'flex-end',
-  alignItems:'center',
-  '&:hover':{
-    color:`${palette.gray[2]}`,
-  }
+  fontSize: 'small',
+  color: `${palette.gray[1]}`,
+  display: 'flex',
+  justifyContent: 'flex-end',
+  alignItems: 'center',
+  '&:hover': {
+    color: `${palette.gray[2]}`,
+  },
 });
 
 const CardTemplate = () => {
-  const token = useSelector((state: RootState)=>state.account?.token); 
+  const [cookies, setCookie, removeCookie] = useCookies(['jwt']);
+  const uuid = useSelector((state: RootState) => state.account.uuid);
   const navigate = useNavigate();
   const handleCookies =
-    (token: string | undefined) =>
+    (uuid: string | undefined) =>
     (event: React.MouseEvent | React.KeyboardEvent) => {
-      console.log(token);
-      if (token == '') {
-        // navigate('/login');
-        setOpen(!open); 
-        return
-      } 
-      navigate('/post');
+      console.log(uuid);
+      if (cookies.jwt !== undefined) {
+        navigate('/post');
+        return;
+      }
+      setOpen(!open);
     };
 
-    const [open,setOpen] = useState(false); 
-    const handleModalOpen = () =>{
-      setOpen(!open); 
-    }
+  const [open, setOpen] = useState(false);
+  const handleModalOpen = () => {
+    setOpen(!open);
+  };
   return (
     <CardContainerBlock>
       <ButtonGroup>
@@ -72,12 +73,12 @@ const CardTemplate = () => {
           <SortingButtonGroup />
         </div>
         <div>
-          <StyledButton sx={{ padding: '0px' }} onClick={handleCookies(token)}>
+          <StyledButton sx={{ padding: '0px' }} onClick={handleCookies(uuid)}>
             <span>전체보기</span>
             <ChevronRightIcon />
           </StyledButton>
 
-          <LoginRequestModal open={open} onClick={handleModalOpen}/>
+          <LoginRequestModal open={open} onClick={handleModalOpen} />
         </div>
       </ButtonGroup>
       <CardComponent />

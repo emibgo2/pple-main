@@ -1,14 +1,20 @@
 import { combineReducers } from "redux";
-import setToken from './auth/token';
-import uuid from "./auth/uuid";
+import { persistReducer } from "redux-persist";
+// session Storage 에 저장
+import storage from 'redux-persist/lib/storage'; 
+
 import account from "./auth/account";
+
+const persistConfig = {
+    key: "root", 
+    storage, 
+    whileList : ["account"],
+};
+
 const rootReducer = combineReducers({
-    setToken,
-    uuid,
     account
 });
 
-export default rootReducer; 
-
 export type RootState = ReturnType<typeof rootReducer>; 
+export default persistReducer(persistConfig,rootReducer); 
 	
