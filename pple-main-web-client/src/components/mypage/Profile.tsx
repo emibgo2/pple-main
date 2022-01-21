@@ -1,6 +1,7 @@
 import { Avatar, ButtonBase } from '@mui/material';
 import { styled } from '@mui/system';
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const ProfileBlock = styled('div')({
   padding: '20px',
@@ -11,7 +12,7 @@ const ProfileBox = styled('div')({
   '& .MuiAvatar-root': {
     marginRight: '21px',
   },
-  marginBottom:"20px",
+  marginBottom: '20px',
 });
 const NameBox = styled('div')({
   display: 'flex',
@@ -44,7 +45,7 @@ const NameBox = styled('div')({
 
 const CountBox = styled('div')({});
 const EditProfileButton = styled(ButtonBase)({
-    width:"100%",
+  width: '100%',
   display: 'flex',
   flexDirection: 'row',
   justifyContent: 'center',
@@ -56,6 +57,10 @@ const EditProfileButton = styled(ButtonBase)({
   borderRadius: '15px',
 });
 const Profile: React.FC = () => {
+  const navigate = useNavigate();
+  const onClick = () => {
+    navigate('/page/modify');
+  };
   return (
     <ProfileBlock>
       <ProfileBox>
@@ -69,7 +74,7 @@ const Profile: React.FC = () => {
         </div>
       </ProfileBox>
 
-      <EditProfileButton>프로필 수정</EditProfileButton>
+      <EditProfileButton onClick={onClick}>프로필 수정</EditProfileButton>
     </ProfileBlock>
   );
 };
