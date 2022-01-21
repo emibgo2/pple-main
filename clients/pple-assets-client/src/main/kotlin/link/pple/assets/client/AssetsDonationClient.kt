@@ -3,9 +3,7 @@ package link.pple.assets.client
 import org.springframework.cloud.openfeign.FeignClient
 import org.springframework.http.MediaType
 import org.springframework.stereotype.Component
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.RequestBody
-import org.springframework.web.bind.annotation.RequestHeader
+import org.springframework.web.bind.annotation.*
 
 /**
  * @Author Heli
@@ -23,4 +21,24 @@ interface AssetsDonationClient {
         @RequestHeader(name = ACCOUNT_UUID_HEADER) xUuid: String,
         @RequestBody dto: DonationDefinitionDto
     ): DonationDto
+
+    @GetMapping(
+        value = ["/donation/api/v1/donation/{donationUuid}"],
+        produces = [MediaType.APPLICATION_JSON_VALUE]
+    )
+    fun getDonation(
+        @RequestHeader(name = ACCOUNT_UUID_HEADER) xUuid: String,
+        @PathVariable donationUuid: String
+    ): DonationDto
+
+
+    @GetMapping(
+        value = ["/donation/api/v1/donation"],
+        produces = [MediaType.APPLICATION_JSON_VALUE]
+    )
+    fun getDonations(
+        @RequestParam(required = false) status: List<String>?,
+        @RequestParam page: Int,
+        @RequestParam size: Int
+    ): PagedDto<DonationDto>
 }

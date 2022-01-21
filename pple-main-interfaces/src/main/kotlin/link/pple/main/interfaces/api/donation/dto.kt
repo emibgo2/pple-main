@@ -84,3 +84,25 @@ internal fun Donation.toDto() = DonationDto(
     renewedCount = renewedCount,
     status = status
 )
+
+internal fun link.pple.assets.client.DonationDto.toDto() = DonationDto(
+    uuid = uuid,
+    createdAt = createdAt,
+    createdBy = createdBy,
+    modifiedAt = modifiedAt,
+    modifiedBy = modifiedBy,
+    title = title,
+    content = content,
+    bloodProduct = bloodProduct,
+    patient = PatientDto(
+        blood = BloodDto(
+            abo = patient.blood.abo,
+            rh = patient.blood.rh
+        )
+    ),
+    phoneNumber = phoneNumber,
+    lastRenewedAt = lastRenewedAt,
+    renewedCount = renewedCount,
+    status = status
+)
+

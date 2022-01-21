@@ -47,6 +47,22 @@ data class BloodDto(
 )
 // ======= Response Dto =======
 
+data class PagedDto<T>(
+    val content: List<T>,
+    val page: PageDto
+)
+
+data class PageDto(
+    val number: Int,
+    val size: Int,
+    val totalElements: Long,
+    val totalPages: Int,
+    val first: Boolean,
+    val last: Boolean,
+    val hasNext: Boolean,
+    val hasPrevious: Boolean
+)
+
 data class AccountDto(
     val id: Long,
     val uuid: String,
