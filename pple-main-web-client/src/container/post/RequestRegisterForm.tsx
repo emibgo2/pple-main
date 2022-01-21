@@ -1,10 +1,7 @@
 import React, { useState } from 'react';
-import produce from 'immer';
 import RequestRegister from '../../components/request/register/RequestRegister';
 import { customAxios } from '../../lib/customAxios';
 import { getCookie } from '../../lib/hooks/CookieUtil';
-import { useSelector } from 'react-redux';
-import { RootState } from '../../models';
 import { useNavigate } from 'react-router-dom';
 
 export type RequestState = {
