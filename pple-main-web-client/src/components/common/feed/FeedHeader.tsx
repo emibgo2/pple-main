@@ -3,10 +3,19 @@ import { styled } from '@mui/material';
 import heartImg from '../../../lib/images/heart.png';
 import bar from '../../../lib/images/bar.png';
 import RadiusButton from '../buttons/RadiusButton';
+import A from '../../../lib/images/bloodType/A+.svg';
+import An from '../../../lib/images/bloodType/A+.svg';
+import B from '../../../lib/images/bloodType/B+.svg';
+import Bn from '../../../lib/images/bloodType/B-.svg';
+import O from '../../../lib/images/bloodType/O+.svg';
+import On from '../../../lib/images/bloodType/O-.svg';
+import AB from '../../../lib/images/bloodType/AB+.svg';
+import ABn from '../../../lib/images/bloodType/AB-.svg';
 
 interface FeedHeaderBlockProp {
   noBorderRadius?: boolean;
 }
+
 const FeedHeaderBlock = styled('div')<FeedHeaderBlockProp>(
   ({ noBorderRadius }) => ({
     width: '100%',
@@ -76,6 +85,25 @@ const FeedHeader: React.FC<CardProps> = ({
   buttonText,
   onClick,
 }) => {
+  const bloodTypeImg = (bloodType: string) => {
+    if (bloodType == 'A+') {
+      return <img src={A} alt="A+" width={60} height={60} />;
+    } else if (bloodType == 'A-') {
+      return <img src={An} alt="A-" width={60} height={60} />;
+    } else if (bloodType == 'B+') {
+      return <img src={B} alt="B+" width={60} height={60} />;
+    } else if (bloodType == 'B-') {
+      return <img src={Bn} alt="B-" width={60} height={60} />;
+    } else if (bloodType == 'O+') {
+      return <img src={O} alt="O+" width={60} height={60} />;
+    } else if (bloodType == 'O-') {
+      return <img src={On} alt="O-" width={60} height={60} />;
+    } else if (bloodType == 'AB+') {
+      return <img src={AB} alt="AB+" width={60} height={60} />;
+    } else if (bloodType == 'AB-') {
+      return <img src={ABn} alt="AB-" width={60} height={60} />;
+    }
+  };
   return (
     <FeedHeaderBlock>
       <div className="header">
@@ -85,12 +113,7 @@ const FeedHeader: React.FC<CardProps> = ({
         <CardComponentHeader>
           <div className="left">
             <CardComponentHeaderColumn>
-              <div className="blood-icon">
-                <div className="card-img">
-                  <img src={heartImg} alt="하트이미지" />
-                </div>
-                <div className="card-text">{bloodType}</div>
-              </div>
+              <div className="blood-icon">{bloodTypeImg(bloodType)}</div>
             </CardComponentHeaderColumn>
 
             <CardComponentHeaderColumn className="middle">
