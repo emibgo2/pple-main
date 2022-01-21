@@ -48,7 +48,7 @@ const BloodDonationType: React.FC<IBloodProduce> = ({
       <StyleToggleButton
         sx={{ background: selected1 ? '#FF6969' : 'gray' }}
         fullWidth
-        value="전혈"
+        value="WHOLE"
         selected={selected1}
         onChange={handleSelect(selected1, setSelected1)}
         name="전혈"
@@ -57,7 +57,7 @@ const BloodDonationType: React.FC<IBloodProduce> = ({
       </StyleToggleButton>
       <StyleToggleButton
         sx={{ width: '48%', marginRight: '16px' }}
-        value="성분채혈 혈소판"
+        value="PLATELET"
         selected={selected2}
         onChange={handleSelect(selected2, setSelected2)}
       >
@@ -65,7 +65,7 @@ const BloodDonationType: React.FC<IBloodProduce> = ({
       </StyleToggleButton>
       <StyleToggleButton
         sx={{ width: '48%' }}
-        value="성분채혈 백혈구"
+        value="LEUKOCYTE"
         selected={selected3}
         onChange={handleSelect(selected3, setSelected3)}
       >
@@ -73,7 +73,7 @@ const BloodDonationType: React.FC<IBloodProduce> = ({
       </StyleToggleButton>
       <StyleToggleButton
         sx={{ width: '48%', marginRight: '16px' }}
-        value="농축적혈구"
+        value="PACKED_RED_BLOOD_CELL"
         selected={selected4}
         onChange={handleSelect(selected4, setSelected4)}
       >
@@ -81,7 +81,7 @@ const BloodDonationType: React.FC<IBloodProduce> = ({
       </StyleToggleButton>
       <StyleToggleButton
         sx={{ width: '48%' }}
-        value="백혈구여과재거적혈구"
+        value="LEUKOCYTE_REDUCED_RED_BLOOD_CELL"
         selected={selected5}
         onChange={handleSelect(selected5, setSelected5)}
       >
