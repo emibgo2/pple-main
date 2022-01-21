@@ -15,6 +15,7 @@ data class AccountPatchDto(
 
 data class AccountApplyDefinitionDto(
     val uuid: String,
+    val displayName: String,
     val birthDay: LocalDate,
     val gender: String,
     val phoneNumber: String,

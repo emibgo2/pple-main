@@ -78,6 +78,7 @@ data class SimpleAccount(
 
 data class AccountApplyDefinition(
     val uuid: String,
+    val displayName: String,
     val birthDay: LocalDate,
     val gender: String,
     val phoneNumber: String,
@@ -93,6 +94,7 @@ data class AccountPatchDefinition(
 
 internal fun AccountApplyDefinition.toDto() = AccountApplyDefinitionDto(
     uuid = uuid,
+    displayName = displayName,
     birthDay = birthDay,
     gender = gender,
     phoneNumber = phoneNumber,

@@ -11,10 +11,11 @@ import java.time.LocalDate
 
 data class AccountApplyDto(
     val uuid: String,
+    val displayName: String,
     val birthDay: LocalDate,
     val gender: String,
-    val phoneNumber: String,
-    val blood: Blood
+    val blood: Blood,
+    val phoneNumber: String
 )
 
 data class AccountPatchDto(
@@ -58,6 +59,7 @@ internal fun Account.toDto() = AccountDto(
 
 internal fun AccountApplyDto.toDefinition() = AccountApplyDefinition(
     uuid = uuid,
+    displayName = displayName,
     birthDay = birthDay,
     gender = gender,
     phoneNumber = phoneNumber,
