@@ -97,7 +97,7 @@ const ModifyProfile: React.FC<ModifyProfileType> = ({
         </Badge>
       </div>
       <StyledInput
-        defaultValue="지니지니"
+        defaultValue={displayName}
         fullWidth
         inputProps={{ style: { textAlign: 'center' } }}
         name="displayName"

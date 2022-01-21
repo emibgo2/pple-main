@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import ModifyProfile from '../../components/mypage/ModifyProfile';
@@ -11,7 +11,15 @@ const ModifyProfileForm = () => {
   const uuid = useSelector((state: RootState) => state.account.uuid);
   const jwt = getCookie();
   const navigate = useNavigate();
-
+  useEffect(() => {
+    customAxios
+      .get('/api/v1/account/profile', {
+        headers: { Authorization: `Bearer ${jwt}` },
+      })
+      .then(res => {
+        setDisplayName(res.data.displayName);
+      });
+  });
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.currentTarget;
     console.log(name);
