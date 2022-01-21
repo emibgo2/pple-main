@@ -56,7 +56,18 @@ const EditProfileButton = styled(ButtonBase)({
   boxSizing: 'border-box',
   borderRadius: '15px',
 });
-const Profile: React.FC = () => {
+
+type ProfileType = {
+  profileImageUrl: string;
+  displayName: string;
+  bloodType: string;
+};
+
+const Profile: React.FC<ProfileType> = ({
+  profileImageUrl,
+  displayName,
+  bloodType,
+}) => {
   const navigate = useNavigate();
   const onClick = () => {
     navigate('/page/modify');
@@ -64,11 +75,11 @@ const Profile: React.FC = () => {
   return (
     <ProfileBlock>
       <ProfileBox>
-        <Avatar></Avatar>
+        <Avatar src={profileImageUrl} alt="프로필 이미지" />
         <div>
           <NameBox>
-            <div className="nick-name">지니지니</div>
-            <div className="blood-type">B+</div>
+            <div className="nick-name">{displayName}</div>
+            <div className="blood-type">{bloodType}</div>
           </NameBox>
           <CountBox>오늘까지 총 16번 헌혈하셨습니다!</CountBox>
         </div>

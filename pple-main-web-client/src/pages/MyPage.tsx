@@ -3,7 +3,7 @@ import LoginRequestModal from '../components/common/modal/LoginRequestModal';
 import MyPageHeader from '../components/mypage/MyPageHeader';
 import MyPageList from '../components/mypage/MyPageList';
 import MyPageTemplate from '../components/mypage/MyPageTemplate';
-import Profile from '../components/mypage/Profile';
+import ProfileForm from '../container/my-page/ProfileForm';
 const MyPage: React.FC = () => {
   const [open, setOpen] = useState(false);
   const handleModalOpen = () => {
@@ -13,7 +13,7 @@ const MyPage: React.FC = () => {
   return (
     <MyPageTemplate>
       <MyPageHeader />
-      <Profile />
+      <ProfileForm />
       <MyPageList />
     </MyPageTemplate>
   );
