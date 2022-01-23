@@ -118,6 +118,7 @@ const RegisterForm = () => {
     e.preventDefault();
     const body = {
       uuid: uuid,
+      nickname: user.nickname,
       birthDay: `${user.year}-${user.month}-${user.day}`,
       gender: user.gender,
       phoneNumber: user.phone.first + user.phone.second + user.phone.third,
