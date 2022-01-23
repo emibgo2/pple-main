@@ -1,6 +1,5 @@
 import React from 'react';
 import { styled } from '@mui/material';
-import heartImg from '../../../lib/images/heart.png';
 import bar from '../../../lib/images/bar.png';
 import RadiusButton from '../buttons/RadiusButton';
 import A from '../../../lib/images/bloodType/A+.svg';
