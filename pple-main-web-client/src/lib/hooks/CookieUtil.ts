@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useCookies } from 'react-cookie';
 import { useDispatch } from 'react-redux';
 import { useNavigate, useSearchParams } from 'react-router-dom';
@@ -11,7 +11,7 @@ const CookieUtil = () => {
 
   useEffect(() => {
     console.log(cookies.jwt);
-    if (cookies.jwt == undefined) {
+    if (cookies.jwt == undefined || cookies.jwt == null) {
       const userToken = searchParams.get('token');
       console.log(userToken);
       if (userToken == null) {
@@ -26,7 +26,7 @@ const CookieUtil = () => {
 
 // 쿠기 설정
 export const setCookie = () => {
-  const [cookies, setCookie, removeCookie] = useCookies(['jwt']);
+  const [cookies, setCookie, removeCookie] = useCookies();
   const [searchParams, setSearchParams] = useSearchParams();
   const userToken = searchParams.get('token');
   const navigate = useNavigate();
@@ -34,20 +34,17 @@ export const setCookie = () => {
 
   useEffect(() => {
     // 쿠기 없으면 설정
-    if (cookies.jwt == undefined && userToken != null) {
+    console.log(cookies.jwt);
+    if (cookies.jwt === undefined || cookies.jwt == null) {
+      console.log('hello');
       setCookie('jwt', userToken);
       dispatch(setToken(userToken));
+      customAxios.defaults.headers['Authorization'] = userToken;
       // 토큰 날리기
       navigate('/');
     }
     // 쿠기 만료 시 처리
-  }, [cookies]);
-};
-
-export const getCookie = () => {
-  const [cookies, setCookie, removeCookie] = useCookies(['jwt']);
-
-  return cookies.jwt;
+  }, []);
 };
 
 export const checkUser = () => {
@@ -55,7 +52,7 @@ export const checkUser = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  if (cookies.jwt !== undefined) {
+  if (cookies.jwt !== undefined || cookies.jwt !== null) {
     customAxios
       .get('/api/v1/account/profile', {
         headers: { Authorization: `Bearer ${cookies.jwt}` },
@@ -68,6 +65,27 @@ export const checkUser = () => {
         }
       });
   }
+};
+
+export const getCookie = () => {
+  const [cookies, setCookie, removeCookie] = useCookies(['jwt']);
+  if (cookies.jwt === undefined) {
+    return undefined;
+  }
+  return cookies.jwt;
+};
+
+export const getUuid = (): string => {
+  const [cookies, setCookie, removeCookie] = useCookies(['jwt']);
+  const [uuid, setUuid] = useState<string>('');
+  customAxios
+    .get('/api/v1/account/profile', {
+      headers: { Authorization: `Bearer ${cookies.jwt}` },
+    })
+    .then(res => {
+      setUuid(res.data.uuid);
+    });
+  return uuid;
 };
 
 export default CookieUtil;
