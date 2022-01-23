@@ -24,7 +24,6 @@ const HomePage: React.FC = () => {
   const jwt = getCookie();
   useEffect(() => {
     if (jwt != undefined && jwt != null) {
-      console.log(jwt);
       customAxios
         .get('/api/v1/account/profile', {
           headers: { Authorization: `Bearer ${jwt}` },

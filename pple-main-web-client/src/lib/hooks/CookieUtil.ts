@@ -34,9 +34,7 @@ export const setCookie = () => {
 
   useEffect(() => {
     // 쿠기 없으면 설정
-    console.log(cookies.jwt);
     if (cookies.jwt === undefined || cookies.jwt == null) {
-      console.log('hello');
       setCookie('jwt', userToken);
       dispatch(setToken(userToken));
       customAxios.defaults.headers['Authorization'] = userToken;
@@ -58,7 +56,6 @@ export const checkUser = () => {
         headers: { Authorization: `Bearer ${cookies.jwt}` },
       })
       .then(res => {
-        console.log(res);
         dispatch(setUuid(res.data.uuid));
         if (res.data.status == 'TEMP') {
           navigate('/register');
