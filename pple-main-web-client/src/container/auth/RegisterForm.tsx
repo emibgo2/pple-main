@@ -4,6 +4,8 @@ import produce from 'immer';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../models';
 import { customAxios } from '../../lib/customAxios';
+import { getCookie } from '../../lib/hooks/CookieUtil';
+import { useNavigate } from 'react-router-dom';
 
 // 회원 정보 관련 인터페이스
 interface IUser {
@@ -23,6 +25,8 @@ interface IUser {
 }
 const RegisterForm = () => {
   const uuid = useSelector((state: RootState) => state.account.uuid);
+  const jwt = getCookie();
+  const navigate = useNavigate();
   const [user, setUser] = useState<IUser>({
     nickname: '',
     year: '',
@@ -118,6 +122,7 @@ const RegisterForm = () => {
     e.preventDefault();
     const body = {
       uuid: uuid,
+      displayName: user.nickname,
       birthDay: `${user.year}-${user.month}-${user.day}`,
       gender: user.gender,
       phoneNumber: user.phone.first + user.phone.second + user.phone.third,
@@ -127,9 +132,12 @@ const RegisterForm = () => {
       },
     };
     customAxios
-      .patch('/api/v1/account', body)
+      .patch('/api/v1/account', body, {
+        headers: { Authorization: `Bearer ${jwt}` },
+      })
       .then(() => {
         console.log('success');
+        navigate('/');
       })
       .catch(e => {
         console.log('ERROR');

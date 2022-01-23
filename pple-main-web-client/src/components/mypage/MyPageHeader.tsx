@@ -20,11 +20,10 @@ const HeaderBlock = styled('div')({
   },
 });
 
-
 const MyPageHeader: React.FC = () => {
   const navigate = useNavigate();
   const handleBack: MouseEventHandler = () => {
-    navigate(-1);
+    navigate('/');
   };
   return (
     <HeaderBlock>

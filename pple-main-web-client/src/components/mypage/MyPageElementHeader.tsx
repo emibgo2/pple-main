@@ -1,5 +1,5 @@
 import React from 'react';
-import { styled,IconButton } from '@mui/material';
+import { styled, IconButton } from '@mui/material';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import { useNavigate } from 'react-router-dom';
 
@@ -17,35 +17,35 @@ const Block = styled('div')({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    transform: 'translateX(-10%)',
+    transform: 'translateX(-5%)',
   },
   '& .blank': {
     width: '33%',
   },
 });
 
-interface IHeader{
-    title: string, 
+interface IHeader {
+  title: string;
 }
 
-const MyPageElementHeader: React.FC<IHeader> = ({title}) => {
-    const navigate = useNavigate(); 
-    const handleBack = ()=>{
-        navigate(-1);
-    }
+const MyPageElementHeader: React.FC<IHeader> = ({ title }) => {
+  const navigate = useNavigate();
+  const handleBack = () => {
+    navigate(-1);
+  };
 
-    return (
-      <Block>
-        <div className="icon">
-          <IconButton onClick={handleBack}>
-            <ArrowBackIosNewIcon fontSize="small" />
-          </IconButton>
-        </div>
+  return (
+    <Block>
+      <div className="icon">
+        <IconButton onClick={handleBack}>
+          <ArrowBackIosNewIcon fontSize="small" />
+        </IconButton>
+      </div>
 
-        <div className="title">{title}</div>
-        <div className='blank'></div>
-      </Block>
-    );
+      <div className="title">{title}</div>
+      <div className="blank"></div>
+    </Block>
+  );
 };
 
 export default MyPageElementHeader;
