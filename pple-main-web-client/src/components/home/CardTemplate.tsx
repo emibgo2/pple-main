@@ -54,8 +54,7 @@ const CardTemplate = () => {
   const handleCookies =
     (uuid: string | undefined) =>
     (event: React.MouseEvent | React.KeyboardEvent) => {
-      console.log(uuid);
-      if (cookies.jwt !== undefined) {
+      if (cookies.jwt != undefined && cookies.jwt != null) {
         navigate('/post');
         return;
       }
