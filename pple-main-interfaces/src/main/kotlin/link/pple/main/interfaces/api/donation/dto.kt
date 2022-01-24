@@ -44,6 +44,15 @@ data class DonationDto(
     val renewedCount: Long
 )
 
+data class DonationHistoryDto(
+    val uuid: String,
+    val createdAt: LocalDateTime,
+    val modifiedAt: LocalDateTime,
+    val donationUuid: String,
+    val donorAccountUuid: String,
+    val step: String
+)
+
 data class PatientDto(
     val blood: BloodDto
 )
@@ -106,3 +115,12 @@ internal fun link.pple.assets.client.DonationDto.toDto() = DonationDto(
     status = status
 )
 
+
+internal fun link.pple.assets.client.DonationHistoryDto.toDto() = DonationHistoryDto(
+    uuid = uuid,
+    createdAt = createdAt,
+    modifiedAt = modifiedAt,
+    donationUuid = donationUuid,
+    donorAccountUuid = donorAccountUuid,
+    step = step
+)

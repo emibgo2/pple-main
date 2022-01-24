@@ -55,6 +55,26 @@ class DonationRestController(
         return donationPage.toPagedDto { it.toDto() }
     }
 
+    @GetMapping(
+        value = ["/donation/api/v1/donation/own"],
+        produces = [MediaType.APPLICATION_JSON_VALUE]
+    )
+    fun getDonationsByOwn(
+        @RequestParam(required = false, defaultValue = "0") page: Int,
+        @RequestParam(required = false, defaultValue = "10") size: Int
+    ): PagedDto<DonationDto> {
+
+        val account = AccountHolder.get()
+
+        val donationPage = donationClient.getDonationsByOwn(
+            xUuid = account.uuid,
+            status = DONATION_FETCH_STATUS,
+            page = page,
+            size = size
+        )
+
+        return donationPage.toPagedDto { it.toDto() }
+    }
 
     @GetMapping(
         value = ["/donation/api/v1/donation/{donationUuid}"],

@@ -41,4 +41,15 @@ interface AssetsDonationClient {
         @RequestParam page: Int,
         @RequestParam size: Int
     ): PagedDto<DonationDto>
+
+    @GetMapping(
+        value = ["/donation/api/v1/donation/own"],
+        produces = [MediaType.APPLICATION_JSON_VALUE]
+    )
+    fun getDonationsByOwn(
+        @RequestHeader(name = ACCOUNT_UUID_HEADER) xUuid: String,
+        @RequestParam(required = false) status: List<String>?,
+        @RequestParam page: Int,
+        @RequestParam size: Int
+    ): PagedDto<DonationDto>
 }

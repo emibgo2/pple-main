@@ -112,3 +112,13 @@ data class PatientDto(
     val blood: BloodDto,
     val status: String
 )
+
+data class DonationHistoryDto(
+    val id: Long,
+    val uuid: String,
+    val createdAt: LocalDateTime,
+    val modifiedAt: LocalDateTime,
+    val donationUuid: String,
+    val donorAccountUuid: String,
+    val step: String
+)
