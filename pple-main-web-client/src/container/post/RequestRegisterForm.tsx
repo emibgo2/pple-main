@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
-import produce from 'immer';
 import RequestRegister from '../../components/request/register/RequestRegister';
 import { customAxios } from '../../lib/customAxios';
 import { getCookie } from '../../lib/hooks/CookieUtil';
-import { useSelector } from 'react-redux';
-import { RootState } from '../../models';
+import { useNavigate } from 'react-router-dom';
 
 export type RequestState = {
   bloodProduct: string[];
@@ -18,6 +16,10 @@ export type RequestState = {
 };
 
 const RequestRegisterForm: React.FC = () => {
+  // Submit 에서 사용
+  const jwt = getCookie();
+  const navigate = useNavigate();
+
   const [post, setPost] = useState<RequestState>({
     bloodProduct: [],
     content: '',
@@ -28,8 +30,7 @@ const RequestRegisterForm: React.FC = () => {
     third: '',
     title: '',
   });
-  const jwt = getCookie();
-  const uuid = useSelector((state: RootState) => state.account.uuid);
+
   const onChange = (e: { target: HTMLInputElement | HTMLButtonElement }) => {
     const { name, value } = e.target;
     setPost({
@@ -99,8 +100,6 @@ const RequestRegisterForm: React.FC = () => {
 
   const handleBloodProduction = (e: React.ChangeEvent<HTMLButtonElement>) => {
     const { ariaPressed, value } = e.target;
-    console.log(ariaPressed);
-    console.log(value);
     // 헌혈 종류를 선택했을 때
     if (ariaPressed == 'false') {
       const newArr = [...post.bloodProduct];
@@ -139,14 +138,12 @@ const RequestRegisterForm: React.FC = () => {
       phoneNumber: post.first + post.second + post.third,
       title: post.title,
     };
-    console.log(body);
     customAxios
       .post('/api/v1/donation', body, {
         headers: { Authorization: `Bearer ${jwt}` },
       })
-      .then(res => {
-        console.log(res);
-        console.log('success');
+      .then(() => {
+        navigate('/');
       })
       .catch(err => {
         console.log(err);

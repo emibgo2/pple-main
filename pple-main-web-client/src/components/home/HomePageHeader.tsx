@@ -18,6 +18,9 @@ import Home from '../../lib/images/menu/Home.svg';
 import Mypage from '../../lib/images/menu/Mypage.svg';
 import MenuLogo from '../../lib/images/menu/MenuLogo.svg';
 import { borderRadius } from '@mui/system';
+import { useCookies } from 'react-cookie';
+import { checkUser } from '../../lib/hooks/CookieUtil';
+import LoginRequestModal from '../common/modal/LoginRequestModal';
 
 const HomePageHeaderBlock = styled('div')({
   background: 'linear-gradient(109.4deg, #ff6969 -3.19%, #ff3333 109.95%)',
@@ -29,8 +32,8 @@ const Title = styled('div')({
   color: 'white',
   marginBottom: '25px',
   fontSize: '24px',
-  display:'flex',
-  justifyContent:"space-between",
+  display: 'flex',
+  justifyContent: 'space-between',
 });
 
 const ButtonGroup = styled('div')({
@@ -89,7 +92,7 @@ const StyledBox = styled(Box)({
   padding: '60px 0px 0px 46px',
   '& .list .list-item:hover': {
     background: '#AEAEAE',
-    borderRadius:'14px',
+    borderRadius: '14px',
   },
 });
 
@@ -99,6 +102,8 @@ interface HomeHeaderProps {
 
 const HomePageHeader: React.FC<HomeHeaderProps> = ({ name }) => {
   const [open, setOpen] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [cookie, setCookie] = useCookies(['jwt']);
   const toggleDrawer =
     (newOpen: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
       setOpen(newOpen);
@@ -108,8 +113,16 @@ const HomePageHeader: React.FC<HomeHeaderProps> = ({ name }) => {
     navigate('/');
     toggleDrawer(false);
   };
+  const handleModalOpen = () => {
+    setModalOpen(!modalOpen);
+  };
   const goPage = () => {
-    navigate('/page');
+    if (cookie.jwt !== undefined) {
+      navigate('/page');
+      return;
+    }
+    setOpen(!open);
+    setModalOpen(!modalOpen);
   };
   const goRequestRegister: MouseEventHandler = () => {
     navigate('/post/register');
@@ -128,7 +141,7 @@ const HomePageHeader: React.FC<HomeHeaderProps> = ({ name }) => {
           </ListItemIcon>
           <ListItemText primary="홈" />
         </ListItem>
-        <ListItem className="list-item"  onClick={goPage}>
+        <ListItem className="list-item" onClick={goPage}>
           <ListItemIcon>
             <img src={Mypage} alt="MyPage" />
           </ListItemIcon>
@@ -140,6 +153,7 @@ const HomePageHeader: React.FC<HomeHeaderProps> = ({ name }) => {
 
   return (
     <HomePageHeaderBlock>
+      <LoginRequestModal open={modalOpen} onClick={handleModalOpen} />
       <Drawer anchor="right" open={open} onClose={toggleDrawer(false)}>
         {list}
       </Drawer>
@@ -151,7 +165,7 @@ const HomePageHeader: React.FC<HomeHeaderProps> = ({ name }) => {
           <div>오늘도 건강하고 행복하세요!</div>
         </div>
         <div className="menu">
-          <IconButton sx={{color:"white"}} onClick={toggleDrawer(true)}>
+          <IconButton sx={{ color: 'white' }} onClick={toggleDrawer(true)}>
             <MenuIcon />
           </IconButton>
         </div>

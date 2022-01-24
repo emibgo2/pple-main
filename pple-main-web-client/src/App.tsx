@@ -14,6 +14,7 @@ import MyStory from './components/mypage/my-story/MyStory';
 import ModifyStory from './components/mypage/my-story/ModifyStory';
 import FAQ from './components/mypage/faq/FAQ';
 import Helped from './components/mypage/help/Helped';
+import ModifyProfileForm from './container/my-page/ModifyProfileForm';
 
 const GlobalStyles = createGlobalStyle`
   ${reset};
@@ -43,6 +44,7 @@ const App: React.FC = () => {
           <Route path="/post/:userId" element={<RequestPost />} />
           <Route path="/post/register" element={<RequestRegisterPage />} />
           <Route path="/page" element={<MyPage />} />
+          <Route path="/page/modify" element={<ModifyProfileForm />} />
           <Route path="/page/faq" element={<FAQ />} />
           <Route path="/page/helper" element={<Helped />} />
           <Route path="/page/story" element={<MyStory />} />
