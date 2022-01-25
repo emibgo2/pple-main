@@ -7,6 +7,7 @@ import link.pple.main.configuration.oauth.handler.OAuth2AuthenticationSuccessHan
 import link.pple.main.domain.account.AccountService
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
+import org.springframework.http.HttpMethod
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter
@@ -36,6 +37,7 @@ class SecurityConfig(
             .logout().disable()
             .cors().and()
             .authorizeRequests()
+            .mvcMatchers(HttpMethod.GET, "/api/v1/donation").permitAll()
             .antMatchers("/swagger-ui/**").permitAll()
             .antMatchers("/api/**").authenticated()
             .antMatchers("/api/admin/**").hasAuthority("ADMIN")
