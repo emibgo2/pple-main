@@ -38,7 +38,7 @@ class DonationRestController(
     }
 
     @GetMapping(
-        value = ["/donation/api/v1/donation"],
+        value = ["/api/v1/donation"],
         produces = [MediaType.APPLICATION_JSON_VALUE]
     )
     fun getDonations(
@@ -56,7 +56,7 @@ class DonationRestController(
     }
 
     @GetMapping(
-        value = ["/donation/api/v1/donation/own"],
+        value = ["/api/v1/donation/own"],
         produces = [MediaType.APPLICATION_JSON_VALUE]
     )
     fun getDonationsByOwn(

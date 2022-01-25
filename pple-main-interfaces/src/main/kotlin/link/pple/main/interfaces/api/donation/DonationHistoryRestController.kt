@@ -36,7 +36,7 @@ class DonationHistoryRestController(
     }
 
     @GetMapping(
-        value = ["/donation/api/v1/donation/history"],
+        value = ["/api/v1/donation/history"],
         produces = [MediaType.APPLICATION_JSON_VALUE]
     )
     fun getDonationHistories(): List<DonationHistoryDto> {
@@ -53,7 +53,7 @@ class DonationHistoryRestController(
     }
 
     @GetMapping(
-        value = ["/donation/api/v1/donation/{donationUuid}/history"],
+        value = ["/api/v1/donation/{donationUuid}/history"],
         produces = [MediaType.APPLICATION_JSON_VALUE]
     )
     fun getDonationHistoriesByDonation(
