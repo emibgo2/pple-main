@@ -34,10 +34,9 @@ export const setCookie = () => {
 
   useEffect(() => {
     // 쿠기 없으면 설정
-    if (cookies.jwt === undefined || cookies.jwt == null) {
+    if (cookies.jwt === undefined || cookies.jwt == 'null') {
       setCookie('jwt', userToken);
       dispatch(setToken(userToken));
-      customAxios.defaults.headers['Authorization'] = userToken;
       // 토큰 날리기
       navigate('/');
     }

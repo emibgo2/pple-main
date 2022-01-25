@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { styled } from '@mui/material';
 import MyPageElementHeader from '../MyPageElementHeader';
 import StoryBubble from './StoryBubble';
@@ -16,14 +16,13 @@ const Divider = styled('div')({
   height: '9px',
   backgroundColor: '#F4F4F4',
 });
-const MyStory: React.FC = () => {
+
+const MyStory: React.FC = ({ children }) => {
   return (
     <MyStoryBlock>
       <MyPageElementHeader title="나의 사연" />
       <Divider />
-      <div className="content">
-        <StoryBubble />
-      </div>
+      <div className="content">{children}</div>
     </MyStoryBlock>
   );
 };

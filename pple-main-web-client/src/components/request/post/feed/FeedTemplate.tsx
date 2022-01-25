@@ -13,7 +13,7 @@ const FeedTemplateBlock = styled('div')({
   },
 });
 const FeedBox = styled('div')({
-  marginBottom:"15px",
+  marginBottom: '15px',
 });
 const FeedContentBox = styled('div')({
   padding: '0px 15px 18px 15px',

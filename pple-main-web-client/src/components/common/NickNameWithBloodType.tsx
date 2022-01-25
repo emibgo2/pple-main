@@ -3,8 +3,8 @@ import { styled } from '@mui/material';
 
 const Template = styled('div')({
   '& .nick-name': {
-      display:"flex",
-      alignItems:"center",
+    display: 'flex',
+    alignItems: 'center',
     fontStyle: 'normal',
     fontWeight: 'bold',
     fontSize: '13.4866px',
@@ -13,10 +13,10 @@ const Template = styled('div')({
     color: '#222222',
   },
   display: 'flex',
-  alignContent:'center',
+  alignContent: 'center',
 });
 const BloodBox = styled('div')({
-    marginLeft:"9.35px",
+  marginLeft: '9.35px',
   fontStyle: 'normal',
   fontWeight: '600',
   fontSize: '9.92475px',
@@ -41,7 +41,7 @@ const NickNameWithBloodType: React.FC<Info> = ({ nickname, bloodType }) => {
   return (
     <Template>
       <div className="nick-name">{nickname}</div>
-      <BloodBox>{bloodType}</BloodBox>
+      {/* <BloodBox>{bloodType}</BloodBox> */}
     </Template>
   );
 };
