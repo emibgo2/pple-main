@@ -66,7 +66,7 @@ export const checkUser = () => {
 
 export const getCookie = () => {
   const [cookies, setCookie, removeCookie] = useCookies(['jwt']);
-  if (cookies.jwt === undefined) {
+  if (cookies.jwt === undefined || cookies.jwt == 'null') {
     return undefined;
   }
   return cookies.jwt;
