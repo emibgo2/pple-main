@@ -96,7 +96,6 @@ const createTimeFormat = (time: string) => {
 interface CardProps {
   bloodType: string;
   sort: string;
-  noBorderRadius?: boolean;
   buttonText: string;
   time?: string;
   onClick?: any;
@@ -133,7 +132,7 @@ const FeedHeader: React.FC<CardProps> = ({
     <FeedHeaderBlock>
       <div className="header">
         <TimeBox>
-          <div>{createTimeFormat(time)}</div>
+          <div> {time ? createTimeFormat(time) : 'none'}</div>
         </TimeBox>
         <CardComponentHeader>
           <div className="left">

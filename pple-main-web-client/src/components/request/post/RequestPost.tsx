@@ -1,4 +1,4 @@
-import {styled } from '@mui/system';
+import { styled } from '@mui/system';
 import React from 'react';
 import getUserId from '../../../lib/hooks/getUserId';
 import FeedContent from '../../common/feed/FeedContent';
@@ -10,7 +10,7 @@ import palette from '../../../lib/styles/palette';
 import FeedUserInfo from './feed/FeedUserInfo';
 
 const RequestPostBlock = styled('div')({
-    height: "100%",
+  height: '100%',
 });
 
 const FeedContentBox = styled('div')({
@@ -27,13 +27,12 @@ const RequestPost: React.FC = () => {
       <MobileToolbar isBack={true} title="요청 피드" isSearch={true} />
       <RequestPostBlock>
         <FeedHeader
-          buttonText='도움주기'
+          buttonText="도움주기"
           bloodType="AB+"
           sort="혈소판성분채혈"
-          noBorderRadius={true}
         />
         <FeedContentBox>
-        <FeedUserInfo/>
+          <FeedUserInfo />
           <FeedContent />
         </FeedContentBox>
       </RequestPostBlock>

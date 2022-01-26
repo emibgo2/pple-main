@@ -1,15 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styles from 'styled-components';
 import { Button, styled } from '@mui/material';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import { useNavigate } from 'react-router-dom';
 import palette from '../../lib/styles/palette';
 import SortingButtonGroup from '../common/buttons/SortingButtonGroup';
 import CardComponent from './CardComponent';
-import { useSelector } from 'react-redux';
-import { RootState } from '../../models';
-import LoginRequestModal from '../common/modal/LoginRequestModal';
-import { useCookies } from 'react-cookie';
 
 const CardContainerBlock = styles.div`
   width: 100%;
@@ -47,24 +42,15 @@ const StyledButton = styled(Button)({
   },
 });
 
-const CardTemplate = () => {
-  const [cookies, setCookie, removeCookie] = useCookies(['jwt']);
-  const uuid = useSelector((state: RootState) => state.account.uuid);
-  const navigate = useNavigate();
-  const handleCookies =
-    (uuid: string | undefined) =>
-    (event: React.MouseEvent | React.KeyboardEvent) => {
-      if (cookies.jwt != undefined && cookies.jwt != null) {
-        navigate('/post');
-        return;
-      }
-      setOpen(!open);
-    };
+type CardTemplateType = {
+  handleAuth: any;
+  contentArray: any;
+};
 
-  const [open, setOpen] = useState(false);
-  const handleModalOpen = () => {
-    setOpen(!open);
-  };
+const CardTemplate: React.FC<CardTemplateType> = ({
+  handleAuth,
+  contentArray,
+}) => {
   return (
     <CardContainerBlock>
       <ButtonGroup>
@@ -72,18 +58,27 @@ const CardTemplate = () => {
           <SortingButtonGroup />
         </div>
         <div>
-          <StyledButton sx={{ padding: '0px' }} onClick={handleCookies(uuid)}>
+          <StyledButton sx={{ padding: '0px' }} onClick={handleAuth}>
             <span>전체보기</span>
             <ChevronRightIcon />
           </StyledButton>
-
-          <LoginRequestModal open={open} onClick={handleModalOpen} />
         </div>
       </ButtonGroup>
-      <CardComponent />
-      <CardComponent />
-      <CardComponent />
-      <CardComponent />
+      {contentArray.map((content, idx) => (
+        <CardComponent
+          key={idx}
+          title={content.title}
+          content={content.content}
+          sort={content.bloodProduct[0]}
+          bloodType={
+            content.patient.blood.rh == 'POSITIVE'
+              ? `${content.patient.blood.abo}+`
+              : `${content.patient.blood.abo}-`
+          }
+          time={content.createdAt}
+          phoneNumber={content.phoneNumber}
+        />
+      ))}
     </CardContainerBlock>
   );
 };

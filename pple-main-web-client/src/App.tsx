@@ -10,11 +10,11 @@ import RequestPostPage from './pages/RequestPostPage';
 import RequestRegisterPage from './pages/RequestRegisterPage';
 import RequestPost from './components/request/post/RequestPost';
 import MyPage from './pages/MyPage';
-import MyStory from './components/mypage/my-story/MyStory';
 import ModifyStory from './components/mypage/my-story/ModifyStory';
 import FAQ from './components/mypage/faq/FAQ';
 import Helped from './components/mypage/help/Helped';
 import ModifyProfileForm from './container/my-page/ModifyProfileForm';
+import MyStoryForm from './container/my-page/MyStoryForm';
 
 const GlobalStyles = createGlobalStyle`
   ${reset};
@@ -47,8 +47,11 @@ const App: React.FC = () => {
           <Route path="/page/modify" element={<ModifyProfileForm />} />
           <Route path="/page/faq" element={<FAQ />} />
           <Route path="/page/helper" element={<Helped />} />
-          <Route path="/page/story" element={<MyStory />} />
-          <Route path="/page/story/modify" element={<ModifyStory />} />
+          <Route path="/page/story" element={<MyStoryForm />} />
+          <Route
+            path="/page/story/modify/:donationUuid"
+            element={<ModifyStory />}
+          />
         </Routes>
       </AppBlock>
     </>
