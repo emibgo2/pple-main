@@ -23,18 +23,16 @@ const HomeCardTemplateForm: React.FC = () => {
   };
 
   useEffect(() => {
-    if (jwt != undefined && jwt != null) {
-      customAxios
-        .get('/api/v1/donation')
-        .then(res => {
-          const newArray = res.data.content;
-          setContentArray(newArray);
-        })
-        .catch(err => {
-          console.log(err);
-          console.log('ERROR_DONATION');
-        });
-    }
+    customAxios
+      .get('/api/v1/donation')
+      .then(res => {
+        const newArray = res.data.content;
+        setContentArray(newArray);
+      })
+      .catch(err => {
+        console.log(err);
+        console.log('ERROR_DONATION');
+      });
   }, []);
 
   return (
