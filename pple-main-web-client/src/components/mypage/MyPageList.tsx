@@ -35,6 +35,15 @@ const MyPageList: React.FC = () => {
   const handleStory = () => {
     navigate('/page/story');
   };
+  const handleDonation = () => {
+    navigate('/etc/1');
+  };
+  const handlePolicy = () => {
+    navigate('/etc/2');
+  };
+  const handleService = () => {
+    navigate('/etc/3');
+  };
   return (
     <div>
       <DIVIDER />
@@ -60,19 +69,19 @@ const MyPageList: React.FC = () => {
       </List1>
       <DIVIDER />
       <List2>
-        <ListItemButton>
+        <ListItemButton onClick={handleDonation}>
           <ListItemIcon>
             <img src={heartSearch} alt="지정헌혈이란" />
           </ListItemIcon>
           <ListItemText primary="지정헌혈이란" />
         </ListItemButton>
-        <ListItemButton>
+        <ListItemButton onClick={handlePolicy}>
           <ListItemIcon>
             <img src={shieldTick} alt="개인정보 처리방침" />
           </ListItemIcon>
           <ListItemText primary="개인정보 처리방침" />
         </ListItemButton>
-        <ListItemButton>
+        <ListItemButton onClick={handleService}>
           <ListItemIcon>
             <img src={task} alt="서비스 이용약관" />
           </ListItemIcon>
