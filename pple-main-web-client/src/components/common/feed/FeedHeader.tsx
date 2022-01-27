@@ -70,11 +70,34 @@ const CardComponentHeaderColumn = styled('div')({
   },
 });
 
+const createBloodProduct = (bloodProduct: string) => {
+  if (bloodProduct == 'WHOLE') {
+    return '전혈';
+  } else if (bloodProduct == 'PLATELET') {
+    return '성분채혈 혈소판';
+  } else if (bloodProduct == 'LEUKOCYTE') {
+    return '성분채혈 백혈구';
+  } else if (bloodProduct == 'PACKED_RED_BLOOD_CELL') {
+    return '농축 적혈구';
+  } else if (bloodProduct == 'LEUKOCYTE_REDUCED_RED_BLOOD_CELL') {
+    return '백혈구제거 적혈구';
+  } else {
+    return '오타있습니다';
+  }
+};
+
+const createTimeFormat = (time: string) => {
+  return `${time.slice(0, 4)}년 ${time.slice(5, 7)}월 ${time.slice(
+    8,
+    10,
+  )}일 등록`;
+};
+
 interface CardProps {
   bloodType: string;
   sort: string;
-  noBorderRadius?: boolean;
   buttonText: string;
+  time?: string;
   onClick?: any;
 }
 
@@ -83,6 +106,7 @@ const FeedHeader: React.FC<CardProps> = ({
   sort,
   buttonText,
   onClick,
+  time,
 }) => {
   const bloodTypeImg = (bloodType: string) => {
     if (bloodType == 'A+') {
@@ -103,11 +127,12 @@ const FeedHeader: React.FC<CardProps> = ({
       return <img src={ABn} alt="AB-" width={60} height={60} />;
     }
   };
+
   return (
     <FeedHeaderBlock>
       <div className="header">
         <TimeBox>
-          <div>2021년 12월 13일 등록</div>
+          <div> {time ? createTimeFormat(time) : ''}</div>
         </TimeBox>
         <CardComponentHeader>
           <div className="left">
@@ -128,7 +153,7 @@ const FeedHeader: React.FC<CardProps> = ({
                     marginTop: '5px',
                   }}
                 >
-                  {sort}
+                  {sort ? createBloodProduct(sort) : 'none'}
                 </div>
               </div>
             </CardComponentHeaderColumn>

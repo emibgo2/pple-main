@@ -114,7 +114,6 @@ const RequestRegisterForm: React.FC = () => {
     const newArr = [...post.bloodProduct].filter(product => {
       return product !== value;
     });
-    console.log(newArr);
     setPost({
       ...post,
       bloodProduct: newArr,

@@ -5,8 +5,11 @@ import FeedContent from '../../common/feed/FeedContent';
 import FeedUserInfo from '../../request/post/feed/FeedUserInfo';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import { useNavigate } from 'react-router-dom';
+import { ContentType } from '../../../container/feed/MyStoryForm';
 
-const StoryBubbleBlock = styled('div')({});
+const StoryBubbleBlock = styled('div')({
+  marginBottom: '20px',
+});
 const ContentWithMore = styled('div')({
   fontStyle: 'normal',
   fontWeight: 'bold',
@@ -49,9 +52,14 @@ const ReduceButton = styled('div')({
   marginTop: '10px',
 });
 
-const StoryBubble: React.FC = () => {
+type StoryBubbleType = {
+  content: ContentType;
+  index: number;
+};
+
+const StoryBubble: React.FC<StoryBubbleType> = ({ content, index }) => {
   const navigate = useNavigate();
-  const str = '저희 아버지가 재생불량성빈혈을 판정을 받았습니다';
+  const title = content.title;
   const [detail, setDetail] = useState(false);
   const handleDetail = () => {
     setDetail(!detail);
@@ -63,20 +71,25 @@ const StoryBubble: React.FC = () => {
     <StoryBubbleBlock>
       <Paper elevation={2} sx={{ borderRadius: '15px' }}>
         <FeedHeader
-          bloodType="AB+"
-          sort="혈소판성분채혈"
+          bloodType={
+            content.patient.blood.rh == 'POSITIVE'
+              ? `${content.patient.blood.abo}+`
+              : `${content.patient.blood.abo}-`
+          }
+          sort={content.bloodProduct[0]}
           buttonText="정보수정"
           onClick={handleModifyButton}
+          time={content.createdAt}
         />
         {detail ? (
           <ContentDetail>
-            <FeedUserInfo />
-            <Title>{str}</Title>
-            <Content>
-              아빠가 11월 2일 급성백혈병 재발로 인해 이식을 받으시고 회복중에
-              장출혈이 생기면서 매일 혈소판 수혈을 받으시고 계신 상황입니다.
-              병원에서 지정헌혈을 요청하셔서 백방으로 알아보는데 힘든상황입니다.
-            </Content>
+            <FeedUserInfo
+              time={content.createdAt}
+              nickname="에이호프"
+              bloodType={content.patient.blood.abo}
+            />
+            <Title>{title}</Title>
+            <Content>{content.content}</Content>
             <ReduceButton>
               <IconButton
                 sx={{ color: '#B7B7B7', textAlign: 'center' }}
@@ -88,7 +101,7 @@ const StoryBubble: React.FC = () => {
           </ContentDetail>
         ) : (
           <ContentWithMore>
-            {str.slice(0, 22)}
+            {title.slice(0, 22)}
             <button onClick={handleDetail}>...더보기</button>
           </ContentWithMore>
         )}

@@ -6,10 +6,10 @@ const FeedUserInfoBlock = styled('div')({
   height: '100%',
   display: 'flex',
   alignContent: 'center',
-  marginTop:'17px',
-  '& .first':{
-      marginRight:"7.42px",
-  }
+  marginTop: '17px',
+  '& .first': {
+    marginRight: '7.42px',
+  },
 });
 
 const UserInfoBox = styled('div')({
@@ -31,9 +31,15 @@ const UserInfoBox = styled('div')({
 interface UserInfo {
   nickname?: string;
   time?: string;
+  bloodType?: string;
+  imgUrl?: string;
 }
 
-const FeedUserInfo: React.FC = () => {
+const createTimeFormat = (time: string) => {
+  return `${time.slice(0, 4)}년 ${time.slice(5, 7)}월 ${time.slice(8, 10)}일`;
+};
+
+const FeedUserInfo: React.FC<UserInfo> = ({ nickname, time, bloodType }) => {
   return (
     <FeedUserInfoBlock>
       <div className="first">
@@ -41,8 +47,8 @@ const FeedUserInfo: React.FC = () => {
       </div>
       <div className="seconde">
         <UserInfoBox>
-          <NickNameWithBloodType nickname="에이호프" bloodType="AB+" />
-          <div className="time">2021년 12월 13일 오전 7:30</div>
+          <NickNameWithBloodType nickname={nickname} bloodType={bloodType} />
+          <div className="time">{time ? createTimeFormat(time) : ''}</div>
         </UserInfoBox>
       </div>
     </FeedUserInfoBlock>

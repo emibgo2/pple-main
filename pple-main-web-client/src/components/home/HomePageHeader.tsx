@@ -19,7 +19,7 @@ import Mypage from '../../lib/images/menu/Mypage.svg';
 import MenuLogo from '../../lib/images/menu/MenuLogo.svg';
 import { borderRadius } from '@mui/system';
 import { useCookies } from 'react-cookie';
-import { checkUser } from '../../lib/hooks/CookieUtil';
+import { checkUser, getCookie } from '../../lib/hooks/CookieUtil';
 import LoginRequestModal from '../common/modal/LoginRequestModal';
 
 const HomePageHeaderBlock = styled('div')({
@@ -103,7 +103,7 @@ interface HomeHeaderProps {
 const HomePageHeader: React.FC<HomeHeaderProps> = ({ name }) => {
   const [open, setOpen] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
-  const [cookie, setCookie] = useCookies(['jwt']);
+  const jwt = getCookie();
   const toggleDrawer =
     (newOpen: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
       setOpen(newOpen);
@@ -117,7 +117,7 @@ const HomePageHeader: React.FC<HomeHeaderProps> = ({ name }) => {
     setModalOpen(!modalOpen);
   };
   const goPage = () => {
-    if (cookie.jwt !== undefined) {
+    if (jwt !== undefined) {
       navigate('/page');
       return;
     }

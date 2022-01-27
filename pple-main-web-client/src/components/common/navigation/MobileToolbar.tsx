@@ -1,4 +1,3 @@
-
 import React, { MouseEventHandler } from 'react';
 import { IconButton, styled } from '@mui/material';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
@@ -9,12 +8,15 @@ import { useNavigate } from 'react-router-dom';
 import palette from '../../../lib/styles/palette';
 
 const MobileGNBBlock = styled('div')({
-  padding:'0.2rem 0rem 0.2rem 0.2rem',
+  padding: '0.2rem',
   display: 'flex',
-  justifyContent: 'space-between',
   alignItems: 'center',
   background: `linear-gradient(109.4deg, #FF6969 -3.19%, #FF3333 109.95%);`,
-  fontWeight:"bold",
+  fontWeight: 'bold',
+  '& .title': {
+    width: '80%',
+    textAlign: 'center',
+  },
 });
 
 interface Props {
@@ -42,15 +44,21 @@ const MobileToolbar: React.FC<Props> = ({
   return (
     <MobileGNBBlock>
       {isBack ? (
-        <IconButton sx={{ color: 'white' }} onClick={handleBack}>
+        <IconButton
+          className="back-icon"
+          sx={{ color: 'white' }}
+          onClick={handleBack}
+        >
           <ArrowBackIosNewIcon fontSize="small" />
         </IconButton>
       ) : (
         <div></div>
       )}
-      <div style={{ color: 'white', fontWeight: 'bold' }}>{title}</div>
+      <div className="title" style={{ color: 'white', fontWeight: 'bold' }}>
+        {title}
+      </div>
       {isSearch ? (
-        <IconButton onClick={goPostRegister}>
+        <IconButton className="search-icon" onClick={goPostRegister}>
           <img src={Search} alt="검색" />
         </IconButton>
       ) : (

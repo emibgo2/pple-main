@@ -9,7 +9,6 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper-bundle.min.css';
 import 'swiper/swiper.min.css';
 
-
 const StyledModal = styled(Modal)({
   position: 'fixed',
   top: '50%',
@@ -36,10 +35,10 @@ const TitleBox = styled('div')({
   color: '#222222',
   marginBottom: '10px',
   padding: '0px 70px',
-  '& .capture':{
-    fontSize:"20px",
-    padding:"0px",
-  }
+  '& .capture': {
+    fontSize: '20px',
+    padding: '0px',
+  },
 });
 const TitleBox2 = styled('div')({
   fontStyle: 'normal',
@@ -63,20 +62,33 @@ const PhoneBox = styled('div')({
   width: '100%',
   textAlign: 'center',
   marginTop: '25px',
-  marginBottom:"50px",
+  marginBottom: '50px',
 });
 
-const ConnectionModal: React.FC = () => {
-  SwiperCore.use([Navigation, Pagination, Autoplay]);
-  const [open, setOpen] = useState(false);
-  const onClick = () => {
-    setOpen(!open);
-  };
+interface Props {
+  open: boolean;
+  handleOpen: any;
+  phoneNumber: string;
+}
 
+const createPhoneNumber = (phoneNumber: string): string => {
+  const first = phoneNumber.slice(0, 3);
+  const second = phoneNumber.slice(3, 7);
+  const third = phoneNumber.slice(7, 11);
+  return `${first}-${second}-${third}`;
+};
+
+const ConnectionModal: React.FC<Props> = ({
+  open,
+  handleOpen,
+  phoneNumber,
+}) => {
+  SwiperCore.use([Navigation, Pagination, Autoplay]);
+  const onClick = () => {
+    handleOpen(open);
+  };
   return (
     <>
-      <button onClick={onClick}>모달테스트</button>
-
       <StyledModal isOpen={open}>
         <StyledPaper elevation={1}>
           <CloseBox>
@@ -106,7 +118,7 @@ const ConnectionModal: React.FC = () => {
                 <br />
                 삼가해주세요
               </ContentBox>
-              <PhoneBox>010-5047-7361</PhoneBox>
+              <PhoneBox>{createPhoneNumber(phoneNumber)}</PhoneBox>
             </SwiperSlide>
             <SwiperSlide>
               <ImageBox>
@@ -123,9 +135,10 @@ const ConnectionModal: React.FC = () => {
                 <br /> 안내 문자 캡쳐본을 전달받아주세요
               </TitleBox2>
               <ContentBox>
-                근처 헌혈의 집 혹은 헌혈카페에 방문해<br/> 지정헌혈을 완료해주세요
+                근처 헌혈의 집 혹은 헌혈카페에 방문해
+                <br /> 지정헌혈을 완료해주세요
               </ContentBox>
-              </SwiperSlide>
+            </SwiperSlide>
           </Swiper>
         </StyledPaper>
       </StyledModal>
