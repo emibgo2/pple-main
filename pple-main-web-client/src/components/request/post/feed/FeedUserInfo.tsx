@@ -36,6 +36,9 @@ interface UserInfo {
 }
 
 const createTimeFormat = (time: string) => {
+  if (!time) {
+    return '';
+  }
   return `${time.slice(0, 4)}년 ${time.slice(5, 7)}월 ${time.slice(8, 10)}일`;
 };
 
@@ -48,7 +51,7 @@ const FeedUserInfo: React.FC<UserInfo> = ({ nickname, time, bloodType }) => {
       <div className="seconde">
         <UserInfoBox>
           <NickNameWithBloodType nickname={nickname} bloodType={bloodType} />
-          <div className="time">{createTimeFormat(time)}</div>
+          <div className="time">{time ? createTimeFormat(time) : ''}</div>
         </UserInfoBox>
       </div>
     </FeedUserInfoBlock>

@@ -132,7 +132,7 @@ const FeedHeader: React.FC<CardProps> = ({
     <FeedHeaderBlock>
       <div className="header">
         <TimeBox>
-          <div> {time ? createTimeFormat(time) : 'none'}</div>
+          <div> {time ? createTimeFormat(time) : ''}</div>
         </TimeBox>
         <CardComponentHeader>
           <div className="left">

@@ -1,4 +1,4 @@
-import React, { MouseEventHandler } from 'react';
+import React, { useState } from 'react';
 import { styled, Paper } from '@mui/material';
 import FeedHeader from '../../../common/feed/FeedHeader';
 import FeedPatientInfo from '../../../common/feed/FeedPatientInfo';
@@ -6,6 +6,7 @@ import FeedContent from '../../../common/feed/FeedContent';
 import FeedFooter from '../../../common/feed/FeedFooter';
 import { useNavigate } from 'react-router-dom';
 import FeedUserInfo from './FeedUserInfo';
+import ConnectionModal from '../../../common/modal/ConnectionModal';
 
 const FeedTemplateBlock = styled('div')({
   '& .feed': {
@@ -13,6 +14,7 @@ const FeedTemplateBlock = styled('div')({
   },
 });
 const FeedBox = styled('div')({
+  marginTop: '15px',
   marginBottom: '15px',
 });
 const FeedContentBox = styled('div')({
@@ -26,20 +28,28 @@ const FeedContentBox = styled('div')({
 interface Props {
   bloodType: string;
   sort: string;
+  time: string;
+  displayName: string;
+  phoneNumber: string;
 
-  title?: string;
-  content?: string;
-
-  name?: string;
-  birth?: string;
-  bloodComponent?: string;
-  institution?: string;
-  hospitalRoom?: string;
-  needCount?: string;
+  title: string;
+  content: string;
 }
 
-const FeedTemplate: React.FC<Props> = ({ bloodType, sort }) => {
-  const navigate = useNavigate();
+const FeedTemplate: React.FC<Props> = ({
+  bloodType,
+  sort,
+  time,
+  displayName,
+  title,
+  content,
+  phoneNumber,
+}) => {
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => {
+    setOpen(!open);
+  };
+
   return (
     <FeedTemplateBlock>
       <Paper
@@ -48,39 +58,23 @@ const FeedTemplate: React.FC<Props> = ({ bloodType, sort }) => {
         elevation={1}
       >
         <FeedBox>
-          <FeedHeader bloodType={bloodType} sort={sort} buttonText="도움주기" />
+          <FeedHeader
+            onClick={handleOpen}
+            bloodType={bloodType}
+            sort={sort}
+            buttonText="도움주기"
+          />
           <FeedContentBox>
-            <FeedUserInfo />
-            <FeedContent />
+            <FeedUserInfo time={time} nickname={displayName} />
+            <FeedContent title={title} content={content} />
           </FeedContentBox>
         </FeedBox>
       </Paper>
-      <Paper
-        className="feed"
-        sx={{ borderRadius: '14px', border: 'none' }}
-        elevation={1}
-      >
-        <FeedBox>
-          <FeedHeader bloodType={bloodType} sort={sort} buttonText="도움주기" />
-          <FeedContentBox>
-            <FeedUserInfo />
-            <FeedContent />
-          </FeedContentBox>
-        </FeedBox>
-      </Paper>
-      <Paper
-        className="feed"
-        sx={{ borderRadius: '14px', border: 'none' }}
-        elevation={1}
-      >
-        <FeedBox>
-          <FeedHeader bloodType={bloodType} sort={sort} buttonText="도움주기" />
-          <FeedContentBox>
-            <FeedUserInfo />
-            <FeedContent />
-          </FeedContentBox>
-        </FeedBox>
-      </Paper>
+      <ConnectionModal
+        phoneNumber={phoneNumber}
+        open={open}
+        handleOpen={handleOpen}
+      />
     </FeedTemplateBlock>
   );
 };

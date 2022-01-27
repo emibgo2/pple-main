@@ -1,13 +1,13 @@
 import React from 'react';
 import RequestTemplate from '../components/request/RequestTemplate';
-import RequestPost from '../components/request/post/RequestPost3';
-import RequestPostList from '../components/request/post/RequestPostList';
+import RequestPostListForm from '../container/post/RequestPostListForm';
+
 const RequestPostPage: React.FC = () => {
-    return (
-        <RequestTemplate>
-            <RequestPostList/>
-        </RequestTemplate>
-    );
+  return (
+    <RequestTemplate>
+      <RequestPostListForm />
+    </RequestTemplate>
+  );
 };
 
 export default RequestPostPage;
