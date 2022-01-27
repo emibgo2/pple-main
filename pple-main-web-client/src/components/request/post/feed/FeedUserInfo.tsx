@@ -36,9 +36,6 @@ interface UserInfo {
 }
 
 const createTimeFormat = (time: string) => {
-  if (!time) {
-    return '';
-  }
   return `${time.slice(0, 4)}년 ${time.slice(5, 7)}월 ${time.slice(8, 10)}일`;
 };
 
