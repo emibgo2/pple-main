@@ -23,7 +23,6 @@ data class AccountPatchDto(
 )
 
 data class AccountDto(
-    val id: Long,
     val uuid: String,
     val key: Account.Provider,
     val email: String,
@@ -40,10 +39,16 @@ data class AccountDto(
     val blood: Blood?
 )
 
+data class DonationCreateAccountDto(
+    val uuid: String,
+    val displayName: String,
+    val profileImageUrl: String?,
+    val blood: Blood?
+)
+
 // ===============
 
 internal fun Account.toDto() = AccountDto(
-    id = id,
     uuid = uuid,
     key = key,
     email = email,
@@ -53,6 +58,13 @@ internal fun Account.toDto() = AccountDto(
     birthDay = birthDay,
     gender = gender,
     phoneNumber = phoneNumber,
+    profileImageUrl = profileImageUrl,
+    blood = blood
+)
+
+internal fun Account.toDonationAccountDto() = DonationCreateAccountDto(
+    uuid = uuid,
+    displayName = displayName,
     profileImageUrl = profileImageUrl,
     blood = blood
 )

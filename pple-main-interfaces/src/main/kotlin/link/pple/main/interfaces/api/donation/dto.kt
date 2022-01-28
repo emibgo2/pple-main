@@ -4,6 +4,7 @@ import link.pple.main.domain.donation.Blood
 import link.pple.main.domain.donation.Donation
 import link.pple.main.domain.donation.DonationDefinition
 import link.pple.main.domain.donation.PatientDefinition
+import link.pple.main.interfaces.api.account.DonationCreateAccountDto
 import java.time.LocalDateTime
 
 
@@ -31,7 +32,7 @@ data class BloodDto(
 data class DonationDto(
     val uuid: String,
     val createdAt: LocalDateTime,
-    val createdBy: Long,
+    val createdAccount: DonationCreateAccountDto,
     val modifiedAt: LocalDateTime,
     val modifiedBy: Long,
     val title: String,
@@ -73,10 +74,10 @@ internal fun DonationDefinitionDto.toDefinition() = DonationDefinition(
     phoneNumber = phoneNumber
 )
 
-internal fun Donation.toDto() = DonationDto(
+internal fun Donation.toDto(createdAccount: DonationCreateAccountDto) = DonationDto(
     uuid = uuid,
     createdAt = createdAt,
-    createdBy = createdBy,
+    createdAccount = createdAccount,
     modifiedAt = modifiedAt,
     modifiedBy = modifiedBy,
     title = title,
@@ -94,10 +95,10 @@ internal fun Donation.toDto() = DonationDto(
     status = status
 )
 
-internal fun link.pple.assets.client.DonationDto.toDto() = DonationDto(
+internal fun link.pple.assets.client.DonationDto.toDto(createdAccount: DonationCreateAccountDto) = DonationDto(
     uuid = uuid,
     createdAt = createdAt,
-    createdBy = createdBy,
+    createdAccount = createdAccount,
     modifiedAt = modifiedAt,
     modifiedBy = modifiedBy,
     title = title,
@@ -114,7 +115,6 @@ internal fun link.pple.assets.client.DonationDto.toDto() = DonationDto(
     renewedCount = renewedCount,
     status = status
 )
-
 
 internal fun link.pple.assets.client.DonationHistoryDto.toDto() = DonationHistoryDto(
     uuid = uuid,

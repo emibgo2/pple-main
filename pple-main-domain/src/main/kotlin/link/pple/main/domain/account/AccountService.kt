@@ -17,6 +17,13 @@ class AccountService(
         return Account.from(accountDto)
     }
 
+    fun getAccount(accountId: Long): Account {
+        val accountDto = accountClient.getAccountById(
+            accountId = accountId
+        )
+        return Account.from(accountDto)
+    }
+
     fun getAccountOrNull(
         email: String
     ): Account? {

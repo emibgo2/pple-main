@@ -75,4 +75,16 @@ interface AssetsAccountClient {
         @PathVariable accountUuid: String,
         @RequestBody definitionDto: AccountPatchDto
     ): AccountDto
+
+    /**
+     * @param id 로 회원 정보 조회
+     * @Author Heli
+     */
+    @GetMapping(
+        value = ["/account/api/v1/account"],
+        produces = [MediaType.APPLICATION_JSON_VALUE]
+    )
+    fun getAccountById(
+        @RequestParam accountId: Long
+    ): AccountDto
 }
