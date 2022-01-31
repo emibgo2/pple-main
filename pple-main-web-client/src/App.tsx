@@ -22,7 +22,7 @@ import './static/fonts/fonts.css';
 
 const GlobalStyles = createGlobalStyle`
   ${reset};
-  font-family: "Spoqa Han Sans Neo";
+  font-family: "Pretendard";
 `;
 
 const AppBlock = styled.div`

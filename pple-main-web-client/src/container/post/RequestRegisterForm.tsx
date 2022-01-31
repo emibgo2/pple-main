@@ -120,9 +120,6 @@ const RequestRegisterForm: React.FC = () => {
     });
   };
 
-  const onClick = () => {
-    console.log(post);
-  };
   const onSubmit = (e: any) => {
     e.preventDefault();
     const body = {
