@@ -120,9 +120,6 @@ const RequestRegisterForm: React.FC = () => {
     });
   };
 
-  const onClick = () => {
-    console.log(post);
-  };
   const onSubmit = (e: any) => {
     e.preventDefault();
     const body = {
@@ -159,7 +156,6 @@ const RequestRegisterForm: React.FC = () => {
           handlePhoneNumber={handlePhoneNumber}
           handleBloodProduction={handleBloodProduction}
         />
-        <button onClick={onClick}> test </button>
       </form>
     </>
   );

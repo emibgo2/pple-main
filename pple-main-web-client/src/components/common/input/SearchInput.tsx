@@ -1,7 +1,7 @@
 import React from 'react';
 import { styled, Paper, InputBase, IconButton } from '@mui/material';
 import palette from '../../../lib/styles/palette';
-import searchImg from '../../../lib/images/Search.png';
+import searchImg from '../../../static/images/Search.png';
 
 const SearchInputBlock = styled('div')({
   margin: '20px 0px',
@@ -20,11 +20,11 @@ const SearchComponentsBox = styled('div')({
   justifyContent: 'space-between',
 });
 
-interface ISearch{
-  placeholder: string; 
+interface ISearch {
+  placeholder: string;
 }
 
-const SearchInput: React.FC<ISearch> = ({placeholder}) => {
+const SearchInput: React.FC<ISearch> = ({ placeholder }) => {
   return (
     <SearchInputBlock>
       <Paper elevation={0}>

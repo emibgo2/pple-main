@@ -41,18 +41,29 @@ const StyledInputBase = styled(InputBase)({
 interface Props {
   title: string;
   list: Array<string>;
+  name: string;
+  handleSelect: any;
+  value: string;
 }
-const RadiusButtonWithDownDrop: React.FC<Props> = ({ title, list }) => {
-  const [value, setValue] = useState(title);
-  const onChange = (e: SelectChangeEvent) => {
-    setValue(e.target.value);
-  };
-
+const RadiusButtonWithDownDrop: React.FC<Props> = ({
+  title,
+  list,
+  name,
+  handleSelect,
+  value,
+}) => {
   return (
     <FormControl>
       <TempBLock>
-        <Select value={value} onChange={onChange} input={<StyledInputBase></StyledInputBase>}>
-          <MenuItem disabled value={title}>{title}</MenuItem>
+        <Select
+          name={name}
+          value={value ? value : title}
+          onChange={handleSelect}
+          input={<StyledInputBase></StyledInputBase>}
+        >
+          <MenuItem disabled value={title}>
+            {title}
+          </MenuItem>
           {list.map((item, idx) => (
             <MenuItem key={idx} value={item}>
               {item}

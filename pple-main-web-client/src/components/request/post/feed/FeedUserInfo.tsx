@@ -29,25 +29,24 @@ const UserInfoBox = styled('div')({
 });
 
 interface UserInfo {
-  nickname?: string;
-  time?: string;
-  bloodType?: string;
-  imgUrl?: string;
+  nickname: string;
+  time: string;
+  imgUrl: string;
 }
 
 const createTimeFormat = (time: string) => {
   return `${time.slice(0, 4)}년 ${time.slice(5, 7)}월 ${time.slice(8, 10)}일`;
 };
 
-const FeedUserInfo: React.FC<UserInfo> = ({ nickname, time, bloodType }) => {
+const FeedUserInfo: React.FC<UserInfo> = ({ nickname, time, imgUrl }) => {
   return (
     <FeedUserInfoBlock>
       <div className="first">
-        <Avatar></Avatar>
+        <Avatar src={imgUrl}></Avatar>
       </div>
       <div className="seconde">
         <UserInfoBox>
-          <NickNameWithBloodType nickname={nickname} bloodType={bloodType} />
+          <NickNameWithBloodType nickname={nickname} />
           <div className="time">{time ? createTimeFormat(time) : ''}</div>
         </UserInfoBox>
       </div>

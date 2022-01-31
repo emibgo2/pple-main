@@ -1,17 +1,19 @@
 import React, { useState } from 'react';
 import Modal from 'react-modal';
-import { styled, Paper, IconButton,Button } from '@mui/material';
+import { styled, Paper, IconButton, Button } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
-import Coin from '../../../lib/images/modal/Coin.svg';
+import Coin from '../../../static/images/modal/Coin.svg';
 import { useNavigate } from 'react-router-dom';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import palette from '../../../lib/styles/palette';
+import '../../../static/fonts/fonts.css';
 
 const StyledModal = styled(Modal)({
   position: 'fixed',
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
+  fontFamily: 'Pretendard',
 });
 
 const StyledPaper = styled(Paper)({
@@ -48,12 +50,12 @@ const ContentBox = styled('div')({
   color: '#B7B7B7',
   padding: '0px 38px',
   minWidth: '280px',
-  '&:hover':{
-      cursor:"pointer",
-  }
+  '&:hover': {
+    cursor: 'pointer',
+  },
 });
 
-interface IModal { 
+interface IModal {
   open: boolean;
   onClick: () => void;
 }
@@ -85,6 +87,6 @@ const LoginRequestModal: React.FC<IModal> = ({ open, onClick }) => {
       </StyledModal>
     </div>
   );
-}
+};
 
 export default LoginRequestModal;

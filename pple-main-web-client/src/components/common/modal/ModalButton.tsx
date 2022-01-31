@@ -1,6 +1,6 @@
 import React from 'react';
 import { ButtonBase, styled } from '@mui/material';
-
+import '../../../static/fonts/fonts.css';
 const StyledButton = styled(ButtonBase)({
   fontStyle: 'normal',
   fontWeight: 'bold',
@@ -8,8 +8,9 @@ const StyledButton = styled(ButtonBase)({
   lineHeight: '22px',
   textAlign: 'center',
   borderRadius: '15px',
-  padding:"18px 38px",
-  minWidth:"138.28px",
+  padding: '18px 38px',
+  minWidth: '138.28px',
+  fontFamily: 'Pretendard',
 });
 
 interface Props {
@@ -18,7 +19,7 @@ interface Props {
   color?: string;
   onClick: React.MouseEventHandler;
 }
-const ModalButton: React.FC<Props> = ({ text,background,color,onClick }) => {
+const ModalButton: React.FC<Props> = ({ text, background, color, onClick }) => {
   return (
     <div>
       <StyledButton

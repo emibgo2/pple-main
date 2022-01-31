@@ -1,19 +1,21 @@
 import React, { useState } from 'react';
 import Modal from 'react-modal';
-import { styled,Paper, IconButton } from '@mui/material';
+import { styled, Paper, IconButton } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import Coin from '../../../lib/images/modal/Coin.svg';
+import '../../../static/fonts/fonts.css';
 
 const StyledModal = styled(Modal)({
   position: 'fixed',
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
+  fontFamily: 'Pretendard',
 });
 
 const StyledPaper = styled(Paper)({
   borderRadius: '20px',
-  paddingBottom:"30px",
+  paddingBottom: '30px',
 });
 
 const CloseBox = styled('div')({
@@ -21,10 +23,9 @@ const CloseBox = styled('div')({
   textAlign: 'end',
 });
 
-
 const ImageBox = styled('div')({
-    textAlign:'center',
-    marginBottom: '15px',
+  textAlign: 'center',
+  marginBottom: '15px',
 });
 
 const TitleBox = styled('div')({
@@ -49,35 +50,37 @@ const ContentBox = styled('div')({
 });
 
 const ExtensionModal: React.FC = () => {
-    const [open, setOpen] = useState(false);
-    const onClick = () => {
-      setOpen(!open);
-    };
+  const [open, setOpen] = useState(false);
+  const onClick = () => {
+    setOpen(!open);
+  };
 
-
-    return (
-      <>
-        <button onClick={onClick}></button>
-        <StyledModal isOpen={open}>
-          <StyledPaper elevation={1}>
-            <CloseBox>
-              <IconButton onClick={onClick}>
-                <CloseIcon style={{ color: '#C7C7C7' }} />
-              </IconButton>
-            </CloseBox>
-            <ImageBox>
-              <img src={Coin} alt="연장하기 완료" width={90} height={90} />
-            </ImageBox>
-            <TitleBox>
-              요청 사연이
-              <br />
-              연장되었습니다
-            </TitleBox>
-            <ContentBox>사연은 7일 동안<br/> 게시됩니다</ContentBox>
-          </StyledPaper>
-        </StyledModal>
-      </>
-    );
+  return (
+    <>
+      <button onClick={onClick}></button>
+      <StyledModal isOpen={open}>
+        <StyledPaper elevation={1}>
+          <CloseBox>
+            <IconButton onClick={onClick}>
+              <CloseIcon style={{ color: '#C7C7C7' }} />
+            </IconButton>
+          </CloseBox>
+          <ImageBox>
+            <img src={Coin} alt="연장하기 완료" width={90} height={90} />
+          </ImageBox>
+          <TitleBox>
+            요청 사연이
+            <br />
+            연장되었습니다
+          </TitleBox>
+          <ContentBox>
+            사연은 7일 동안
+            <br /> 게시됩니다
+          </ContentBox>
+        </StyledPaper>
+      </StyledModal>
+    </>
+  );
 };
 
 export default ExtensionModal;

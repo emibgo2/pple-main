@@ -81,7 +81,7 @@ const Profile: React.FC<ProfileType> = ({
             <div className="nick-name">{displayName}</div>
             <div className="blood-type">{bloodType}</div>
           </NameBox>
-          <CountBox>오늘까지 총 16번 헌혈하셨습니다!</CountBox>
+          <CountBox>오늘도 건강하고 행복하세요!</CountBox>
         </div>
       </ProfileBox>
 

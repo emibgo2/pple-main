@@ -30,6 +30,7 @@ interface Props {
   sort: string;
   time: string;
   displayName: string;
+  profileImageUrl: string;
   phoneNumber: string;
 
   title: string;
@@ -44,6 +45,7 @@ const FeedTemplate: React.FC<Props> = ({
   title,
   content,
   phoneNumber,
+  profileImageUrl,
 }) => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => {
@@ -65,7 +67,11 @@ const FeedTemplate: React.FC<Props> = ({
             buttonText="도움주기"
           />
           <FeedContentBox>
-            <FeedUserInfo time={time} nickname={displayName} />
+            <FeedUserInfo
+              imgUrl={profileImageUrl}
+              time={time}
+              nickname={displayName}
+            />
             <FeedContent title={title} content={content} />
           </FeedContentBox>
         </FeedBox>

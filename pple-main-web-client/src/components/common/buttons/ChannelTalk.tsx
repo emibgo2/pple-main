@@ -1,6 +1,6 @@
 import React from 'react';
 import { IconButton, styled } from '@mui/material';
-import ChannelTalkImg from '../../../lib/images/Talk.svg';
+import ChannelTalkImg from '../../../static/images/Talk.svg';
 
 const ChannelTalkBlock = styled('div')({});
 

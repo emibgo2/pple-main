@@ -6,12 +6,12 @@ import {
   ListItemText,
   styled,
 } from '@mui/material';
-import task from '../../lib/images/mypage-button/task.png';
-import edit from '../../lib/images/mypage-button/edit.png';
-import heartSearch from '../../lib/images/mypage-button/heart-search.png';
-import heart from '../../lib/images/mypage-button/Heart.png';
-import messageQuestion from '../../lib/images/mypage-button/message-question.png';
-import shieldTick from '../../lib/images/mypage-button/shield-tick.png';
+import task from '../../static/images/mypage-button/task.png';
+import edit from '../../static/images/mypage-button/edit.png';
+import heartSearch from '../../static/images/mypage-button/heart-search.png';
+import heart from '../../static/images/mypage-button/Heart.png';
+import messageQuestion from '../../static/images/mypage-button/message-question.png';
+import shieldTick from '../../static/images/mypage-button/shield-tick.png';
 import { useNavigate } from 'react-router-dom';
 
 const DIVIDER = styled('div')({
@@ -35,16 +35,25 @@ const MyPageList: React.FC = () => {
   const handleStory = () => {
     navigate('/page/story');
   };
+  const handleDonation = () => {
+    navigate('/etc/1');
+  };
+  const handlePolicy = () => {
+    navigate('/etc/2');
+  };
+  const handleService = () => {
+    navigate('/etc/3');
+  };
   return (
     <div>
       <DIVIDER />
       <List1>
-        <ListItemButton onClick={handleHelper}>
+        {/* <ListItemButton onClick={handleHelper}>
           <ListItemIcon>
             <img src={heart} alt="도움을 주신 분들" />
           </ListItemIcon>
           <ListItemText primary="도움을 주신 분들" />
-        </ListItemButton>
+        </ListItemButton> */}
         <ListItemButton onClick={handleStory}>
           <ListItemIcon>
             <img src={edit} alt="나의 사연" />
@@ -60,19 +69,19 @@ const MyPageList: React.FC = () => {
       </List1>
       <DIVIDER />
       <List2>
-        <ListItemButton>
+        <ListItemButton onClick={handleDonation}>
           <ListItemIcon>
             <img src={heartSearch} alt="지정헌혈이란" />
           </ListItemIcon>
           <ListItemText primary="지정헌혈이란" />
         </ListItemButton>
-        <ListItemButton>
+        <ListItemButton onClick={handlePolicy}>
           <ListItemIcon>
             <img src={shieldTick} alt="개인정보 처리방침" />
           </ListItemIcon>
           <ListItemText primary="개인정보 처리방침" />
         </ListItemButton>
-        <ListItemButton>
+        <ListItemButton onClick={handleService}>
           <ListItemIcon>
             <img src={task} alt="서비스 이용약관" />
           </ListItemIcon>

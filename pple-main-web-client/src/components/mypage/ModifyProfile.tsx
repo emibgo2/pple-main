@@ -1,14 +1,7 @@
 import React from 'react';
 import MyPageElementHeader from './MyPageElementHeader';
-import Camera from '../../lib/images/Camera.svg';
-import {
-  Avatar,
-  Badge,
-  Button,
-  ButtonBase,
-  styled,
-  TextField,
-} from '@mui/material';
+import Camera from '../../static/images/Camera.svg';
+import { Avatar, Badge, Button, styled, TextField } from '@mui/material';
 import palette from '../../lib/styles/palette';
 
 const ModifyProfileBlock = styled('div')({
@@ -76,11 +69,13 @@ const StyledButton = styled(Button)({
 type ModifyProfileType = {
   displayName: string;
   onChange: any;
+  profileImageUrl: string;
 };
 
 const ModifyProfile: React.FC<ModifyProfileType> = ({
   displayName,
   onChange,
+  profileImageUrl,
 }) => {
   return (
     <ModifyProfileBlock>
@@ -93,7 +88,11 @@ const ModifyProfile: React.FC<ModifyProfileType> = ({
             <SmallAvatar alt="프로필 이미지 수정" src={Camera}></SmallAvatar>
           }
         >
-          <Avatar sx={{ width: 118, height: 118 }} alt="프로필 이미지" />
+          <Avatar
+            src={profileImageUrl}
+            sx={{ width: 118, height: 118 }}
+            alt="프로필 이미지"
+          />
         </Badge>
       </div>
       <StyledInput

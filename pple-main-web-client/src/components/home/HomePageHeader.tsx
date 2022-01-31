@@ -11,12 +11,12 @@ import {
   IconButton,
   Drawer,
 } from '@mui/material';
-import PaperPlus from '../../lib/images/PaperPlus.png';
-import Calendar from '../../lib/images/Calendar.png';
+import PaperPlus from '../../static/images/PaperPlus.png';
+import Calendar from '../../static/images/Calendar.png';
 import MenuIcon from '@mui/icons-material/Menu';
-import Home from '../../lib/images/menu/Home.svg';
-import Mypage from '../../lib/images/menu/Mypage.svg';
-import MenuLogo from '../../lib/images/menu/MenuLogo.svg';
+import Home from '../../static/images/menu/Home.svg';
+import Mypage from '../../static/images/menu/Mypage.svg';
+import MenuLogo from '../../static/images/menu/MenuLogo.svg';
 import { borderRadius } from '@mui/system';
 import { useCookies } from 'react-cookie';
 import { checkUser, getCookie } from '../../lib/hooks/CookieUtil';

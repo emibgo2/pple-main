@@ -37,9 +37,9 @@ export const setCookie = () => {
     if (cookies.jwt === undefined || cookies.jwt == 'null') {
       setCookie('jwt', userToken);
       dispatch(setToken(userToken));
-      // 토큰 날리기
-      navigate('/');
     }
+    // 토큰 날리기
+    navigate('/');
     // 쿠기 만료 시 처리
   }, []);
 };

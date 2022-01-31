@@ -19,9 +19,6 @@ const FeedContentBox = styled('div')({
 });
 
 const RequestPost: React.FC = () => {
-  // 유저 아이디로 텍스트 설정
-  const userId = getUserId();
-
   return (
     <>
       <MobileToolbar isBack={true} title="요청 피드" isSearch={true} />
@@ -32,7 +29,7 @@ const RequestPost: React.FC = () => {
           sort="혈소판성분채혈"
         />
         <FeedContentBox>
-          <FeedUserInfo />
+          {/* <FeedUserInfo /> */}
           <FeedContent />
         </FeedContentBox>
       </RequestPostBlock>

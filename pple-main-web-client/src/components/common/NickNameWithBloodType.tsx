@@ -34,10 +34,9 @@ const BloodBox = styled('div')({
 
 interface Info {
   nickname: string;
-  bloodType: string;
 }
 
-const NickNameWithBloodType: React.FC<Info> = ({ nickname, bloodType }) => {
+const NickNameWithBloodType: React.FC<Info> = ({ nickname }) => {
   return (
     <Template>
       <div className="nick-name">{nickname}</div>

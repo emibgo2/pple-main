@@ -5,7 +5,7 @@ import FeedContent from '../../common/feed/FeedContent';
 import FeedUserInfo from '../../request/post/feed/FeedUserInfo';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import { useNavigate } from 'react-router-dom';
-import { ContentType } from '../../../container/feed/MyStoryForm';
+import { ContentType } from '../../../container/my-page/MyStoryForm';
 
 const StoryBubbleBlock = styled('div')({
   marginBottom: '20px',
@@ -65,7 +65,7 @@ const StoryBubble: React.FC<StoryBubbleType> = ({ content, index }) => {
     setDetail(!detail);
   };
   const handleModifyButton = () => {
-    navigate('/page/story/modify');
+    navigate(`/page/story/modify/${content.uuid}`);
   };
   return (
     <StoryBubbleBlock>
@@ -86,7 +86,7 @@ const StoryBubble: React.FC<StoryBubbleType> = ({ content, index }) => {
             <FeedUserInfo
               time={content.createdAt}
               nickname="에이호프"
-              bloodType={content.patient.blood.abo}
+              imgUrl={content.createdAccount.profileImageUrl}
             />
             <Title>{title}</Title>
             <Content>{content.content}</Content>
