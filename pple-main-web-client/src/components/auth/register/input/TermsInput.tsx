@@ -1,88 +1,118 @@
 import * as React from 'react';
 import { styled } from '@mui/material/styles';
-import Radio, { RadioProps } from '@mui/material/Radio';
-import RadioGroup from '@mui/material/RadioGroup';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import FormControl from '@mui/material/FormControl';
-import palette from '../../../../lib/styles/palette';
 import Label from '../../../common/Label';
+import CheckButton from '../../../../static/images/CheckButtonImage.svg';
+import CheckedButton from '../../../../static/images/CheckedButtonImage.svg';
+import { Divider, IconButton, ToggleButton } from '@mui/material';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import { useNavigate } from 'react-router-dom';
 
-const BpIcon = styled('span')(({ theme }) => ({
-  borderRadius: '50%',
-  width: 16,
-  height: 16,
-  boxShadow:
-    theme.palette.mode === 'dark'
-      ? '0 0 0 1px rgb(16 22 26 / 40%)'
-      : 'inset 0 0 0 1px rgba(16,22,26,.2), inset 0 -1px 0 rgba(16,22,26,.1)',
-  backgroundColor: theme.palette.mode === 'dark' ? '#394b59' : '#f5f8fa',
-  backgroundImage:
-    theme.palette.mode === 'dark'
-      ? 'linear-gradient(180deg,hsla(0,0%,100%,.05),hsla(0,0%,100%,0))'
-      : 'linear-gradient(180deg,hsla(0,0%,100%,.8),hsla(0,0%,100%,0))',
-  '.Mui-focusVisible &': {
-    outline: `2px auto ${palette.red[1]}`,
-    outlineOffset: 2,
-  },
-  'input:hover ~ &': {
-    backgroundColor: theme.palette.mode === 'dark' ? '#30404d' : '#ebf1f5',
-  },
-  'input:disabled ~ &': {
-    boxShadow: 'none',
-    background:
-      theme.palette.mode === 'dark'
-        ? 'rgba(57,75,89,.5)'
-        : 'rgba(206,217,224,.5)',
-  },
-}));
-
-const BpCheckedIcon = styled(BpIcon)({
-  backgroundColor: `${palette.red[1]}`,
-  backgroundImage:
-    'linear-gradient(180deg,hsla(0,0%,100%,.1),hsla(0,0%,100%,0))',
-  '&:before': {
-    display: 'block',
-    width: 16,
-    height: 16,
-    backgroundImage: 'radial-gradient(#fff,#fff 28%,transparent 32%)',
-    content: '""',
-  },
-  'input:hover ~ &': {
-    backgroundColor: `${palette.red[2]}`,
+const ButtonBlock = styled('div')({
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'space-between',
+  '& span': {
+    color: '#767676',
   },
 });
 
-// Inspired by blueprintjs
-function BpRadio(props: RadioProps) {
-  return (
-    <Radio
-      sx={{
-        '&:hover': {
-          bgcolor: 'transparent',
-        },
-      }}
-      disableRipple
-      color="default"
-      checkedIcon={<BpCheckedIcon />}
-      icon={<BpIcon />}
-      {...props}
-    />
-  );
+interface ITerms {
+  all: boolean;
+  privacy: boolean;
+  term: boolean;
+  marketing: boolean;
+  handleAll: any;
+  handlePrivacy: any;
+  handleTerm: any;
+  handleMarketing: any;
 }
 
-export default function TermsInput() {
+const TermsInput: React.FC<ITerms> = ({
+  all,
+  privacy,
+  term,
+  marketing,
+  handleAll,
+  handlePrivacy,
+  handleTerm,
+  handleMarketing,
+}) => {
+  const navigate = useNavigate();
+  const navigatePrivacy = () => {
+    navigate('/etc/2');
+  };
+
+  const navigateTerm = () => {
+    navigate('/etc/3');
+  };
   return (
-    <FormControl fullWidth component="fieldset">
+    <>
       <Label>약관 동의</Label>
-      <RadioGroup
-        row
-        defaultValue="male"
-        aria-label="term"
-        name="customized-radios"
-      >
-        <FormControlLabel value="male" control={<BpRadio />} label="마케팅 활용" />
-        <FormControlLabel value="female" control={<BpRadio />} label="약관 동의" />
-      </RadioGroup>
-    </FormControl>
+      <ButtonBlock>
+        <div>
+          <IconButton onClick={handleAll}>
+            {all ? (
+              <img src={CheckedButton} alt="동의" />
+            ) : (
+              <img src={CheckButton} alt="동의" />
+            )}
+          </IconButton>
+          <span>전체동의</span>
+        </div>
+      </ButtonBlock>
+      <Divider sx={{ color: '#767676', margin: '10px 0px' }} />
+      <ButtonBlock>
+        <div>
+          <IconButton onClick={handlePrivacy}>
+            {privacy ? (
+              <img src={CheckedButton} alt="동의" />
+            ) : (
+              <img src={CheckButton} alt="동의" />
+            )}
+          </IconButton>
+          <span>개인정보 취급방침 (필수)</span>
+        </div>
+        <div>
+          <IconButton sx={{ color: '#767676' }} onClick={navigatePrivacy}>
+            <ChevronRightIcon />
+          </IconButton>
+        </div>
+      </ButtonBlock>
+      <ButtonBlock>
+        <div>
+          <IconButton onClick={handleTerm}>
+            {term ? (
+              <img src={CheckedButton} alt="동의" />
+            ) : (
+              <img src={CheckButton} alt="동의" />
+            )}
+          </IconButton>
+          <span>서비스 이용약관 (필수)</span>
+        </div>
+        <div>
+          <IconButton sx={{ color: '#767676' }} onClick={navigateTerm}>
+            <ChevronRightIcon />
+          </IconButton>
+        </div>
+      </ButtonBlock>
+      <ButtonBlock>
+        <div>
+          <IconButton onClick={handleMarketing}>
+            {marketing ? (
+              <img src={CheckedButton} alt="동의" />
+            ) : (
+              <img src={CheckButton} alt="동의" />
+            )}
+          </IconButton>
+          <span>마케팅 활용동의(선택)</span>
+        </div>
+        <div>
+          <IconButton sx={{ color: '#767676' }}>
+            <ChevronRightIcon />
+          </IconButton>
+        </div>
+      </ButtonBlock>
+    </>
   );
-}
+};
+export default TermsInput;

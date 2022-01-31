@@ -23,6 +23,7 @@ interface IUser {
   };
   phoneNumber: string;
 }
+
 const RegisterForm = () => {
   const uuid = useSelector((state: RootState) => state.account.uuid);
   const jwt = getCookie();
@@ -42,6 +43,26 @@ const RegisterForm = () => {
     },
     phoneNumber: '',
   });
+  const [privacy, setPrivate] = React.useState(false);
+  const [term, setTerm] = React.useState(false);
+  const [marketing, setMarketing] = React.useState(false);
+  const [all, setAll] = React.useState(false);
+
+  const handleAll = () => {
+    setAll(!all);
+    setPrivate(!all);
+    setTerm(!all);
+    setMarketing(!all);
+  };
+  const handlePrivacy = () => {
+    setPrivate(!privacy);
+  };
+  const handleTerm = () => {
+    setTerm(!term);
+  };
+  const handleMarketing = () => {
+    setMarketing(!marketing);
+  };
 
   const onChange = (e: { target: HTMLInputElement | HTMLButtonElement }) => {
     const { name, value } = e.target;
@@ -120,6 +141,10 @@ const RegisterForm = () => {
   };
   const onSubmit = (e: any) => {
     e.preventDefault();
+    if (privacy == false || term == false) {
+      alert('필수항목에 동의해주세요');
+      return;
+    }
     const body = {
       uuid: uuid,
       displayName: user.nickname,
@@ -155,6 +180,14 @@ const RegisterForm = () => {
           handleBloodType={handleBloodType}
           handleRh={handleRh}
           handleBirthDay={handleBirthDay}
+          all={all}
+          privacy={privacy}
+          term={term}
+          marketing={marketing}
+          handleAll={handleAll}
+          handlePrivacy={handlePrivacy}
+          handleTerm={handleTerm}
+          handleMarketing={handleMarketing}
         />
       </form>
     </>
