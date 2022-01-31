@@ -5,6 +5,8 @@ import FeedHeader from '../common/feed/FeedHeader';
 import FeedContent from '../common/feed/FeedContent';
 import { StringifyOptions } from 'querystring';
 import ConnectionModal from '../common/modal/ConnectionModal';
+import LoginRequestModal from '../common/modal/LoginRequestModal';
+import { getCookie } from '../../lib/hooks/CookieUtil';
 
 const CardComponentBlock = styled('div')({
   width: '100%',
@@ -50,20 +52,29 @@ const CardComponent: React.FC<Props> = ({
 }) => {
   const [detail, setDetail] = useState(false);
   const [open, setOpen] = useState(false);
+  const [loginOpen, setLoginOpen] = useState(false);
+  const jwt = getCookie();
   const handleOpen = (open: boolean) => {
     setOpen(!open);
   };
   const handleDetail = () => {
     setDetail(!detail);
   };
+  const handleLoginOpen = () => {
+    setLoginOpen(!loginOpen);
+  };
 
   const onClick = () => {
-    console.log(phoneNumber);
+    if (jwt == undefined) {
+      handleLoginOpen();
+      return;
+    }
     setOpen(!open);
   };
 
   return (
     <CardComponentBlock>
+      <LoginRequestModal open={loginOpen} onClick={handleLoginOpen} />
       <Paper sx={{ borderRadius: '14px', border: 'none' }} elevation={2}>
         <FeedHeader
           bloodType={bloodType}
