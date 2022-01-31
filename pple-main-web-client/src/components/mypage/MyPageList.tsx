@@ -6,12 +6,12 @@ import {
   ListItemText,
   styled,
 } from '@mui/material';
-import task from '../../lib/images/mypage-button/task.png';
-import edit from '../../lib/images/mypage-button/edit.png';
-import heartSearch from '../../lib/images/mypage-button/heart-search.png';
-import heart from '../../lib/images/mypage-button/Heart.png';
-import messageQuestion from '../../lib/images/mypage-button/message-question.png';
-import shieldTick from '../../lib/images/mypage-button/shield-tick.png';
+import task from '../../static/images/mypage-button/task.png';
+import edit from '../../static/images/mypage-button/edit.png';
+import heartSearch from '../../static/images/mypage-button/heart-search.png';
+import heart from '../../static/images/mypage-button/Heart.png';
+import messageQuestion from '../../static/images/mypage-button/message-question.png';
+import shieldTick from '../../static/images/mypage-button/shield-tick.png';
 import { useNavigate } from 'react-router-dom';
 
 const DIVIDER = styled('div')({

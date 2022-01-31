@@ -1,15 +1,15 @@
 import React from 'react';
 import { styled } from '@mui/material';
-import bar from '../../../lib/images/bar.png';
+import bar from '../../../static/images/bar.png';
 import RadiusButton from '../buttons/RadiusButton';
-import A from '../../../lib/images/bloodType/A+.svg';
-import An from '../../../lib/images/bloodType/A+.svg';
-import B from '../../../lib/images/bloodType/B+.svg';
-import Bn from '../../../lib/images/bloodType/B-.svg';
-import O from '../../../lib/images/bloodType/O+.svg';
-import On from '../../../lib/images/bloodType/O-.svg';
-import AB from '../../../lib/images/bloodType/AB+.svg';
-import ABn from '../../../lib/images/bloodType/AB-.svg';
+import A from '../../../static/images/bloodType/A+.svg';
+import An from '../../../static/images/bloodType/A+.svg';
+import B from '../../../static/images/bloodType/B+.svg';
+import Bn from '../../../static/images/bloodType/B-.svg';
+import O from '../../../static/images/bloodType/O+.svg';
+import On from '../../../static/images/bloodType/O-.svg';
+import AB from '../../../static/images/bloodType/AB+.svg';
+import ABn from '../../../static/images/bloodType/AB-.svg';
 
 interface FeedHeaderBlockProp {
   noBorderRadius?: boolean;

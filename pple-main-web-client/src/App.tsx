@@ -18,6 +18,7 @@ import DesignatedBloodDonation from './components/mypage/etc/DesignatedBloodDona
 import PrivacyPolicy from './components/mypage/etc/PrivacyPolicy';
 import TermsOfService from './components/mypage/etc/TermsOfService';
 import ModifyStoryForm from './container/my-page/ModifyStoryForm';
+import './static/fonts/fonts.css';
 
 const GlobalStyles = createGlobalStyle`
   ${reset};
@@ -27,6 +28,7 @@ const GlobalStyles = createGlobalStyle`
 const AppBlock = styled.div`
   width: 28rem;
   height: 100%;
+  font-family: 'Pretendard';
 `;
 
 const ContentBlock = styled.div`

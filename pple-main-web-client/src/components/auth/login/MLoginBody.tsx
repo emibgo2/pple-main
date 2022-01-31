@@ -1,14 +1,14 @@
 import React from 'react';
 import { ButtonBase, styled } from '@mui/material';
 import palette from '../../../lib/styles/palette';
-import kakaoLoginImg from '../../../lib/images/login/kakao_login_large_wide (1).png';
-import applelogImg from '../../../lib/images/login/Logo - SIWA - Logo-only - White.svg';
+import kakaoLoginImg from '../../../static/images/login/kakao_login_large_wide (1).png';
+import applelogImg from '../../../static/images/login/Logo - SIWA - Logo-only - White.svg';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import { useNavigate } from 'react-router-dom';
 
 const MLoginBodyBlock = styled('div')({
   width: '100%',
-  textAlign:'center',
+  textAlign: 'center',
 });
 
 const LoginButton = styled(ButtonBase)({
@@ -34,8 +34,8 @@ const LoginButton = styled(ButtonBase)({
 });
 
 const StartWithoutLogin = styled(ButtonBase)({
-    color: `${palette.gray[1]}`,
-    marginTop:'1rem',
+  color: `${palette.gray[1]}`,
+  marginTop: '1rem',
 });
 
 const ImageSrc = styled('img')({
@@ -53,10 +53,10 @@ const MLoginBody: React.FC<Props> = ({
   handleKakaoLogin,
   handleAppleLogin,
 }) => {
-    const navigate = useNavigate();
-    const handleWithoutLogin: React.MouseEventHandler = () =>{
-        navigate('/');
-    }
+  const navigate = useNavigate();
+  const handleWithoutLogin: React.MouseEventHandler = () => {
+    navigate('/');
+  };
   return (
     <MLoginBodyBlock>
       <LoginButton onClick={handleKakaoLogin}>

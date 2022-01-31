@@ -1,14 +1,7 @@
 import React from 'react';
 import MyPageElementHeader from './MyPageElementHeader';
-import Camera from '../../lib/images/Camera.svg';
-import {
-  Avatar,
-  Badge,
-  Button,
-  ButtonBase,
-  styled,
-  TextField,
-} from '@mui/material';
+import Camera from '../../static/images/Camera.svg';
+import { Avatar, Badge, Button, styled, TextField } from '@mui/material';
 import palette from '../../lib/styles/palette';
 
 const ModifyProfileBlock = styled('div')({
@@ -103,7 +96,7 @@ const ModifyProfile: React.FC<ModifyProfileType> = ({
         </Badge>
       </div>
       <StyledInput
-        value={displayName}
+        defaultValue={displayName}
         fullWidth
         inputProps={{ style: { textAlign: 'center' } }}
         name="displayName"

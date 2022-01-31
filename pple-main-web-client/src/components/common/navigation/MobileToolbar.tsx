@@ -1,9 +1,9 @@
 import React, { MouseEventHandler } from 'react';
 import { IconButton, styled } from '@mui/material';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
-import Chat from '../../../lib/images/mobile-gnb/Chat.png';
-import Edit from '../../../lib/images/mobile-gnb/Edit.svg';
-import Search from '../../../lib/images/mobile-gnb/Search.png';
+import Chat from '../../../static/images/mobile-gnb/Chat.png';
+import Edit from '../../../static/images/mobile-gnb/Edit.svg';
+import Search from '../../../static/images/mobile-gnb/Search.png';
 import { useNavigate } from 'react-router-dom';
 import palette from '../../../lib/styles/palette';
 
