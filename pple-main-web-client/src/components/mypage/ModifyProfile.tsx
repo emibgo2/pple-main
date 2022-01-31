@@ -76,11 +76,13 @@ const StyledButton = styled(Button)({
 type ModifyProfileType = {
   displayName: string;
   onChange: any;
+  profileImageUrl: string;
 };
 
 const ModifyProfile: React.FC<ModifyProfileType> = ({
   displayName,
   onChange,
+  profileImageUrl,
 }) => {
   return (
     <ModifyProfileBlock>
@@ -93,11 +95,15 @@ const ModifyProfile: React.FC<ModifyProfileType> = ({
             <SmallAvatar alt="프로필 이미지 수정" src={Camera}></SmallAvatar>
           }
         >
-          <Avatar sx={{ width: 118, height: 118 }} alt="프로필 이미지" />
+          <Avatar
+            src={profileImageUrl}
+            sx={{ width: 118, height: 118 }}
+            alt="프로필 이미지"
+          />
         </Badge>
       </div>
       <StyledInput
-        defaultValue={displayName}
+        value={displayName}
         fullWidth
         inputProps={{ style: { textAlign: 'center' } }}
         name="displayName"

@@ -9,6 +9,7 @@ import { setUuid } from '../../models/auth/account';
 
 const ModifyProfileForm = () => {
   const [displayName, setDisplayName] = useState('');
+  const [profileImageUrl, setProfileImageUrl] = useState<string>('');
   const uuid = useSelector((state: RootState) => state.account.uuid);
   const jwt = getCookie();
   const dispatch = useDispatch();
@@ -24,6 +25,7 @@ const ModifyProfileForm = () => {
           dispatch(setUuid(res.data.uuid));
         }
         setDisplayName(res.data.displayName);
+        setProfileImageUrl(res.data.profileImageUrl);
       })
       .catch(() => {
         console.log('ERROR');
@@ -59,7 +61,11 @@ const ModifyProfileForm = () => {
   return (
     <>
       <form onSubmit={onSubmit}>
-        <ModifyProfile displayName={displayName} onChange={onChange} />
+        <ModifyProfile
+          profileImageUrl={profileImageUrl}
+          displayName={displayName}
+          onChange={onChange}
+        />
       </form>
     </>
   );

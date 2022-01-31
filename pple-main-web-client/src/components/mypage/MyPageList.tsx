@@ -48,12 +48,12 @@ const MyPageList: React.FC = () => {
     <div>
       <DIVIDER />
       <List1>
-        <ListItemButton onClick={handleHelper}>
+        {/* <ListItemButton onClick={handleHelper}>
           <ListItemIcon>
             <img src={heart} alt="도움을 주신 분들" />
           </ListItemIcon>
           <ListItemText primary="도움을 주신 분들" />
-        </ListItemButton>
+        </ListItemButton> */}
         <ListItemButton onClick={handleStory}>
           <ListItemIcon>
             <img src={edit} alt="나의 사연" />
