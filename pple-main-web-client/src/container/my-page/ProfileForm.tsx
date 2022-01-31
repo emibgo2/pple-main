@@ -14,7 +14,6 @@ const ProfileForm = () => {
         headers: { Authorization: `Bearer ${jwt}` },
       })
       .then(res => {
-        console.log(res);
         setProfileImageUrl(res.data.profileImageUrl);
         setDisplayName(res.data.displayName);
         if (res.data.blood.rh == 'POSITIVE') {

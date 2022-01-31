@@ -10,7 +10,6 @@ import RequestPostPage from './pages/RequestPostPage';
 import RequestRegisterPage from './pages/RequestRegisterPage';
 import RequestPost from './components/request/post/RequestPost';
 import MyPage from './pages/MyPage';
-import ModifyStory from './components/mypage/my-story/ModifyStory';
 import FAQ from './components/mypage/faq/FAQ';
 import Helped from './components/mypage/help/Helped';
 import ModifyProfileForm from './container/my-page/ModifyProfileForm';
@@ -18,6 +17,7 @@ import MyStoryForm from './container/my-page/MyStoryForm';
 import DesignatedBloodDonation from './components/mypage/etc/DesignatedBloodDonation';
 import PrivacyPolicy from './components/mypage/etc/PrivacyPolicy';
 import TermsOfService from './components/mypage/etc/TermsOfService';
+import ModifyStoryForm from './container/my-page/ModifyStoryForm';
 
 const GlobalStyles = createGlobalStyle`
   ${reset};
@@ -44,7 +44,6 @@ const App: React.FC = () => {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/post" element={<RequestPostPage />} />
-          <Route path="/post/:userId" element={<RequestPost />} />
           <Route path="/post/register" element={<RequestRegisterPage />} />
           <Route path="/page" element={<MyPage />} />
           <Route path="/page/modify" element={<ModifyProfileForm />} />
@@ -56,7 +55,7 @@ const App: React.FC = () => {
           <Route path="/etc/3" element={<TermsOfService />} />
           <Route
             path="/page/story/modify/:donationUuid"
-            element={<ModifyStory />}
+            element={<ModifyStoryForm />}
           />
         </Routes>
       </AppBlock>

@@ -18,6 +18,15 @@ export type ContentType = {
       rh: string;
     };
   };
+  createdAccount: {
+    blood: {
+      abo: string;
+      rh: string;
+    };
+    displayName: string;
+    profileImageUrl: string;
+    uuid: string;
+  };
   phoneNumber: string;
   renewedCount: number;
   status: string;

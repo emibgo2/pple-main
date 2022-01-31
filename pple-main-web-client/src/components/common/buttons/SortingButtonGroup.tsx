@@ -11,8 +11,8 @@ const SortingButtonGroupBlock = styled('div')({
 });
 
 interface Filter {
-  filter?: FilterType;
-  setFilter?: any;
+  filter: FilterType;
+  setFilter: any;
 }
 
 const SortingButtonGroup: React.FC<Filter> = ({ filter, setFilter }) => {
