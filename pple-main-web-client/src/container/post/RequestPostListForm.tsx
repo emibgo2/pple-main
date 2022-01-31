@@ -82,23 +82,40 @@ const FilterBloodTypeAndBloodProduct = (
 
 const RequestPostListForm: React.FC = () => {
   const [contentArray, setContentArray] = useState([]);
+  const [search, setSearch] = useState<string>(undefined);
   const [filter, setFilter] = useState<FilterType>({
     bloodType: null,
     bloodProduct: null,
   });
+  const handleSearch = (e: any) => {
+    const { value } = e.target;
+    setSearch(value);
+  };
+
   useEffect(() => {
     customAxios
       .get('api/v1/donation')
       .then(res => {
+        if (search != undefined) {
+          const newArray = res.data.content.filter(content =>
+            content.content.includes(search),
+          );
+          setContentArray(newArray);
+          return;
+        }
         const newArray = res.data.content;
         setContentArray(newArray);
       })
       .catch(err => {
         console.log(err);
       });
-  }, []);
+  }, [search]);
   return (
-    <RequestPostList filter={filter} setFilter={setFilter}>
+    <RequestPostList
+      handleSearch={handleSearch}
+      filter={filter}
+      setFilter={setFilter}
+    >
       {filter.bloodProduct && filter.bloodType
         ? FilterBloodTypeAndBloodProduct(
             filter.bloodType,

@@ -12,14 +12,23 @@ const RequestPostListBlock = styled('div')({
 interface Props {
   filter: FilterType;
   setFilter: any;
+  handleSearch: any;
 }
 
-const RequestPostList: React.FC<Props> = ({ children, filter, setFilter }) => {
+const RequestPostList: React.FC<Props> = ({
+  children,
+  filter,
+  setFilter,
+  handleSearch,
+}) => {
   return (
     <>
       <MobileToolbar title="요청 피드" isBack={true} isWrite={true} />
       <RequestPostListBlock>
-        <SearchInput placeholder="요청을 검색해보세요" />
+        <SearchInput
+          handleSearch={handleSearch}
+          placeholder="요청을 검색해보세요"
+        />
         <SortingButtonGroup filter={filter} setFilter={setFilter} />
         {children}
       </RequestPostListBlock>
