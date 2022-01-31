@@ -159,7 +159,6 @@ const RequestRegisterForm: React.FC = () => {
           handlePhoneNumber={handlePhoneNumber}
           handleBloodProduction={handleBloodProduction}
         />
-        <button onClick={onClick}> test </button>
       </form>
     </>
   );
