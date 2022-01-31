@@ -4,12 +4,13 @@ import { styled, Paper, IconButton } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import Clock from '../../../lib/images/modal/Clock.svg';
 import ModalButton from './ModalButton';
-
+import '../../../static/fonts/fonts.css';
 const StyledModal = styled(Modal)({
   position: 'fixed',
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
+  fontFamily: 'Pretendard',
 });
 
 const StylePaper = styled(Paper)({

@@ -8,8 +8,10 @@ import SwiperCore, { Navigation, Pagination, Autoplay } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper-bundle.min.css';
 import 'swiper/swiper.min.css';
+import '../../../static/fonts/fonts.css';
 
 const StyledModal = styled(Modal)({
+  fontFamily: 'Pretendard',
   position: 'fixed',
   top: '50%',
   left: '50%',
