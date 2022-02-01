@@ -24,19 +24,21 @@ const RequestRegisterBlock = styled('div')({
 const Header = styled('div')({
   display: 'flex',
   alignItems: 'center',
-  justifyContent: 'space-between',
   backgroundColor: 'white',
   padding: '14px 17px 14px 10px',
+  '& .column': {
+    display: 'flex',
+    alignItems: 'center',
+    width: '33%',
+  },
+  '& .title': {
+    fontSize: 'larger',
+    transform: 'translateX(50%)',
+  },
   '& .button': {
     display: 'flex',
     alignItems: 'center',
     fontWeight: 'bold',
-  },
-  '& .button span': {
-    display: 'block',
-    marginTop: '3px',
-    marginRight: '77px',
-    fontSize: 'larger',
   },
 });
 
@@ -72,8 +74,7 @@ const Footer = styled('div')({
   display: 'flex',
   justifyContent: 'space-between',
   alignContent: 'center',
-  padding: '0px 2rem',
-  marginTop: '48.35px',
+  padding: '2rem 2rem',
   '& .MuiButton-root': {
     padding: '10px 0px',
     width: '45%',
@@ -106,16 +107,18 @@ const RequestRegister: React.FC<RequestRegisterType> = ({
   return (
     <RequestRegisterBlock>
       <Header>
-        <div>
+        <div className="column">
           <IconButton onClick={onClickExit}>
             <CloseIcon />
           </IconButton>
         </div>
-
-        <div className="button">
+        <div className="title">
           <span>요청하기</span>
-          <RadiusButton text="내정보 불러오기" />
         </div>
+
+        {/* <div className="button">
+          <RadiusButton text="내정보 불러오기" />
+        </div> */}
       </Header>
       <Divider />
       <Body>

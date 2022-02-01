@@ -21,7 +21,7 @@ const LoginButton = styled(ButtonBase)({
     alignItem: 'center',
     color: 'white',
     width: '100%',
-    height: '62.39px',
+    height: 'auto',
     backgroundColor: 'black',
     borderRadius: '12px',
   },
@@ -40,8 +40,9 @@ const StartWithoutLogin = styled(ButtonBase)({
 
 const ImageSrc = styled('img')({
   width: '100%',
-  backgroundSize: 'fill',
-  boxSizing: 'border-box',
+  height: 'auto',
+  // backgroundSize: 'fill',
+  // boxSizing: 'border-box',
 });
 
 interface Props {
@@ -64,12 +65,12 @@ const MLoginBody: React.FC<Props> = ({
           <ImageSrc src={kakaoLoginImg} alt="카카오로 시작하기" />
         </div>
       </LoginButton>
-      <LoginButton onClick={handleAppleLogin}>
+      {/* <LoginButton onClick={handleAppleLogin}>
         <div className="apple">
           <img src={applelogImg} alt="애플 계정으로 시작하기" />
           <div className="apple-login-text">애플계정으로 시작하기</div>
         </div>
-      </LoginButton>
+      </LoginButton> */}
       <StartWithoutLogin onClick={handleWithoutLogin}>
         <span>로그인 없이 시작하기</span>
         <ChevronRightIcon />

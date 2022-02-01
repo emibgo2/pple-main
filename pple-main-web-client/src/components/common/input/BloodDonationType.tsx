@@ -11,6 +11,11 @@ const BloodDonationTypeBlock = styled('div')({
     color: '#B7B7B7',
     marginTop: '8px',
   },
+  '& .button-group': {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
 });
 const StyleToggleButton = styled(ToggleButton)({
   '&.Mui-selected': {
@@ -55,38 +60,42 @@ const BloodDonationType: React.FC<IBloodProduce> = ({
       >
         전혈
       </StyleToggleButton>
-      <StyleToggleButton
-        sx={{ width: '48%', marginRight: '16px' }}
-        value="PLATELET"
-        selected={selected2}
-        onChange={handleSelect(selected2, setSelected2)}
-      >
-        성분채혈 혈소판
-      </StyleToggleButton>
-      <StyleToggleButton
-        sx={{ width: '48%' }}
-        value="LEUKOCYTE"
-        selected={selected3}
-        onChange={handleSelect(selected3, setSelected3)}
-      >
-        성분채혈 백혈구
-      </StyleToggleButton>
-      <StyleToggleButton
-        sx={{ width: '48%', marginRight: '16px' }}
-        value="PACKED_RED_BLOOD_CELL"
-        selected={selected4}
-        onChange={handleSelect(selected4, setSelected4)}
-      >
-        농축적혈구
-      </StyleToggleButton>
-      <StyleToggleButton
-        sx={{ width: '48%' }}
-        value="LEUKOCYTE_REDUCED_RED_BLOOD_CELL"
-        selected={selected5}
-        onChange={handleSelect(selected5, setSelected5)}
-      >
-        백혈구여과재거적혈구
-      </StyleToggleButton>
+      <div className="button-group">
+        <StyleToggleButton
+          sx={{ width: '48%' }}
+          value="PLATELET"
+          selected={selected2}
+          onChange={handleSelect(selected2, setSelected2)}
+        >
+          성분채혈 혈소판
+        </StyleToggleButton>
+        <StyleToggleButton
+          sx={{ width: '48%' }}
+          value="LEUKOCYTE"
+          selected={selected3}
+          onChange={handleSelect(selected3, setSelected3)}
+        >
+          성분채혈 백혈구
+        </StyleToggleButton>
+      </div>
+      <div className="button-group">
+        <StyleToggleButton
+          sx={{ width: '48%' }}
+          value="PACKED_RED_BLOOD_CELL"
+          selected={selected4}
+          onChange={handleSelect(selected4, setSelected4)}
+        >
+          농축적혈구
+        </StyleToggleButton>
+        <StyleToggleButton
+          sx={{ width: '48%' }}
+          value="LEUKOCYTE_REDUCED_RED_BLOOD_CELL"
+          selected={selected5}
+          onChange={handleSelect(selected5, setSelected5)}
+        >
+          백혈구여과재거적혈구
+        </StyleToggleButton>
+      </div>
     </BloodDonationTypeBlock>
   );
 };

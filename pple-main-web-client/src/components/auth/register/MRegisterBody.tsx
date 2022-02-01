@@ -42,6 +42,14 @@ interface IRegister {
   handleBloodType: any;
   handleRh: any;
   handleBirthDay: any;
+  all: boolean;
+  privacy: boolean;
+  term: boolean;
+  marketing: boolean;
+  handleAll: any;
+  handlePrivacy: any;
+  handleTerm: any;
+  handleMarketing: any;
 }
 
 const MRegisterBody: React.FC<IRegister> = ({
@@ -51,6 +59,14 @@ const MRegisterBody: React.FC<IRegister> = ({
   handleBloodType,
   handleRh,
   handleBirthDay,
+  all,
+  privacy,
+  term,
+  marketing,
+  handleAll,
+  handlePrivacy,
+  handleTerm,
+  handleMarketing,
 }) => {
   const { nickname, year, month, day, gender, abo, rh, phone } = user;
   return (
@@ -70,7 +86,16 @@ const MRegisterBody: React.FC<IRegister> = ({
         handleRh={handleRh}
       />
       <PhoneInput phone={phone} handlePhoneNumber={handlePhoneNumber} />
-      <TermsInput />
+      <TermsInput
+        all={all}
+        privacy={privacy}
+        term={term}
+        marketing={marketing}
+        handleAll={handleAll}
+        handlePrivacy={handlePrivacy}
+        handleTerm={handleTerm}
+        handleMarketing={handleMarketing}
+      />
       <RegisterButton user={user} />
     </MRegisterBodyBlock>
   );

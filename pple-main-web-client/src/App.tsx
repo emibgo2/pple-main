@@ -26,13 +26,13 @@ const GlobalStyles = createGlobalStyle`
 `;
 
 const AppBlock = styled.div`
-  width: 28rem;
+  width: auto;
   height: 100%;
   font-family: 'Pretendard';
 `;
 
 const ContentBlock = styled.div`
-  width: 28rem;
+  width: auto;
   height: 100%;
 `;
 
