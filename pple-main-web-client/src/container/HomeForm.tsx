@@ -3,7 +3,6 @@ import { styled } from '@mui/material';
 import HomePageHeader from '../components/home/HomePageHeader';
 import { getCookie, setCookie } from '../lib/hooks/CookieUtil';
 import { checkUser } from '../lib/hooks/CookieUtil';
-import ChannelTalk from '../components/common/buttons/ChannelTalk';
 import { customAxios } from '../lib/customAxios';
 import HomeCardTemplateForm from './feed/HomeCardTemplateForm';
 

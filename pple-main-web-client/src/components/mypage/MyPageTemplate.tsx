@@ -15,9 +15,9 @@ const MyPageTemplate: React.FC = ({ children }) => {
   return (
     <MyPageTemplateBlock>
       {children}
-      <div className="channel-talk">
+      {/* <div className="channel-talk">
         <ChannelTalk />
-      </div>
+      </div> */}
     </MyPageTemplateBlock>
   );
 };

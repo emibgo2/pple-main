@@ -21,9 +21,9 @@ const HomePage: React.FC = () => {
   return (
     <HomepageBlock>
       <HomeForm />
-      <div className="channel-talk">
+      {/* <div className="channel-talk">
         <ChannelTalk />
-      </div>
+      </div> */}
     </HomepageBlock>
   );
 };
