@@ -106,11 +106,6 @@ const TermsInput: React.FC<ITerms> = ({
           </IconButton>
           <span>마케팅 활용동의(선택)</span>
         </div>
-        <div>
-          <IconButton sx={{ color: '#767676' }}>
-            <ChevronRightIcon />
-          </IconButton>
-        </div>
       </ButtonBlock>
     </>
   );
