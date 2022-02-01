@@ -12,6 +12,7 @@ const Block = styled('div')({
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'space-between',
+  paddingBottom: '40px',
 });
 
 const Divider = styled('div')({
@@ -38,9 +39,10 @@ const ModifyButton = styled(ButtonBase)({
   fontWeight: 'bold',
   fontSize: '18px',
   padding: '20px 0px',
-  position: 'relative',
+  position: 'fixed',
   bottom: '0',
   boxSizing: 'border-box',
+  marginTop: '20px',
 });
 
 interface Props {
